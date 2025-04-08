@@ -23,6 +23,9 @@
         <div class="form-row">
           <label for="confirmPassword">비밀번호 확인</label>
           <input id="confirmPassword" v-model="confirmPassword" type="password" />
+          <span v-if="passwordMatchMessage" :class="passwordMatchError ? 'error' : 'success'">
+            {{ passwordMatchMessage }}
+          </span>
         </div>
 
         <div class="form-row">
@@ -34,6 +37,18 @@
 
         <button type="submit" class="signup-button">가입</button>
       </form>
+
+      <p class="login-link">
+        이미 계정이 있으신가요?
+        <router-link to="/signin">로그인하기</router-link>
+      </p>
+    </div>
+    <!-- 🔔 커스텀 알림 모달 -->
+    <div v-if="showAlert" class="alert-overlay">
+      <div class="alert-box">
+        <p class="alert-message">{{ alertMessage }}</p>
+        <button class="alert-button" @click="showAlert = false">확인</button>
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +56,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { computed } from 'vue'
 import axios from '@/api/axios'
 
 const router = useRouter()
@@ -49,31 +65,56 @@ const password = ref('')
 const confirmPassword = ref('')
 const name = ref('')
 const isIdAvailable = ref(false)
+const showAlert = ref(false)
+const alertMessage = ref('')
+
+//회원 정보 더 입력하라는 알림창
+const openAlert = (message) => {
+  alertMessage.value = message
+  showAlert.value = true
+}
+
+//비밀번호 일치하는지 여부 확인
+const passwordMatchMessage = computed(() => {
+  if (!confirmPassword.value) return ''
+  return password.value === confirmPassword.value
+    ? '비밀번호가 일치합니다.'
+    : '비밀번호가 일치하지 않습니다.'
+})
+
+const passwordMatchError = computed(() => {
+  return confirmPassword.value && password.value !== confirmPassword.value
+})
 
 const handleSignup = async () => {
   if (!id.value || !password.value || !confirmPassword.value || !name.value) {
-    alert('모든 항목을 입력해주세요!')
+    openAlert('모든 항목을 입력해주세요!')
     return
   }
   if (!isIdAvailable.value) {
-    alert('아이디 중복확인을 먼저 해주세요.')
+    openAlert('아이디 중복확인을 먼저 해주세요.')
     return
   }
-  if (password.value !== confirmPassword.value) {
-    alert('비밀번호가 일치하지 않습니다.')
+  if (passwordMatchError.value) {
+    openAlert('비밀번호가 일치하지 않습니다.')
     return
   }
   try {
-    await axios.post('/user', {
+    const res = await axios.post('/user', {
       id: id.value,
       pw: password.value,
       name: name.value,
     })
-    alert('회원가입 성공!')
-    router.push('/signin')
+
+    if (res) {
+      openAlert('회원가입 성공!')
+      setTimeout(() => {
+        router.push('/signin')
+      }, 1500)
+    }
   } catch (err) {
     console.error(err)
-    alert('회원가입 실패')
+    openAlert('회원가입 실패')
   }
 }
 
@@ -228,5 +269,80 @@ input {
   color: red;
   font-size: 12px;
   margin-top: 4px;
+}
+
+.alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.alert-box {
+  background-color: white;
+  padding: 24px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+  max-width: 300px;
+  width: 80%;
+}
+
+.alert-message {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.alert-button {
+  padding: 10px 20px;
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.alert-button:hover {
+  background-color: #7c3aed;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-link {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+}
+
+.login-link a {
+  color: #8b5cf6;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
 }
 </style>
