@@ -10,6 +10,7 @@
         <router-link to="/home">캘린더</router-link>
         <router-link to="/accounts">내역</router-link>
         <router-link to="/dashboard">분석</router-link>
+        <router-link to="/mypage">마이 페이지</router-link>
       </nav>
     </div>
 

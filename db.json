@@ -5,84 +5,96 @@
       "year": 2025,
       "month": 4,
       "income": 80000,
-      "expense": 50000
+      "expense": 50000,
+      "id": "0e1b"
     },
     {
       "userId": "aaa",
       "year": 2025,
       "month": 5,
       "income": 0,
-      "expense": 18000
+      "expense": 18000,
+      "id": "91b9"
     },
     {
       "userId": "aaa",
       "year": 2025,
       "month": 6,
       "income": 133000,
-      "expense": 32000
+      "expense": 32000,
+      "id": "cedc"
     },
     {
       "userId": "bbb",
       "year": 2025,
       "month": 4,
       "income": 50000,
-      "expense": 12000
+      "expense": 12000,
+      "id": "bfc9"
     },
     {
       "userId": "bbb",
       "year": 2025,
       "month": 5,
       "income": 100000,
-      "expense": 103000
+      "expense": 103000,
+      "id": "a8e2"
     },
     {
       "userId": "bbb",
       "year": 2025,
       "month": 6,
       "income": 190000,
-      "expense": 122000
+      "expense": 122000,
+      "id": "fe80"
     },
     {
       "userId": "ccc",
       "year": 2025,
       "month": 4,
       "income": 0,
-      "expense": 5000
+      "expense": 5000,
+      "id": "f3e3"
     },
     {
       "userId": "ccc",
       "year": 2025,
       "month": 5,
       "income": 140000,
-      "expense": 64000
+      "expense": 64000,
+      "id": "9ba2"
     },
     {
       "userId": "ccc",
       "year": 2025,
       "month": 6,
       "income": 220000,
-      "expense": 119000
+      "expense": 119000,
+      "id": "9b13"
     },
     {
       "userId": "ddd",
       "year": 2025,
       "month": 4,
       "income": 0,
-      "expense": 50000
+      "expense": 50000,
+      "id": "3557"
     },
     {
       "userId": "ddd",
       "year": 2025,
       "month": 5,
       "income": 300000,
-      "expense": 135000
+      "expense": 135000,
+      "id": "3572"
     },
     {
       "userId": "ddd",
       "year": 2025,
       "month": 6,
       "income": 1300000,
-      "expense": 23000
+      "expense": 23000,
+      "id": "cabe"
     }
   ],
   "user": [
@@ -115,6 +127,11 @@
       "id": "zlwmxkdla",
       "pw": "1234",
       "name": "이유정"
+    },
+    {
+      "id": "abcd",
+      "pw": "12345",
+      "name": "홍길동"
     }
   ],
   "uses": [
@@ -126,7 +143,8 @@
       "memo": "마스크팩 구입",
       "payment_method": "카드",
       "vendor": "올리브영",
-      "type": "expense"
+      "type": "expense",
+      "id": "1c2c"
     },
     {
       "userId": "aaa",
@@ -136,7 +154,8 @@
       "memo": "아싸 용돈",
       "payment_method": "현금",
       "vendor": "부모님",
-      "type": "income"
+      "type": "income",
+      "id": "b5b0"
     },
     {
       "userId": "aaa",
@@ -146,7 +165,8 @@
       "memo": "아싸 월급",
       "payment_method": "카드",
       "vendor": "회사",
-      "type": "income"
+      "type": "income",
+      "id": "cf52"
     },
     {
       "userId": "aaa",
@@ -156,7 +176,8 @@
       "memo": "길에서 주웠다",
       "payment_method": "현금",
       "vendor": "기타",
-      "type": "income"
+      "type": "income",
+      "id": "578c"
     },
     {
       "userId": "aaa",
@@ -166,7 +187,8 @@
       "memo": "민정이랑 점심",
       "payment_method": "카드",
       "vendor": "백채김치찌개",
-      "type": "expense"
+      "type": "expense",
+      "id": "26cb"
     },
     {
       "userId": "aaa",
@@ -176,7 +198,8 @@
       "memo": "아싸 월급",
       "payment_method": "카드",
       "vendor": "회사",
-      "type": "income"
+      "type": "income",
+      "id": "75b7"
     },
     {
       "userId": "aaa",
@@ -186,7 +209,8 @@
       "memo": "친구의 돈을 갚았다",
       "payment_method": "카드",
       "vendor": "친구",
-      "type": "expense"
+      "type": "expense",
+      "id": "af6c"
     },
     {
       "userId": "aaa",
@@ -196,7 +220,8 @@
       "memo": "옷 샀다",
       "payment_method": "카드",
       "vendor": "의류매장",
-      "type": "expense"
+      "type": "expense",
+      "id": "df91"
     },
     {
       "userId": "aaa",
@@ -206,7 +231,8 @@
       "memo": "혼밥했다",
       "payment_method": "카드",
       "vendor": "식당",
-      "type": "expense"
+      "type": "expense",
+      "id": "1635"
     },
     {
       "userId": "aaa",
@@ -216,7 +242,8 @@
       "memo": "길에서 돈을 잃어버렸다",
       "payment_method": "현금",
       "vendor": "기타",
-      "type": "expense"
+      "type": "expense",
+      "id": "6ce3"
     },
     {
       "userId": "aaa",
@@ -226,7 +253,8 @@
       "memo": "사고싶은 옷을 샀다",
       "payment_method": "카드",
       "vendor": "패션몰",
-      "type": "expense"
+      "type": "expense",
+      "id": "8ff0"
     },
     {
       "userId": "aaa",
@@ -236,7 +264,8 @@
       "memo": "치킨먹었다",
       "payment_method": "카드",
       "vendor": "치킨집",
-      "type": "expense"
+      "type": "expense",
+      "id": "0b04"
     },
     {
       "userId": "bbb",
@@ -245,7 +274,8 @@
       "amount": 50000,
       "memo": "아싸 월급",
       "payment_method": "카드",
-      "vendor": "회사"
+      "vendor": "회사",
+      "id": "f533"
     },
     {
       "userId": "bbb",
@@ -255,7 +285,8 @@
       "memo": "배당금이 들어왔다",
       "payment_method": "카드",
       "vendor": "증권사",
-      "type": "income"
+      "type": "income",
+      "id": "4d3e"
     },
     {
       "userId": "bbb",
@@ -265,7 +296,8 @@
       "memo": "아싸 월급",
       "payment_method": "카드",
       "vendor": "회사",
-      "type": "income"
+      "type": "income",
+      "id": "0409"
     },
     {
       "userId": "bbb",
@@ -275,7 +307,8 @@
       "memo": "친구가 돈을 갚았다",
       "payment_method": "현금",
       "vendor": "친구",
-      "type": "income"
+      "type": "income",
+      "id": "6e1c"
     },
     {
       "userId": "bbb",
@@ -285,7 +318,8 @@
       "memo": "아싸 월급",
       "payment_method": "카드",
       "vendor": "회사",
-      "type": "income"
+      "type": "income",
+      "id": "ad5e"
     },
     {
       "userId": "bbb",
@@ -295,7 +329,8 @@
       "memo": "아싸 용돈",
       "payment_method": "현금",
       "vendor": "부모님",
-      "type": "income"
+      "type": "income",
+      "id": "8d32"
     },
     {
       "userId": "bbb",
@@ -305,7 +340,8 @@
       "memo": "한우를 먹었다",
       "payment_method": "카드",
       "vendor": "한우전문점",
-      "type": "expense"
+      "type": "expense",
+      "id": "1359"
     },
     {
       "userId": "bbb",
@@ -315,7 +351,8 @@
       "memo": "신발을 샀다",
       "payment_method": "카드",
       "vendor": "신발가게",
-      "type": "expense"
+      "type": "expense",
+      "id": "b7f4"
     },
     {
       "userId": "bbb",
@@ -325,7 +362,8 @@
       "memo": "택시비",
       "payment_method": "카드",
       "vendor": "택시",
-      "type": "expense"
+      "type": "expense",
+      "id": "3227"
     },
     {
       "userId": "bbb",
@@ -335,7 +373,8 @@
       "memo": "약국에서 약을 샀다",
       "payment_method": "카드",
       "vendor": "약국",
-      "type": "expense"
+      "type": "expense",
+      "id": "e757"
     },
     {
       "userId": "bbb",
@@ -345,7 +384,8 @@
       "memo": "적금을 넣었다",
       "payment_method": "카드",
       "vendor": "은행",
-      "type": "expense"
+      "type": "expense",
+      "id": "9b86"
     },
     {
       "userId": "bbb",
@@ -355,7 +395,8 @@
       "memo": "술을 마셨다",
       "payment_method": "카드",
       "vendor": "술집",
-      "type": "expense"
+      "type": "expense",
+      "id": "d0b9"
     },
     {
       "userId": "ccc",
@@ -365,7 +406,8 @@
       "memo": "용돈을 받았다",
       "payment_method": "현금",
       "vendor": "부모님",
-      "type": "income"
+      "type": "income",
+      "id": "8de5"
     },
     {
       "userId": "ccc",
@@ -375,7 +417,8 @@
       "memo": "아싸 용돈",
       "payment_method": "카드",
       "vendor": "부모님",
-      "type": "income"
+      "type": "income",
+      "id": "071a"
     },
     {
       "userId": "ccc",
@@ -385,7 +428,8 @@
       "memo": "아싸 알바비가 들어왔다",
       "payment_method": "카드",
       "vendor": "알바장소",
-      "type": "income"
+      "type": "income",
+      "id": "8469"
     },
     {
       "userId": "ccc",
@@ -395,7 +439,8 @@
       "memo": "당근해서 돈벌었다",
       "payment_method": "현금",
       "vendor": "당근마켓",
-      "type": "income"
+      "type": "income",
+      "id": "0ec2"
     },
     {
       "userId": "ccc",
@@ -405,7 +450,8 @@
       "memo": "알바비 들어왔다!",
       "payment_method": "카드",
       "vendor": "알바장소",
-      "type": "income"
+      "type": "income",
+      "id": "d6b4"
     },
     {
       "userId": "ccc",
@@ -415,7 +461,8 @@
       "memo": "휴대폰 요금이 나갔다",
       "payment_method": "카드",
       "vendor": "통신사",
-      "type": "expense"
+      "type": "expense",
+      "id": "8571"
     },
     {
       "userId": "ccc",
@@ -425,7 +472,8 @@
       "memo": "옷 샀다",
       "payment_method": "카드",
       "vendor": "의류매장",
-      "type": "expense"
+      "type": "expense",
+      "id": "a063"
     },
     {
       "userId": "ccc",
@@ -435,7 +483,8 @@
       "memo": "데이트할때 저녁!",
       "payment_method": "카드",
       "vendor": "레스토랑",
-      "type": "expense"
+      "type": "expense",
+      "id": "a9c6"
     },
     {
       "userId": "ccc",
@@ -445,7 +494,8 @@
       "memo": "아 돈을 잃어버렸다",
       "payment_method": "현금",
       "vendor": "기타",
-      "type": "expense"
+      "type": "expense",
+      "id": "0803"
     },
     {
       "userId": "ccc",
@@ -455,7 +505,8 @@
       "memo": "커피 한잔 사먹었다",
       "payment_method": "카드",
       "vendor": "카페",
-      "type": "expense"
+      "type": "expense",
+      "id": "d4d5"
     },
     {
       "userId": "ccc",
@@ -465,7 +516,8 @@
       "memo": "치킨먹었다",
       "payment_method": "카드",
       "vendor": "치킨집",
-      "type": "expense"
+      "type": "expense",
+      "id": "f201"
     },
     {
       "userId": "ddd",
@@ -475,7 +527,8 @@
       "memo": "월급이다",
       "payment_method": "카드",
       "vendor": "회사",
-      "type": "income"
+      "type": "income",
+      "id": "d1dd"
     },
     {
       "userId": "ddd",
@@ -485,7 +538,8 @@
       "memo": "아싸 월급 들어왔다",
       "payment_method": "카드",
       "vendor": "회사",
-      "type": "income"
+      "type": "income",
+      "id": "ab29"
     },
     {
       "userId": "ddd",
@@ -495,7 +549,8 @@
       "memo": "적금 만기!",
       "payment_method": "카드",
       "vendor": "은행",
-      "type": "income"
+      "type": "income",
+      "id": "dc5a"
     },
     {
       "userId": "ddd",
@@ -505,7 +560,8 @@
       "memo": "친구에게 돈을 빌려줬다",
       "payment_method": "카드",
       "vendor": "친구",
-      "type": "expense"
+      "type": "expense",
+      "id": "81a5"
     },
     {
       "userId": "ddd",
@@ -515,7 +571,8 @@
       "memo": "책을 샀다",
       "payment_method": "카드",
       "vendor": "서점",
-      "type": "expense"
+      "type": "expense",
+      "id": "1162"
     },
     {
       "userId": "ddd",
@@ -525,7 +582,8 @@
       "memo": "빵 사먹었다",
       "payment_method": "카드",
       "vendor": "베이커리",
-      "type": "expense"
+      "type": "expense",
+      "id": "2c3c"
     },
     {
       "userId": "ddd",
@@ -535,7 +593,8 @@
       "memo": "교통비 빠져나가는 날",
       "payment_method": "카드",
       "vendor": "교통카드",
-      "type": "expense"
+      "type": "expense",
+      "id": "88e6"
     },
     {
       "userId": "ddd",
@@ -545,7 +604,8 @@
       "memo": "병원을 다녀옴",
       "payment_method": "카드",
       "vendor": "병원",
-      "type": "expense"
+      "type": "expense",
+      "id": "bd40"
     },
     {
       "userId": "ddd",
@@ -555,7 +615,8 @@
       "memo": "삼겹살 먹었다",
       "payment_method": "카드",
       "vendor": "고기집",
-      "type": "expense"
+      "type": "expense",
+      "id": "0054"
     }
   ],
   "category": [
@@ -683,7 +744,8 @@
           "name": "기타",
           "icon": "fa-solid fa-ellipsis"
         }
-      ]
+      ],
+      "id": "24a3"
     }
   ]
 }

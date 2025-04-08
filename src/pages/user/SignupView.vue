@@ -107,10 +107,10 @@ const handleSignup = async () => {
     })
 
     if (res) {
-      openAlert('회원가입 성공!')
+      openAlert('회원가입 성공!\n로그인 페이지로 이동합니다.')
       setTimeout(() => {
         router.push('/signin')
-      }, 1500)
+      }, 3000)
     }
   } catch (err) {
     console.error(err)
@@ -163,7 +163,8 @@ const checkDuplicate = async () => {
 }
 
 .signup-box {
-  width: 700px;
+  width: 80%;
+  min-width: 500px;
   padding: 40px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
@@ -344,5 +345,71 @@ input {
 
 .login-link a:hover {
   text-decoration: underline;
+}
+
+/* 반응형 */
+@media screen and (max-width: 640px) {
+  .signup-container {
+    padding: 24px;
+  }
+
+  .signup-box {
+    width: 100%;
+    max-width: 95vw;
+    padding: 24px 20px;
+    box-shadow: none;
+    border-radius: 8px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    width: 120px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  form {
+    gap: 12px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .check-button {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .signup-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .alert-box {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .alert-message {
+    font-size: 14px;
+  }
+
+  .alert-button {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .login-link {
+    font-size: 13px;
+  }
 }
 </style>
