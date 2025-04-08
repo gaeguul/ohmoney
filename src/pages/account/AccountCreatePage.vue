@@ -83,11 +83,14 @@
 <script setup>
 import { reactive, computed } from 'vue'
 import AccountIconGroup from './accountAssets/AccountIconGroup.vue'
-import accountFormIcon from './accountAssets/accountFormIcon'
+import accountFormIcon from '/src/config/db.json'
 
 const state = reactive({ isExpense: true })
+console.log(accountFormIcon.category[0].expense)
 
-const icons = computed(() => (state.isExpense ? accountFormIcon.expense : accountFormIcon.income))
+const icons = computed(() =>
+  state.isExpense ? accountFormIcon.category[0].expense : accountFormIcon.category[0].income,
+)
 
 const changeCategoryExpense = () => {
   state.isExpense = true
