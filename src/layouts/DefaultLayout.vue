@@ -17,9 +17,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
 import Header from '@/layouts/HeaderView.vue'
 import NavBar from '@/layouts/NavBar.vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 const isMenuOpen = ref(false)
 const isDesktop = ref(window.innerWidth > 640)
@@ -39,53 +39,54 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.page {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  background-color: transparent;
-  overflow: hidden;
-}
+@media screen and (min-width: 641px) {
+  .page {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    overflow: hidden;
+  }
 
-/* Header는 상단 전체 */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 20px;
-  min-height: 64px;
-  background-color: transparent;
-  position: relative;
-}
+  /* Header는 상단 전체 */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+    min-height: 64px;
+    background-color: transparent;
+    position: relative;
+  }
 
-/* Header 아래의 본문 */
-.body {
-  flex: 1;
-  display: flex;
-  min-height: 0;
-  overflow: hidden;
-}
+  /* Header 아래의 본문 */
+  .body {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+    overflow: hidden;
+  }
 
-.navbar {
-  width: 220px;
-  height: 100%;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2vh 1vw;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.03);
-  padding: 2vh 24px;
-}
+  .navbar {
+    width: 220px;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2vh 1vw;
+    padding: 2vh 24px;
+  }
 
-.main-content {
-  flex: 1;
-  padding: 2vh 2vw;
-  background-color: #fafafa;
-  overflow-y: auto;
-  min-height: 0;
-  border-radius: 24px;
+  .main-content {
+    flex: 1;
+    padding: 40px;
+    background-color: #fafafa;
+    overflow-y: auto;
+    min-height: 0;
+    border-radius: 24px;
+  }
 }
 </style>
 
@@ -121,6 +122,7 @@ onBeforeUnmount(() => {
     height: auto;
     margin: 0;
     position: relative;
+    background-color: #ffffff;
   }
 
   .hamburger {
