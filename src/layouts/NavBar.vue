@@ -36,10 +36,11 @@ onBeforeUnmount(() => {
 </script>
 <style scoped>
 .sidebar {
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* ✅ 위아래 간격 자동 배분 */
+  justify-content: space-between;
   padding: 20px;
   background-color: white;
   border-radius: 0 30px 0 0;
@@ -98,8 +99,9 @@ onBeforeUnmount(() => {
 }
 .close-btn {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 34px;
+  right: 52px;
+  transform: translate(100%, -50%);
   background: none;
   border: none;
   font-size: 24px;

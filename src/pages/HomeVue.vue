@@ -50,8 +50,13 @@ onBeforeUnmount(() => {
 
 /* Header는 상단 전체 */
 .header {
-  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
+  min-height: 64px;
   background-color: transparent;
+  position: relative;
 }
 
 /* Header 아래의 본문 */
@@ -71,6 +76,7 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   padding: 2vh 1vw;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.03);
+  padding: 2vh 24px;
 }
 
 .main-content {
@@ -105,7 +111,7 @@ onBeforeUnmount(() => {
     background-color: white;
     z-index: 999;
     overflow-y: auto;
-    padding: 20px;
+    padding: 24px 24px;
     box-sizing: border-box;
   }
 
