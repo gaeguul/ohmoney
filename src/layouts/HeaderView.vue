@@ -3,12 +3,11 @@
     <!-- 데스크탑: 텍스트 로고 -->
     <template v-if="isDesktop">
       <img src="@/assets/logo.png" class="logo" />
-      <h1 class="title">Oh! 머니</h1>
     </template>
 
     <!-- 모바일: 이미지 로고만 -->
     <template v-else>
-      <img src="@/assets/navbar-logo.png" class="mobile-logo" />
+      <img src="@/assets/logo.png" class="mobile-logo" />
     </template>
 
     <!-- 햄버거 메뉴 (모바일 전용) -->
@@ -35,7 +34,7 @@ defineProps({
 }
 
 .logo {
-  height: 8vh;
+  height: 11vh;
   width: auto;
   margin-right: 8px;
 }
