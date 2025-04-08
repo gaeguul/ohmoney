@@ -71,6 +71,7 @@ onBeforeUnmount(() => {
   height: auto;
   display: flex;
   flex: 1;
+  min-height: 0;
 }
 
 .navbar {
@@ -93,6 +94,7 @@ onBeforeUnmount(() => {
   padding: 2vh 2vw;
   background-color: #fafafa;
   overflow-y: auto;
+  min-height: 0;
 }
 </style>
 
@@ -104,7 +106,8 @@ onBeforeUnmount(() => {
   }
 
   .navbar {
-    width: 100%;
+    /* width: 100%; */
+    width: 50vw !important;
     border-radius: 0;
     height: auto;
   }
@@ -113,7 +116,7 @@ onBeforeUnmount(() => {
     position: fixed !important;
     top: 0;
     left: 0;
-    width: 90vw;
+    width: 95vw;
     height: 100vh; /* ✅ 화면 전체 높이로 고정 */
     background-color: white;
     z-index: 999;
