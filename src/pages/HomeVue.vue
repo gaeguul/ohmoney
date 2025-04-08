@@ -1,5 +1,13 @@
 <template>
-  <div>홈 (캘린더)</div>
+  <div class="container">
+    <div class="">
+      <CalendarView />
+    </div>
+  </div>
 </template>
-<script setup></script>
+
+<script setup>
+import CalendarView from '@/components/calendar/CalendarView.vue'
+</script>
+
 <style scoped></style>
