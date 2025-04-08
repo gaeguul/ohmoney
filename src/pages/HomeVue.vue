@@ -1,19 +1,17 @@
 <template>
   <div class="page">
-    <div class="wrapper">
-      <Header :is-desktop="isDesktop" :is-menu-open="isMenuOpen" @toggle-menu="isMenuOpen = true" />
+    <Header :is-desktop="isDesktop" :is-menu-open="isMenuOpen" @toggle-menu="isMenuOpen = true" />
 
-      <div class="body">
-        <NavBar
-          v-if="isDesktop || (!isDesktop && isMenuOpen)"
-          :class="['navbar', { 'mobile-navbar': !isDesktop }]"
-          @close-menu="isMenuOpen = false"
-        />
+    <div class="body">
+      <NavBar
+        v-if="isDesktop || (!isDesktop && isMenuOpen)"
+        :class="['navbar', { 'mobile-navbar': !isDesktop }]"
+        @close-menu="isMenuOpen = false"
+      />
 
-        <main class="main-content">
-          <router-view />
-        </main>
-      </div>
+      <main class="main-content">
+        <router-view />
+      </main>
     </div>
   </div>
 </template>
@@ -44,41 +42,30 @@ onBeforeUnmount(() => {
 .page {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100vw;
   height: 100vh;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #f6f6f6;
+  background-color: transparent;
   overflow: hidden;
 }
 
-.wrapper {
-  width: 95%;
-  height: 95%;
-  max-width: none;
-  max-height: none;
-  display: flex;
-  flex-direction: column;
-  border-radius: 24px;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
-  overflow: hidden;
+/* Header는 상단 전체 */
+.header {
+  height: 10vh;
+  background-color: transparent;
 }
 
+/* Header 아래의 본문 */
 .body {
-  height: auto;
-  display: flex;
   flex: 1;
+  display: flex;
   min-height: 0;
+  overflow: hidden;
 }
 
 .navbar {
-  width: 15.6vw;
+  width: 220px;
   height: 100%;
   background-color: #fff;
-  border-radius: 0 30px 0 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -88,47 +75,45 @@ onBeforeUnmount(() => {
 
 .main-content {
   flex: 1;
-  overflow-y: auto;
-  width: 76.6vw;
-  height: 100%;
   padding: 2vh 2vw;
   background-color: #fafafa;
   overflow-y: auto;
   min-height: 0;
+  border-radius: 24px;
 }
 </style>
 
 <style>
 @media screen and (max-width: 640px) {
   .body {
-    /* flex-direction: column; */
     display: block;
   }
 
   .navbar {
-    /* width: 100%; */
-    width: 50vw !important;
-    border-radius: 0;
-    height: auto;
+    display: none;
   }
 
   .mobile-navbar {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
     position: fixed !important;
     top: 0;
     left: 0;
     width: 95vw;
-    height: 100vh; /* ✅ 화면 전체 높이로 고정 */
+    height: 100vh;
     background-color: white;
     z-index: 999;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
   }
 
   .main-content {
-    padding: 2vh 5vw;
     width: 100%;
-    margin: 0;
+    padding: 2vh 5vw;
     height: auto;
+    margin: 0;
     position: relative;
   }
 

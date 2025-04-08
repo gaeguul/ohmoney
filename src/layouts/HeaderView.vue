@@ -1,9 +1,17 @@
 <template>
   <header class="header">
-    <img src="@/assets/logo.png" class="logo" />
-    <h1 class="title fw-bold">Oh! 머니</h1>
+    <!-- 데스크탑: 텍스트 로고 -->
+    <template v-if="isDesktop">
+      <img src="@/assets/logo.png" class="logo" />
+      <h1 class="title">Oh! 머니</h1>
+    </template>
 
-    <!-- 햄버거 버튼: 모바일일 때만, 메뉴 닫혀있을 때만 -->
+    <!-- 모바일: 이미지 로고만 -->
+    <template v-else>
+      <img src="@/assets/navbar-logo.png" class="mobile-logo" />
+    </template>
+
+    <!-- 햄버거 메뉴 (모바일 전용) -->
     <button v-if="!isDesktop && !isMenuOpen" class="hamburger" @click="$emit('toggle-menu')">
       ☰
     </button>
@@ -30,6 +38,10 @@ defineProps({
   height: 8vh;
   width: auto;
   margin-right: 8px;
+}
+
+.mobile-logo {
+  height: 70px;
 }
 
 .title {

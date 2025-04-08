@@ -2,7 +2,8 @@
   <div class="sidebar">
     <button v-if="isMobile" class="close-btn" @click="$emit('close-menu')">✕</button>
 
-    <div>
+    <!-- 전체 메뉴 영역 -->
+    <div class="sidebar-content">
       <div class="user-box">OOO 님의 가계부</div>
 
       <nav class="menu">
@@ -12,6 +13,7 @@
       </nav>
     </div>
 
+    <!-- 하단 로그아웃 -->
     <router-link to="/signin" class="logout">로그아웃</router-link>
   </div>
 </template>
@@ -34,15 +36,19 @@ onBeforeUnmount(() => {
 </script>
 <style scoped>
 .sidebar {
-  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; /* ✅ 위아래 간격 자동 배분 */
   padding: 20px;
   background-color: white;
   border-radius: 0 30px 0 0;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-content {
+  /* 위쪽 메뉴 묶음 */
+  display: flex;
+  flex-direction: column;
 }
 
 .user-box {
@@ -82,8 +88,13 @@ onBeforeUnmount(() => {
 
 .logout {
   font-size: 14px;
-  color: #aaa;
+  color: #555;
   margin-left: 4px;
+  text-decoration: none;
+}
+.logout:hover {
+  font-weight: bold;
+  color: #8b5cf6;
 }
 .close-btn {
   position: absolute;
