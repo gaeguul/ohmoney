@@ -16,6 +16,33 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
+      children:[
+        {
+          path: '/accounts',
+          name: 'accounts',
+          component: AccountListPage,
+        },
+        {
+          path: '/accounts/:id',
+          name: 'accountDetails',
+          component: AccountEditPage,
+        },
+        {
+          path: '/accounts/new',
+          name: 'newAccount',
+          component: AccountCreatePage,
+        },
+        {
+          path: '/dashboard',
+          name: 'dashboard',
+          component: AnalysisDashboard,
+        },
+        {
+          path: '/category',
+          name: 'category',
+          component: AnalysisCategory,
+        },
+      ]
     },
     {
       path: '/signup',
@@ -32,31 +59,7 @@ const router = createRouter({
       name: 'mypage',
       component: MypageView,
     },
-    {
-      path: '/accounts',
-      name: 'accounts',
-      component: AccountListPage,
-    },
-    {
-      path: '/accounts/:id',
-      name: 'accountDetails',
-      component: AccountEditPage,
-    },
-    {
-      path: '/accounts/new',
-      name: 'newAccount',
-      component: AccountCreatePage,
-    },
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: AnalysisDashboard,
-    },
-    {
-      path: '/category',
-      name: 'category',
-      component: AnalysisCategory,
-    },
+
   ],
 })
 
