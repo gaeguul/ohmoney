@@ -7,7 +7,7 @@
 
       <nav class="menu">
         <router-link to="/">캘린더</router-link>
-        <router-link to="/account">내역</router-link>
+        <router-link to="/accounts">내역</router-link>
         <router-link to="/dashboard">분석</router-link>
       </nav>
     </div>
