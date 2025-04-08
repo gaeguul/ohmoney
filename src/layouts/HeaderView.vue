@@ -22,17 +22,18 @@ defineProps({
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
+  height: 12vh;
   position: relative;
 }
 
 .logo {
-  height: 36px;
-  margin-right: 12px;
+  height: 8vh;
+  width: auto;
+  margin-right: 8px;
 }
 
 .title {
-  font-size: 24px;
+  font-size: 32px;
   color: #673ab7;
 }
 
