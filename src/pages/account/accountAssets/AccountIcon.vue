@@ -40,6 +40,7 @@ const props = defineProps({
 
 .custom-icon-color {
   font-size: xx-large;
+  cursor: pointer;
   color: rgb(163, 159, 159);
 }
 span {

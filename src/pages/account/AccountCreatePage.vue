@@ -11,7 +11,7 @@
       <div class="col">
         <div class="row">
           <div class="label">날짜</div>
-          <input type="text" class="input-field" />
+          <input type="text" placeholder="xxxx-xx-xx" class="input-field" />
         </div>
         <div class="row">
           <div class="label">분류</div>
@@ -99,6 +99,10 @@ const changeCategoryIncome = () => {
 </script>
 
 <style scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
 .account-form {
   width: 100%;
   max-width: 800px;
@@ -137,7 +141,8 @@ const changeCategoryIncome = () => {
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #dfdfdf;
-  min-width: 200px;
+  min-width: 150px;
+  max-width: 300px;
 }
 
 .radio-group {
