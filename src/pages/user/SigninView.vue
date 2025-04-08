@@ -13,6 +13,9 @@
         <input id="password" v-model="password" type="password" />
 
         <button type="submit" class="signup-button" @click="handleLogin">로그인</button>
+        <router-link to="/signup" style="text-decoration: none"
+          ><p style="color: gray">회원가입</p></router-link
+        >
       </form>
     </div>
   </div>
