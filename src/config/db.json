@@ -209,7 +209,7 @@
       "category": 19,
       "amount": 3000,
       "memo": "길에서 돈을 잃어버렸다",
-      "payment_method": "카드",
+      "payment_method": "현금",
       "vendor": "기타",
       "type": "expense"
     },
@@ -268,7 +268,7 @@
       "category": 24,
       "amount": 30000,
       "memo": "친구가 돈을 갚았다",
-      "payment_method": "카드",
+      "payment_method": "현금",
       "vendor": "친구",
       "type": "income"
     },
@@ -288,7 +288,7 @@
       "category": 22,
       "amount": 50000,
       "memo": "아싸 용돈",
-      "payment_method": "카드",
+      "payment_method": "현금",
       "vendor": "부모님",
       "type": "income"
     },
@@ -358,7 +358,7 @@
       "category": 22,
       "amount": 10000,
       "memo": "용돈을 받았다",
-      "payment_method": "카드",
+      "payment_method": "현금",
       "vendor": "부모님",
       "type": "income"
     },
@@ -388,7 +388,7 @@
       "category": 24,
       "amount": 30000,
       "memo": "당근해서 돈벌었다",
-      "payment_method": "카드",
+      "payment_method": "현금",
       "vendor": "당근마켓",
       "type": "income"
     },
@@ -438,7 +438,7 @@
       "category": 19,
       "amount": 5000,
       "memo": "아 돈을 잃어버렸다",
-      "payment_method": "카드",
+      "payment_method": "현금",
       "vendor": "기타",
       "type": "expense"
     },
