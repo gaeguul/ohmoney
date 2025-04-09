@@ -6,7 +6,7 @@
           <img src="@/assets/profile.png" alt="기본 프로필" class="avatar" />
         </div>
         <div class="name-section">
-          <h2 class="username">홍길동(id)</h2>
+          <h2 class="username">{{ userStore.userName }} ({{ userStore.userId }})</h2>
         </div>
       </div>
     </div>
@@ -52,7 +52,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useUserStore } from '@/stores/userStore'
 
+const userStore = useUserStore()
 const showAlert = ref(false)
 const alertMessage = ref('')
 const toastMessage = ref('')
