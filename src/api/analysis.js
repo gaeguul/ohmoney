@@ -5,9 +5,25 @@ const formatYearMonth = (date) => {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
 }
 
+// categoryId만 가져오는 함수
+export const fetchCategoryIds = async () => {
+  try {
+    const res = await axios.get('/api/category') // 카테고리 API 호출
+    const category = res.data?.[0] || { income: [], expense: [] }
+    return {
+      income: new Set(category.income.map((c) => c.categoryId)),
+      expense: new Set(category.expense.map((c) => c.categoryId)),
+    }
+  } catch (error) {
+    console.error('Failed to fetch expense categories:', error)
+  }
+}
+
 export const getMonthlySpending = async (userId, year, month) => {
   const res = await axios.get(`/api/summary?userId=${userId}`)
   const data = res.data
+
+  const categoryIds = await fetchCategoryIds()
 
   const thisMonth = `${year}-${String(month).padStart(2, '0')}`
   const lastMonthDate = new Date(year, month - 2) // JS month는 0-based
@@ -20,9 +36,13 @@ export const getMonthlySpending = async (userId, year, month) => {
   data.forEach((item) => {
     if (item.userId !== userId) return
 
+    const isIncome = categoryIds.income.has(item.categoryId)
+    const isExpense = categoryIds.expense.has(item.categoryId)
+    const signedAmount = isIncome ? item.sumAmount : isExpense ? -item.sumAmount : 0
+
     // 이번 달 총합 & 일별 지출
     if (item.duration === thisMonth) {
-      thisMonthTotal += item.sumAmount
+      thisMonthTotal += signedAmount
 
       const day = new Date(item.createdAt).getUTCDate()
       const key = String(day).padStart(2, '0')
@@ -30,19 +50,13 @@ export const getMonthlySpending = async (userId, year, month) => {
       if (!dailyExpenses[key]) {
         dailyExpenses[key] = 0
       }
-      dailyExpenses[key] += item.sumAmount
+      dailyExpenses[key] += signedAmount
     }
 
     // 지난 달 총합
     if (item.duration === lastMonth) {
-      lastMonthTotal += item.sumAmount
+      lastMonthTotal += signedAmount
     }
-  })
-
-  console.log({
-    thisMonthTotal,
-    lastMonthTotal,
-    dailyExpenses,
   })
 
   return {
