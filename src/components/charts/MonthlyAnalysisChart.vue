@@ -22,19 +22,8 @@ const compareToLastMonth = '59,400'
 </script>
 
 <style scoped>
-.analysis-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
 /* 641px 이상이면 가로로 배치하고, 공간을 균등 분할 */
 @media (min-width: 641px) {
-  .analysis-container {
-    flex-direction: row;
-  }
-
   .chart-wrapper {
     flex: 1;
   }
@@ -42,7 +31,6 @@ const compareToLastMonth = '59,400'
   .monthly-analysis-container {
     background-color: white;
     border-radius: 20px;
-    width: 500px;
   }
 }
 

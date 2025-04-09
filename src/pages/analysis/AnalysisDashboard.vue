@@ -1,8 +1,11 @@
 <template>
   <div>
     <h1 class="fw-bold">{{ currentYearMonth }}</h1>
-    <MonthlySpendingChart />
-    <MonthlyAnalysisChart />
+    <div class="d-flex flex-wrap gap-0 gap-md-4">
+      <MonthlySpendingChart />
+      <MonthlyAnalysisChart />
+    </div>
+
     <WeeklyAnalysisChart />
   </div>
 </template>
