@@ -170,7 +170,7 @@ const changeCategoryIncome = () => {
 
 .submit input[type='radio']:checked + span {
   background-color: #ece3ff;
-  color: #cd61ed;
+  color: #5227cc;
 }
 
 .memo-row {
