@@ -61,6 +61,12 @@
       <ul class="dropdown-menu">
         <li v-for="ctg in historyCategories" :key="ctg.categoryId">
           <a class="dropdown-item" href="#" @click.prevent="setCategory(ctg.value)">
+            <i
+              v-if="ctg.icon"
+              :class="ctg.icon"
+              class="me-2"
+              :style="{ color: 'var(--color-purple-400)' }"
+            ></i>
             {{ ctg.label }}
           </a>
         </li>
@@ -77,6 +83,12 @@ import axios from 'axios'
 const type = ref('') //수입,지출 분류
 const category = ref('') //카테고리
 
+// 카테고리 목록
+const categoryMap = {
+  income: [],
+  expense: [],
+}
+
 // 필터 값 세팅
 const setType = (val) => {
   type.value = val
@@ -86,24 +98,26 @@ const setType = (val) => {
 const setCategory = (val) => {
   category.value = val
 }
-
 // 분류 값 계산
 const typeLabel = computed(() => {
   return type.value === 'income' ? '수입' : type.value === 'expense' ? '지출' : '분류'
 })
+
+const historyCategories = computed(() => {
+  return categoryMap[type.value] || []
+})
+
+//카테고리명 설정
 const categoryLabel = computed(() => {
   if (!type.value) return '카테고리'
   const match = historyCategories.value.find((ctg) => ctg.value === category.value)
   return match ? match.label : '카테고리'
 })
-
-// 카테고리 목록
-const categoryMap = {
-  income: [],
-  expense: [],
-}
-const historyCategories = computed(() => {
-  return categoryMap[type.value] || []
+//카테고리아이콘 설정
+const categoryIcon = computed(() => {
+  if (!type.value || !category.value) return ''
+  const match = historyCategories.value.find((ctg) => ctg.value === category.value)
+  return match ? match.icon : ''
 })
 
 // 카테고리 데이터 불러오기
@@ -115,10 +129,12 @@ onMounted(async () => {
     categoryMap.expense = data.expense.map((item) => ({
       value: item.categoryId,
       label: item.categoryName,
+      icon: item.categoryIcon,
     }))
     categoryMap.income = data.income.map((item) => ({
       value: item.categoryId,
       label: item.categoryName,
+      icon: item.categoryIcon,
     }))
   } catch (err) {
     console.error('카테고리 불러오기 실패:', err)
@@ -163,14 +179,17 @@ onBeforeUnmount(() => {
   color: gray !important;
 }
 .dropdown-menu {
-  height: 20vh;
-  overflow: scroll;
+  margin-top: 5px;
+  max-height: 25vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray-300) transparent; /* Firefox */
 }
-/* .dropdown-item:hover {
+.dropdown-item:hover {
   background-color: var(--color-purple-100);
 }
 .dropdown-item:active {
   background-color: var(—color-purple-400);
   color: white;
-} */
+}
 </style>
