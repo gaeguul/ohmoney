@@ -15,8 +15,17 @@ import db from '/db.json'
 
 const id = '7471' // Example ID, replace with actual ID as needed
 const findById = (id) => {
-  // console.log(db.summary.filter((category) => category.userId === id))
-  return db.summary.filter((category) => category.userId === id)
+  const date = new Date()
+
+  return db.summary
+    .filter((category) => category.userId === id)
+    .filter((category) => {
+      const [year, month] = category.duration.split('-')
+      return (
+        parseInt(year) === date.getFullYear() && parseInt(month) === date.getMonth() + 1 // getMonth()는 0-based!
+      )
+    })
+  // return db.summary.filter((category) => category.userId === id)
 }
 </script>
 <style scoped>
