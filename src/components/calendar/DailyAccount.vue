@@ -25,9 +25,15 @@
               <div>
                 <strong>{{ item.vendor }}</strong>
                 <br />
-                <span class="text-muted small">
-                  {{ item.amount.toLocaleString() }}원 |
-                  {{ item.type === 'expense' ? '지출' : '수입' }}
+                <span class="meta-info">
+                  <span class="amount">{{ item.amount.toLocaleString() }}원</span>
+                  <span class="divider"> | </span>
+                  <span
+                    class="type"
+                    :class="item.type === 'expense' ? 'text-expense' : 'text-income'"
+                  >
+                    {{ item.type === 'expense' ? '지출' : '수입' }}
+                  </span>
                 </span>
               </div>
             </div>
@@ -141,6 +147,14 @@ const netIncome = computed(() => {
   background-color: var(--color-expense);
 }
 
+.text-expense {
+  color: var(--color-expense);
+}
+
+.text-income {
+  color: var(--color-income);
+}
+
 .sumAccount {
   color: var(--color-yellow);
   font-weight: bold;
@@ -157,39 +171,77 @@ const netIncome = computed(() => {
   transform: translateX(40px);
 }
 
+.meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+}
+
 @media (max-width: 1074px) {
   .iconWrapper {
     font-size: 1.6rem;
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   .categoryIcon {
     font-size: 1em;
+  }
+
+  .meta-info {
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+    line-height: 1.2;
+  }
+
+  .divider {
+    display: none;
   }
 }
 
 @media (max-width: 980px) {
   .iconWrapper {
-    font-size: 0.8rem;
-    width: 2rem;
-    height: 2rem;
+    display: none;
   }
 
   .categoryIcon {
-    font-size: 1em;
+    display: none;
+  }
+
+  .meta-info span {
+    white-space: nowrap;
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 940px) {
   .iconWrapper {
+    display: inline;
     font-size: 2rem;
     width: 3rem;
     height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
   }
 
   .categoryIcon {
+    display: inline;
     font-size: 1em;
+  }
+
+  .meta-info {
+    flex-direction: row;
+    align-items: start;
+    gap: 0.2rem;
+    line-height: 1.2;
+  }
+
+  .divider {
+    display: inline;
   }
 }
 </style>
