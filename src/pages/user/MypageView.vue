@@ -53,12 +53,12 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useUserStore } from '@/stores/userStore'
+import axios from 'axios'
 
 const userStore = useUserStore()
 const showAlert = ref(false)
 const alertMessage = ref('')
 const toastMessage = ref('')
-
 const showToast = ref(false)
 
 const password = ref('')
@@ -70,7 +70,7 @@ const passwordTooShort = computed(() => {
 })
 
 // 수정 완료 핸들러
-const handleSave = () => {
+const handleSave = async () => {
   if (!password.value || !nickname.value) {
     alertMessage.value = '모든 항목을 입력해주세요.'
     showAlert.value = true
@@ -82,13 +82,41 @@ const handleSave = () => {
     showAlert.value = true
     return
   }
-  // 정상 수정 완료
-  toastMessage.value = '수정이 완료되었습니다.'
-  showToast.value = true
 
-  setTimeout(() => {
-    showToast.value = false
-  }, 2500)
+  try {
+    const updatedAt = new Date().toISOString()
+
+    // PATCH 요청으로 json-server 업데이트
+    await axios.patch(`/api/user/${userStore.id}`, {
+      password: password.value,
+      userName: nickname.value,
+      updatedAt,
+    })
+
+    // Pinia + localStorage에도 반영
+    userStore.setUser({
+      ...userStore.$state,
+      password: password.value,
+      userName: nickname.value,
+      updatedAt,
+    })
+    localStorage.setItem('user', JSON.stringify(userStore.$state))
+
+    // 토스트 메시지
+    toastMessage.value = '수정이 완료되었습니다.'
+    showToast.value = true
+    setTimeout(() => {
+      showToast.value = false
+    }, 2500)
+
+    // 입력 초기화
+    password.value = ''
+    nickname.value = ''
+  } catch (error) {
+    console.error(error)
+    alertMessage.value = '수정 중 오류가 발생했습니다.'
+    showAlert.value = true
+  }
 }
 
 // 수정 모드 상태
@@ -104,6 +132,7 @@ const cancelEdit = () => {
 <style scoped>
 .mypage-container {
   font-family: sans-serif;
+  min-width: 300px;
 }
 
 .profile-header-container {
@@ -175,13 +204,19 @@ const cancelEdit = () => {
 
 .profile-body {
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+
   padding: 40px 200px;
   border: 3px solid #a686ef;
 }
 
 .left {
   flex: 1;
+  /*  */
+  min-width: 300px;
 }
 
 .left h2 {
@@ -192,6 +227,9 @@ const cancelEdit = () => {
 .right {
   flex: 1;
   max-width: 400px;
+  /*  */
+  min-width: 280px;
+  width: 100%;
 }
 
 .form-group {
@@ -209,6 +247,7 @@ const cancelEdit = () => {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 .form-group small {
@@ -334,6 +373,15 @@ const cancelEdit = () => {
   100% {
     opacity: 0;
     transform: translateY(-10px);
+  }
+}
+
+@media screen and (min-width: 721px) {
+  .mypage-container {
+    padding: 40px 80px;
+  }
+  .profile-body {
+    padding: 40px 32px;
   }
 }
 
