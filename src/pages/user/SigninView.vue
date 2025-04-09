@@ -86,6 +86,7 @@ const handleLogin = async () => {
     const { data } = await axios.get(`/api/user`, {
       params: { userId: id.value, password: password.value },
     })
+    console.log('응답 데이터:', data)
     //로그인 성공한 경우
     if (data.length > 0) {
       const user = data[0] // 사용자 가져오기
@@ -96,6 +97,7 @@ const handleLogin = async () => {
         userName: user.userName,
         password: user.password,
       })
+      localStorage.setItem('user', JSON.stringify(user))
       showWelcomeToast(`${user.userName} 님 안녕하세요!`)
     } else {
       // 로그인 실패 시 경고창
