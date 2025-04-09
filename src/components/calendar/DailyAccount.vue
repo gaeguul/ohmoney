@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
     <div
-      v-if="store.isOpen"
+      v-if="calendarStore.isOpen"
       class="w-100 bg-white border rounded-3 p-4 d-flex flex-column justify-content-between dailyWrapper"
     >
       <!-- 일일 가계 내역 -->
@@ -9,13 +9,18 @@
         <h4>{{ formattedDate }}</h4>
         <ul class="w-100 h-100 mt-3 dailyAccountList d-flex flex-column gap-3">
           <li
-            v-for="item in store.accountList"
+            v-for="item in calendarStore.accountList"
             :key="item.useId"
             class="mb-2 list-unstyled accountItem"
             @click="handleClickItem(item)"
           >
             <div class="d-flex gap-2">
-              <div :class="['iconWrapper', item.type === 'expense' ? 'expenseIcon' : 'incomeIcon']">
+              <div
+                :class="[
+                  'iconWrapper',
+                  item.transactionType === 'expense' ? 'expenseIcon' : 'incomeIcon',
+                ]"
+              >
                 <i
                   v-if="flatCategoryMap[`${item.type}-${item.category}`]"
                   :class="flatCategoryMap[`${item.type}-${item.category}`].icon"
@@ -30,9 +35,9 @@
                   <span class="divider"> | </span>
                   <span
                     class="type"
-                    :class="item.type === 'expense' ? 'text-expense' : 'text-income'"
+                    :class="item.transactionType === 'expense' ? 'text-expense' : 'text-income'"
                   >
-                    {{ item.type === 'expense' ? '지출' : '수입' }}
+                    {{ item.transactionType === 'expense' ? '지출' : '수입' }}
                   </span>
                 </span>
               </div>
@@ -58,13 +63,13 @@ import { computed } from 'vue'
 import categoryData from '@/assets/category.json'
 import { useRouter } from 'vue-router'
 
-const store = useCalendarStore()
+const calendarStore = useCalendarStore()
 const router = useRouter()
 
 // 날짜 포맷팅
 const formattedDate = computed(() => {
-  if (!store.selectedDate) return ''
-  const [year, month, day] = store.selectedDate.split('-')
+  if (!calendarStore.selectedDate) return ''
+  const [year, month, day] = calendarStore.selectedDate.split('-')
   const date = new Date(Number(year), Number(month) - 1, Number(day))
 
   const week = ['일', '월', '화', '수', '목', '금', '토']
@@ -93,10 +98,10 @@ const handleClickItem = (item) => {
 
 // 순수익 계산
 const netIncome = computed(() => {
-  const income = store.accountList
+  const income = calendarStore.accountList
     .filter((item) => item.type === 'income')
     .reduce((acc, item) => acc + item.amount, 0)
-  const expense = store.accountList
+  const expense = calendarStore.accountList
     .filter((item) => item.type === 'expense')
     .reduce((acc, item) => acc + item.amount, 0)
 

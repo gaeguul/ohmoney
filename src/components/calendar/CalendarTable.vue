@@ -107,13 +107,14 @@ const isToday = (date) => {
 // 일일 income/expense 합계 저장
 const dailySummaryMap = computed(() => {
   const summary = {}
-  calendarStore.allData.forEach((item) => {
+  calendarStore.transactionList.forEach((item) => {
     const date = item.date
     if (!summary[date]) {
       summary[date] = { income: 0, expense: 0 }
     }
-    summary[date][item.type] += item.amount
+    summary[date][item.transactionType] += item.amount
   })
+
   return summary
 })
 
