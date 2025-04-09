@@ -20,21 +20,36 @@
           class="detail-history-row"
           @click="goToEditForm(item.id)"
         >
+          <!-- 분류: 배지 표시 -->
           <td>
-            <span :class="item.type === '지출' ? 'badge bg-danger' : 'badge bg-primary'">
-              {{ item.type }}
+            <span :class="item.categoryId >= 19 ? 'badge bg-danger' : 'badge bg-primary'">
+              {{ getCategoryLabel(item.categoryId) }}
             </span>
           </td>
-          <td>{{ item.date }}</td>
-          <td>{{ item.category }}</td>
-          <td>{{ item.payment }}</td>
+
+          <!-- 날짜 -->
+          <td>{{ item.createdAt }}</td>
+
+          <!-- 카테고리명 -->
+          <td>{{ getCategoryLabel(item.categoryId) }}</td>
+
+          <!-- 결제수단 -->
+          <td>{{ item.paymentMethod }}</td>
+
+          <!-- 거래처 -->
           <td>{{ item.vendor }}</td>
+
+          <!-- 금액: 색상 구분 -->
           <td>
             <span :class="item.type === '지출' ? 'text-danger' : 'text-primary'">
               {{ item.amount.toLocaleString() }} 원
             </span>
           </td>
+
+          <!-- 메모 -->
           <td>{{ item.memo }}</td>
+
+          <!-- 삭제 버튼 -->
           <td class="text-primary">
             <button class="btn text-secondary btn-sm px-0" @click.stop="deleteHistory(item.id)">
               삭제하기
@@ -47,7 +62,7 @@
     <!-- 페이지네이션 -->
     <div class="d-flex justify-content-center p-3 gap-2">
       <button class="page-btn btn btn-outline-secondary btn-sm" @click="goToPage(currentPage - 1)">
-        &#8592;
+        ←
       </button>
       <button
         v-for="n in totalPages"
@@ -63,44 +78,71 @@
         {{ n }}
       </button>
       <button class="page-btn btn btn-outline-secondary btn-sm" @click="goToPage(currentPage + 1)">
-        &#8594;
+        →
       </button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { useCategoryStore } from '@/stores/ categoryStore.js'
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from '@/api/axios'
 
 const router = useRouter()
 
 /** 소비내역 */
 const accountsDetail = ref([])
-//소비내역 불러오기
-onMounted(async () => {})
-//소비내역 삭제하기
-const deleteHistory = async (id) => {}
-//소비내역 수정하기
+
+// 소비내역 불러오기
+onMounted(async () => {
+  try {
+    const res = await axios.get('/transactions')
+    accountsDetail.value = res.data
+  } catch (err) {
+    console.error('내역 불러오기 실패:', err)
+  }
+})
+
+// 소비내역 삭제하기
+const deleteHistory = async (id) => {
+  try {
+    await axios.delete(`/${id}`)
+    // accountsDetail.value = accountsDetail.value.filter((item) => item.id !== id)
+  } catch (err) {
+    console.error('삭제 실패:', err)
+  }
+}
+
+// 소비내역 수정하기
 const goToEditForm = (id) => {
   router.push({ name: 'accountDetails', params: { id: id } })
 }
 
+/** 카테고리 */
+const categoryStore = useCategoryStore()
+onMounted(() => {
+  categoryStore.fetchCategories()
+})
+
+const getCategoryLabel = (id) => {
+  const category = categoryStore.categories.find((ctg) => ctg.categoryId === id)
+  return category ? category.categoryName : id
+}
+
 /** 페이지네이션 */
-const itemsPerPage = 7 //한 페이지당 보여줄 요소 개수
+const itemsPerPage = 7
 const currentPage = ref(1)
 
-// 페이지네이션된 데이터 계산
 const paginatedData = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage
   const end = start + itemsPerPage
   return accountsDetail.value.slice(start, end)
 })
 
-// 전체 페이지 수 계산
 const totalPages = computed(() => Math.ceil(accountsDetail.value.length / itemsPerPage))
 
-// 페이지 이동 함수
 const goToPage = (page) => {
   if (page >= 1 && page <= totalPages.value) {
     currentPage.value = page
@@ -115,6 +157,15 @@ const goToPage = (page) => {
 
 .detail-history-row:hover td {
   background-color: #f4eeff;
+}
+
+.table-wrapper {
+  height: 70vh;
+}
+
+.table-wrapper table {
+  height: 100%;
+  width: 100%;
 }
 
 .table-wrapper th,
