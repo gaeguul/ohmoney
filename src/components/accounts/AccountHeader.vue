@@ -1,5 +1,3 @@
-[AccountHeader]
-
 <template>
   <div class="account-header px-4">
     <h5 class="fw-bold">가계부 내역</h5>
@@ -7,7 +5,15 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const goToAccountEditPage = () => {
+  router.push('/accounts/new')
+}
+</script>
 
 <style scoped>
 .account-header {
