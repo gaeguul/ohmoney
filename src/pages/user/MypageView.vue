@@ -23,7 +23,6 @@
         <div class="form-group">
           <label>비밀번호</label>
           <input type="password" placeholder="비밀번호 입력" v-model="password" />
-          <span v-if="passwordTooShort" class="error">최소 8자리 이상 입력해주세요.</span>
         </div>
         <div class="form-group">
           <label>이름</label>
@@ -418,13 +417,6 @@ const cancelEdit = () => {
   .alert-message,
   .toast-message {
     font-size: 14px;
-  }
-
-  .error {
-    color: red;
-    font-size: 12px;
-    margin-top: 4px;
-    display: block;
   }
 }
 </style>
