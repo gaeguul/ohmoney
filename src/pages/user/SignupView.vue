@@ -111,11 +111,14 @@ const handleSignup = async () => {
     return
   }
 
+  const now = new Date().toISOString() //회원가입한 시기 저장
   try {
     const res = await axios.post('/user', {
-      id: id.value,
-      pw: password.value,
-      name: name.value,
+      userId: id.value,
+      password: password.value,
+      userName: name.value,
+      createdAt: now,
+      updatedAt: now,
     })
 
     if (res) {
@@ -144,7 +147,7 @@ const checkDuplicate = async () => {
   }
 
   try {
-    const { data } = await axios.get(`/user?id=${id.value}`)
+    const { data } = await axios.get(`/user?userId=${id.value}`)
     if (data.length > 0) {
       idError.value = '이미 존재하는 아이디입니다.'
       isIdAvailable.value = false

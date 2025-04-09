@@ -4,7 +4,7 @@
 
     <!-- 전체 메뉴 영역 -->
     <div class="sidebar-content">
-      <div class="user-box">OOO 님의 가계부</div>
+      <div class="user-box">{{ userStore.userName }} 님의 가계부</div>
 
       <nav class="menu">
         <router-link to="/home">캘린더</router-link>
@@ -23,13 +23,15 @@
     </div>
 
     <!-- 하단 로그아웃 -->
-    <router-link to="/signin" class="logout">로그아웃</router-link>
+    <router-link to="/signin" class="logout" @click="userStore.clearUser()">로그아웃</router-link>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-
+//현재 로그인 중인 사용자 이름 출력용
+import { useUserStore } from '@/stores/userStore.js'
+const userStore = useUserStore()
 const isMobile = ref(window.innerWidth <= 640)
 
 const handleResize = () => {
