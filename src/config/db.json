@@ -1,392 +1,428 @@
 {
-  "IdCount": "1044",
   "summary": [
     {
-      "summaryId": "1311",
-      "userEmail": "aaa",
       "duration": "2025-04",
       "categoryId": 15,
       "sumAmount": 50000,
       "createdAt": "2025-04-29T18:30:00Z",
-      "updatedAt": "2025-04-29T18:30:00Z"
+      "updatedAt": "2025-04-29T18:30:00Z",
+      "userId": "7471",
+      "id": "0efd"
     },
     {
-      "summaryId": "1313",
-      "userEmail": "aaa",
       "duration": "2025-04",
       "categoryId": 20,
       "sumAmount": 80000,
       "createdAt": "2025-04-01T09:00:00Z",
-      "updatedAt": "2025-04-01T09:00:00Z"
+      "updatedAt": "2025-04-01T09:00:00Z",
+      "userId": "7471",
+      "id": "d774"
     },
     {
-      "summaryId": "1983",
-      "userEmail": "aaa",
       "duration": "2025-05",
       "categoryId": 1,
       "sumAmount": 15000,
       "createdAt": "2025-05-01T13:00:00Z",
-      "updatedAt": "2025-05-01T13:00:00Z"
+      "updatedAt": "2025-05-01T13:00:00Z",
+      "userId": "7471",
+      "id": "bec8"
     },
     {
-      "summaryId": "8180",
-      "userEmail": "aaa",
       "duration": "2025-05",
       "categoryId": 10,
       "sumAmount": 9000,
       "createdAt": "2025-05-01T14:30:00Z",
-      "updatedAt": "2025-05-01T14:30:00Z"
+      "updatedAt": "2025-05-01T14:30:00Z",
+      "userId": "7471",
+      "id": "e3b5"
     },
     {
-      "userEmail": "aaa",
       "duration": "2025-05",
       "categoryId": 19,
       "sumAmount": 12000,
       "createdAt": "2025-05-05T17:30:00Z",
-      "updatedAt": "2025-05-25T14:20:00Z"
+      "updatedAt": "2025-05-25T14:20:00Z",
+      "userId": "7471",
+      "id": "70dd"
     },
     {
-      "userEmail": "aaa",
       "duration": "2025-06",
       "categoryId": 1,
       "sumAmount": 34000,
       "createdAt": "2025-06-08T19:00:00Z",
-      "updatedAt": "2025-06-10T12:30:00Z"
+      "updatedAt": "2025-06-10T12:30:00Z",
+      "userId": "7471",
+      "id": "8735"
     },
     {
-      "userEmail": "aaa",
       "duration": "2025-06",
       "categoryId": 15,
       "sumAmount": 20000,
       "createdAt": "2025-06-09T15:45:00Z",
-      "updatedAt": "2025-06-09T15:45:00Z"
+      "updatedAt": "2025-06-09T15:45:00Z",
+      "userId": "7471",
+      "id": "cbdb"
     },
     {
-      "userEmail": "aaa",
       "duration": "2025-06",
       "categoryId": 20,
       "sumAmount": 120000,
       "createdAt": "2025-06-01T09:00:00Z",
-      "updatedAt": "2025-06-01T09:00:00Z"
+      "updatedAt": "2025-06-01T09:00:00Z",
+      "userId": "7471",
+      "id": "8904"
     },
     {
-      "userEmail": "aaa",
       "duration": "2025-06",
       "categoryId": 22,
       "sumAmount": 10000,
       "createdAt": "2025-06-09T18:15:00Z",
-      "updatedAt": "2025-06-09T18:15:00Z"
+      "updatedAt": "2025-06-09T18:15:00Z",
+      "userId": "7471",
+      "id": "b8a9"
     },
     {
-      "userEmail": "aaa",
       "duration": "2025-06",
       "categoryId": 24,
       "sumAmount": 3000,
       "createdAt": "2025-06-13T16:45:00Z",
-      "updatedAt": "2025-06-13T16:45:00Z"
+      "updatedAt": "2025-06-13T16:45:00Z",
+      "userId": "7471",
+      "id": "791b"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-04",
       "categoryId": 2,
       "sumAmount": 12000,
       "createdAt": "2025-04-20T19:30:00Z",
-      "updatedAt": "2025-04-20T19:30:00Z"
+      "updatedAt": "2025-04-20T19:30:00Z",
+      "userId": "cd1d",
+      "id": "4561"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-04",
       "categoryId": 20,
       "sumAmount": 50000,
       "createdAt": "2025-04-05T10:15:00Z",
-      "updatedAt": "2025-04-05T10:15:00Z"
+      "updatedAt": "2025-04-05T10:15:00Z",
+      "userId": "cd1d",
+      "id": "d2b0"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-04",
       "categoryId": 22,
       "sumAmount": 50000,
       "createdAt": "2025-04-01T17:45:00Z",
-      "updatedAt": "2025-04-01T17:45:00Z"
+      "updatedAt": "2025-04-01T17:45:00Z",
+      "userId": "cd1d",
+      "id": "621a"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-05",
       "categoryId": 1,
       "sumAmount": 50000,
       "createdAt": "2025-05-05T19:30:00Z",
-      "updatedAt": "2025-05-05T19:30:00Z"
+      "updatedAt": "2025-05-05T19:30:00Z",
+      "userId": "cd1d",
+      "id": "420c"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-05",
       "categoryId": 18,
       "sumAmount": 50000,
       "createdAt": "2025-05-19T10:00:00Z",
-      "updatedAt": "2025-05-19T10:00:00Z"
+      "updatedAt": "2025-05-19T10:00:00Z",
+      "userId": "cd1d",
+      "id": "2753"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-05",
       "categoryId": 19,
       "sumAmount": 3000,
       "createdAt": "2025-05-25T17:15:00Z",
-      "updatedAt": "2025-05-25T17:15:00Z"
+      "updatedAt": "2025-05-25T17:15:00Z",
+      "userId": "cd1d",
+      "id": "b243"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-05",
       "categoryId": 20,
       "sumAmount": 100000,
       "createdAt": "2025-05-05T09:45:00Z",
-      "updatedAt": "2025-05-05T09:45:00Z"
+      "updatedAt": "2025-05-05T09:45:00Z",
+      "userId": "cd1d",
+      "id": "80d3"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-06",
       "categoryId": 12,
       "sumAmount": 22000,
       "createdAt": "2025-06-08T21:45:00Z",
-      "updatedAt": "2025-06-08T21:45:00Z"
+      "updatedAt": "2025-06-08T21:45:00Z",
+      "userId": "cd1d",
+      "id": "e257"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-06",
       "categoryId": 15,
       "sumAmount": 100000,
       "createdAt": "2025-06-03T14:00:00Z",
-      "updatedAt": "2025-06-03T14:00:00Z"
+      "updatedAt": "2025-06-03T14:00:00Z",
+      "userId": "cd1d",
+      "id": "0bbc"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-06",
       "categoryId": 20,
       "sumAmount": 150000,
       "createdAt": "2025-06-05T09:30:00Z",
-      "updatedAt": "2025-06-05T09:30:00Z"
+      "updatedAt": "2025-06-05T09:30:00Z",
+      "userId": "cd1d",
+      "id": "5db1"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-06",
       "categoryId": 21,
       "sumAmount": 10000,
       "createdAt": "2025-06-09T16:30:00Z",
-      "updatedAt": "2025-06-09T16:30:00Z"
+      "updatedAt": "2025-06-09T16:30:00Z",
+      "userId": "cd1d",
+      "id": "aeb5"
     },
     {
-      "userEmail": "bbb",
       "duration": "2025-06",
       "categoryId": 24,
       "sumAmount": 30000,
       "createdAt": "2025-06-13T11:20:00Z",
-      "updatedAt": "2025-06-13T11:20:00Z"
+      "updatedAt": "2025-06-13T11:20:00Z",
+      "userId": "cd1d",
+      "id": "1a89"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-04",
       "categoryId": 13,
       "sumAmount": 5000,
       "createdAt": "2025-04-29T14:00:00Z",
-      "updatedAt": "2025-04-29T14:00:00Z"
+      "updatedAt": "2025-04-29T14:00:00Z",
+      "userId": "db10",
+      "id": "5945"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-05",
       "categoryId": 1,
       "sumAmount": 22000,
       "createdAt": "2025-05-28T20:15:00Z",
-      "updatedAt": "2025-05-28T20:15:00Z"
+      "updatedAt": "2025-05-28T20:15:00Z",
+      "userId": "db10",
+      "id": "a0a9"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-05",
       "categoryId": 9,
       "sumAmount": 32000,
       "createdAt": "2025-05-01T12:45:00Z",
-      "updatedAt": "2025-05-01T12:45:00Z"
+      "updatedAt": "2025-05-01T12:45:00Z",
+      "userId": "db10",
+      "id": "4546"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-05",
       "categoryId": 20,
       "sumAmount": 100000,
       "createdAt": "2025-05-03T11:30:00Z",
-      "updatedAt": "2025-05-03T11:30:00Z"
+      "updatedAt": "2025-05-03T11:30:00Z",
+      "userId": "db10",
+      "id": "2945"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-05",
       "categoryId": 22,
       "sumAmount": 10000,
       "createdAt": "2025-05-15T18:00:00Z",
-      "updatedAt": "2025-05-15T18:00:00Z"
+      "updatedAt": "2025-05-15T18:00:00Z",
+      "userId": "db10",
+      "id": "c90c"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-05",
       "categoryId": 24,
       "sumAmount": 30000,
       "createdAt": "2025-05-23T19:15:00Z",
-      "updatedAt": "2025-05-23T19:15:00Z"
+      "updatedAt": "2025-05-23T19:15:00Z",
+      "userId": "db10",
+      "id": "4969"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-06",
       "categoryId": 1,
       "sumAmount": 34000,
       "createdAt": "2025-06-10T19:40:00Z",
-      "updatedAt": "2025-06-10T19:40:00Z"
+      "updatedAt": "2025-06-10T19:40:00Z",
+      "userId": "db10",
+      "id": "d347"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-06",
       "categoryId": 15,
       "sumAmount": 80000,
       "createdAt": "2025-06-08T15:20:00Z",
-      "updatedAt": "2025-06-08T15:20:00Z"
+      "updatedAt": "2025-06-08T15:20:00Z",
+      "userId": "db10",
+      "id": "53c5"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-06",
       "categoryId": 19,
       "sumAmount": 5000,
       "createdAt": "2025-06-11T13:10:00Z",
-      "updatedAt": "2025-06-11T13:10:00Z"
+      "updatedAt": "2025-06-11T13:10:00Z",
+      "userId": "db10",
+      "id": "9a58"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-06",
       "categoryId": 20,
       "sumAmount": 120000,
       "createdAt": "2025-06-03T10:00:00Z",
-      "updatedAt": "2025-06-03T10:00:00Z"
+      "updatedAt": "2025-06-03T10:00:00Z",
+      "userId": "db10",
+      "id": "5555"
     },
     {
-      "userEmail": "ccc",
       "duration": "2025-06",
       "categoryId": 22,
       "sumAmount": 100000,
       "createdAt": "2025-06-15T16:30:00Z",
-      "updatedAt": "2025-06-15T16:30:00Z"
+      "updatedAt": "2025-06-15T16:30:00Z",
+      "userId": "db10",
+      "id": "d970"
     },
     {
-      "userEmail": "ddd",
       "duration": "2025-04",
       "categoryId": 19,
       "sumAmount": 50000,
       "createdAt": "2025-04-04T13:45:00Z",
-      "updatedAt": "2025-04-04T13:45:00Z"
+      "updatedAt": "2025-04-04T13:45:00Z",
+      "userId": "47ae",
+      "id": "ad1f"
     },
     {
-      "userEmail": "ddd",
       "duration": "2025-05",
       "categoryId": 1,
       "sumAmount": 35000,
       "createdAt": "2025-05-20T19:30:00Z",
-      "updatedAt": "2025-05-20T19:30:00Z"
+      "updatedAt": "2025-05-20T19:30:00Z",
+      "userId": "47ae",
+      "id": "70d0"
     },
     {
-      "userEmail": "ddd",
       "duration": "2025-05",
       "categoryId": 2,
       "sumAmount": 50000,
       "createdAt": "2025-05-25T18:40:00Z",
-      "updatedAt": "2025-05-25T18:40:00Z"
+      "updatedAt": "2025-05-25T18:40:00Z",
+      "userId": "47ae",
+      "id": "c7df"
     },
     {
-      "userEmail": "ddd",
       "duration": "2025-05",
       "categoryId": 19,
       "sumAmount": 50000,
       "createdAt": "2025-05-02T09:30:00Z",
-      "updatedAt": "2025-05-02T09:30:00Z"
+      "updatedAt": "2025-05-02T09:30:00Z",
+      "userId": "47ae",
+      "id": "c7cc"
     },
     {
-      "userEmail": "ddd",
       "duration": "2025-05",
       "categoryId": 20,
       "sumAmount": 300000,
       "createdAt": "2025-05-15T09:15:00Z",
-      "updatedAt": "2025-05-15T09:15:00Z"
+      "updatedAt": "2025-05-15T09:15:00Z",
+      "userId": "47ae",
+      "id": "867a"
     },
     {
-      "userEmail": "ddd",
       "duration": "2025-06",
       "categoryId": 1,
       "sumAmount": 3000,
       "createdAt": "2025-06-10T08:45:00Z",
-      "updatedAt": "2025-06-10T08:45:00Z"
+      "updatedAt": "2025-06-10T08:45:00Z",
+      "userId": "47ae",
+      "id": "48bc"
     },
     {
-      "userEmail": "ddd",
       "duration": "2025-06",
       "categoryId": 7,
       "sumAmount": 20000,
       "createdAt": "2025-06-09T16:00:00Z",
-      "updatedAt": "2025-06-09T16:00:00Z"
+      "updatedAt": "2025-06-09T16:00:00Z",
+      "userId": "47ae",
+      "id": "5775"
     },
     {
-      "userEmail": "ddd",
       "duration": "2025-06",
       "categoryId": 18,
       "sumAmount": 1000000,
       "createdAt": "2025-06-03T14:15:00Z",
-      "updatedAt": "2025-06-03T14:15:00Z"
+      "updatedAt": "2025-06-03T14:15:00Z",
+      "userId": "47ae",
+      "id": "7363"
     },
     {
-      "userEmail": "ddd",
       "duration": "2025-06",
       "categoryId": 20,
       "sumAmount": 300000,
       "createdAt": "2025-06-15T12:50:00Z",
-      "updatedAt": "2025-06-15T12:50:00Z"
+      "updatedAt": "2025-06-15T12:50:00Z",
+      "userId": "47ae",
+      "id": "c09e"
     }
   ],
   "user": [
     {
-      "userId": "1",
-      "userEmail": "aaa",
+      "userId": "aaa",
       "password": "bbb",
       "userName": "human1",
       "createdAt": "2025-01-15T10:30:00Z",
-      "updatedAt": "2025-01-15T10:30:00Z"
+      "updatedAt": "2025-01-15T10:30:00Z",
+      "id": "7471"
     },
     {
-      "userId": "2",
-      "userEmail": "bbb",
+      "userId": "bbb",
       "password": "ccc",
       "userName": "human2",
       "createdAt": "2025-01-18T14:20:00Z",
-      "updatedAt": "2025-01-18T14:20:00Z"
+      "updatedAt": "2025-01-18T14:20:00Z",
+      "id": "cd1d"
     },
     {
-      "userId": "3",
-      "userEmail": "ccc",
+      "userId": "ccc",
       "password": "ddd",
       "userName": "human3",
       "createdAt": "2025-02-05T09:45:00Z",
-      "updatedAt": "2025-02-05T09:45:00Z"
+      "updatedAt": "2025-02-05T09:45:00Z",
+      "id": "db10"
     },
     {
-      "userId": "4",
-      "userEmail": "ddd",
+      "userId": "ddd",
       "password": "eee",
       "userName": "human4",
       "createdAt": "2025-02-12T16:30:00Z",
-      "updatedAt": "2025-02-12T16:30:00Z"
+      "updatedAt": "2025-02-12T16:30:00Z",
+      "id": "47ae"
     },
     {
-      "userId": "5",
-      "userEmail": "eee",
+      "userId": "eee",
       "password": "fff",
       "userName": "human5",
       "createdAt": "2025-03-01T11:15:00Z",
-      "updatedAt": "2025-03-01T11:15:00Z"
+      "updatedAt": "2025-03-01T11:15:00Z",
+      "id": "dcd5"
     }
   ],
   "transactions": [
     {
-      "userEmail": "aaa",
       "categoryId": 10,
       "amount": 9000,
       "memo": "마스크팩 구입",
@@ -394,10 +430,11 @@
       "vendor": "올리브영",
       "transactionType": "expense",
       "createdAt": "2025-05-01T14:30:00Z",
-      "updatedAt": "2025-05-01T14:30:00Z"
+      "updatedAt": "2025-05-01T14:30:00Z",
+      "userId": "7471",
+      "id": "7a1b"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 22,
       "amount": 10000,
       "memo": "아싸 용돈",
@@ -405,10 +442,11 @@
       "vendor": "부모님",
       "transactionType": "income",
       "createdAt": "2025-06-09T18:15:00Z",
-      "updatedAt": "2025-06-09T18:15:00Z"
+      "updatedAt": "2025-06-09T18:15:00Z",
+      "userId": "7471",
+      "id": "af43"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 20,
       "amount": 120000,
       "memo": "아싸 월급",
@@ -416,10 +454,11 @@
       "vendor": "회사",
       "transactionType": "income",
       "createdAt": "2025-06-01T09:00:00Z",
-      "updatedAt": "2025-06-01T09:00:00Z"
+      "updatedAt": "2025-06-01T09:00:00Z",
+      "userId": "7471",
+      "id": "8d16"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 24,
       "amount": 3000,
       "memo": "길에서 주웠다",
@@ -427,10 +466,11 @@
       "vendor": "기타",
       "transactionType": "income",
       "createdAt": "2025-06-13T16:45:00Z",
-      "updatedAt": "2025-06-13T16:45:00Z"
+      "updatedAt": "2025-06-13T16:45:00Z",
+      "userId": "7471",
+      "id": "5ffb"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 1,
       "amount": 15000,
       "memo": "민정이랑 점심",
@@ -438,10 +478,11 @@
       "vendor": "백채김치찌개",
       "transactionType": "expense",
       "createdAt": "2025-05-01T13:00:00Z",
-      "updatedAt": "2025-05-01T13:00:00Z"
+      "updatedAt": "2025-05-01T13:00:00Z",
+      "userId": "7471",
+      "id": "0361"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 20,
       "amount": 80000,
       "memo": "아싸 월급",
@@ -449,10 +490,11 @@
       "vendor": "회사",
       "transactionType": "income",
       "createdAt": "2025-04-01T09:00:00Z",
-      "updatedAt": "2025-04-01T09:00:00Z"
+      "updatedAt": "2025-04-01T09:00:00Z",
+      "userId": "7471",
+      "id": "abae"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 19,
       "amount": 9000,
       "memo": "친구의 돈을 갚았다",
@@ -460,10 +502,11 @@
       "vendor": "친구",
       "transactionType": "expense",
       "createdAt": "2025-05-05T17:30:00Z",
-      "updatedAt": "2025-05-05T17:30:00Z"
+      "updatedAt": "2025-05-05T17:30:00Z",
+      "userId": "7471",
+      "id": "628d"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 15,
       "amount": 20000,
       "memo": "옷 샀다",
@@ -471,10 +514,11 @@
       "vendor": "의류매장",
       "transactionType": "expense",
       "createdAt": "2025-06-09T15:45:00Z",
-      "updatedAt": "2025-06-09T15:45:00Z"
+      "updatedAt": "2025-06-09T15:45:00Z",
+      "userId": "7471",
+      "id": "60d7"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 1,
       "amount": 12000,
       "memo": "혼밥했다",
@@ -482,10 +526,11 @@
       "vendor": "식당",
       "transactionType": "expense",
       "createdAt": "2025-06-10T12:30:00Z",
-      "updatedAt": "2025-06-10T12:30:00Z"
+      "updatedAt": "2025-06-10T12:30:00Z",
+      "userId": "7471",
+      "id": "86d2"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 19,
       "amount": 3000,
       "memo": "길에서 돈을 잃어버렸다",
@@ -493,10 +538,11 @@
       "vendor": "기타",
       "transactionType": "expense",
       "createdAt": "2025-05-25T14:20:00Z",
-      "updatedAt": "2025-05-25T14:20:00Z"
+      "updatedAt": "2025-05-25T14:20:00Z",
+      "userId": "7471",
+      "id": "e7a6"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 15,
       "amount": 50000,
       "memo": "사고싶은 옷을 샀다",
@@ -504,10 +550,11 @@
       "vendor": "패션몰",
       "transactionType": "expense",
       "createdAt": "2025-04-29T18:30:00Z",
-      "updatedAt": "2025-04-29T18:30:00Z"
+      "updatedAt": "2025-04-29T18:30:00Z",
+      "userId": "7471",
+      "id": "c1a1"
     },
     {
-      "userEmail": "aaa",
       "categoryId": 1,
       "amount": 22000,
       "memo": "치킨먹었다",
@@ -515,10 +562,11 @@
       "vendor": "치킨집",
       "transactionType": "expense",
       "createdAt": "2025-06-08T19:00:00Z",
-      "updatedAt": "2025-06-08T19:00:00Z"
+      "updatedAt": "2025-06-08T19:00:00Z",
+      "userId": "7471",
+      "id": "c7d0"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 20,
       "amount": 50000,
       "memo": "아싸 월급",
@@ -526,10 +574,11 @@
       "vendor": "회사",
       "transactionType": "income",
       "createdAt": "2025-04-05T10:15:00Z",
-      "updatedAt": "2025-04-05T10:15:00Z"
+      "updatedAt": "2025-04-05T10:15:00Z",
+      "userId": "cd1d",
+      "id": "d4b7"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 21,
       "amount": 10000,
       "memo": "배당금이 들어왔다",
@@ -537,10 +586,11 @@
       "vendor": "증권사",
       "transactionType": "income",
       "createdAt": "2025-06-09T16:30:00Z",
-      "updatedAt": "2025-06-09T16:30:00Z"
+      "updatedAt": "2025-06-09T16:30:00Z",
+      "userId": "cd1d",
+      "id": "bb01"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 20,
       "amount": 100000,
       "memo": "아싸 월급",
@@ -548,10 +598,11 @@
       "vendor": "회사",
       "transactionType": "income",
       "createdAt": "2025-05-05T09:45:00Z",
-      "updatedAt": "2025-05-05T09:45:00Z"
+      "updatedAt": "2025-05-05T09:45:00Z",
+      "userId": "cd1d",
+      "id": "da80"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 24,
       "amount": 30000,
       "memo": "친구가 돈을 갚았다",
@@ -559,10 +610,11 @@
       "vendor": "친구",
       "transactionType": "income",
       "createdAt": "2025-06-13T11:20:00Z",
-      "updatedAt": "2025-06-13T11:20:00Z"
+      "updatedAt": "2025-06-13T11:20:00Z",
+      "userId": "cd1d",
+      "id": "8ca4"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 20,
       "amount": 150000,
       "memo": "아싸 월급",
@@ -570,10 +622,11 @@
       "vendor": "회사",
       "transactionType": "income",
       "createdAt": "2025-06-05T09:30:00Z",
-      "updatedAt": "2025-06-05T09:30:00Z"
+      "updatedAt": "2025-06-05T09:30:00Z",
+      "userId": "cd1d",
+      "id": "e59f"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 22,
       "amount": 50000,
       "memo": "아싸 용돈",
@@ -581,10 +634,11 @@
       "vendor": "부모님",
       "transactionType": "income",
       "createdAt": "2025-04-01T17:45:00Z",
-      "updatedAt": "2025-04-01T17:45:00Z"
+      "updatedAt": "2025-04-01T17:45:00Z",
+      "userId": "cd1d",
+      "id": "2854"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 1,
       "amount": 50000,
       "memo": "한우를 먹었다",
@@ -592,10 +646,11 @@
       "vendor": "한우전문점",
       "transactionType": "expense",
       "createdAt": "2025-05-05T19:30:00Z",
-      "updatedAt": "2025-05-05T19:30:00Z"
+      "updatedAt": "2025-05-05T19:30:00Z",
+      "userId": "cd1d",
+      "id": "4773"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 15,
       "amount": 100000,
       "memo": "신발을 샀다",
@@ -603,10 +658,11 @@
       "vendor": "신발가게",
       "transactionType": "expense",
       "createdAt": "2025-06-03T14:00:00Z",
-      "updatedAt": "2025-06-03T14:00:00Z"
+      "updatedAt": "2025-06-03T14:00:00Z",
+      "userId": "cd1d",
+      "id": "3a28"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 2,
       "amount": 12000,
       "memo": "택시비",
@@ -614,10 +670,11 @@
       "vendor": "택시",
       "transactionType": "expense",
       "createdAt": "2025-04-20T19:30:00Z",
-      "updatedAt": "2025-04-20T19:30:00Z"
+      "updatedAt": "2025-04-20T19:30:00Z",
+      "userId": "cd1d",
+      "id": "22df"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 19,
       "amount": 3000,
       "memo": "약국에서 약을 샀다",
@@ -625,10 +682,11 @@
       "vendor": "약국",
       "transactionType": "expense",
       "createdAt": "2025-05-25T17:15:00Z",
-      "updatedAt": "2025-05-25T17:15:00Z"
+      "updatedAt": "2025-05-25T17:15:00Z",
+      "userId": "cd1d",
+      "id": "8d13"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 18,
       "amount": 50000,
       "memo": "적금을 넣었다",
@@ -636,10 +694,11 @@
       "vendor": "은행",
       "transactionType": "expense",
       "createdAt": "2025-05-19T10:00:00Z",
-      "updatedAt": "2025-05-19T10:00:00Z"
+      "updatedAt": "2025-05-19T10:00:00Z",
+      "userId": "cd1d",
+      "id": "ba6e"
     },
     {
-      "userEmail": "bbb",
       "categoryId": 12,
       "amount": 22000,
       "memo": "술을 마셨다",
@@ -647,10 +706,11 @@
       "vendor": "술집",
       "transactionType": "expense",
       "createdAt": "2025-06-08T21:45:00Z",
-      "updatedAt": "2025-06-08T21:45:00Z"
+      "updatedAt": "2025-06-08T21:45:00Z",
+      "userId": "cd1d",
+      "id": "0a77"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 22,
       "amount": 10000,
       "memo": "용돈을 받았다",
@@ -658,10 +718,11 @@
       "vendor": "부모님",
       "transactionType": "income",
       "createdAt": "2025-05-15T11:30:00Z",
-      "updatedAt": "2025-05-15T11:30:00Z"
+      "updatedAt": "2025-05-15T11:30:00Z",
+      "userId": "db10",
+      "id": "795e"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 22,
       "amount": 100000,
       "memo": "아싸 용돈",
@@ -669,10 +730,11 @@
       "vendor": "부모님",
       "transactionType": "income",
       "createdAt": "2025-06-15T11:30:00Z",
-      "updatedAt": "2025-06-15T11:30:00Z"
+      "updatedAt": "2025-06-15T11:30:00Z",
+      "userId": "db10",
+      "id": "1927"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 20,
       "amount": 120000,
       "memo": "아싸 알바비가 들어왔다",
@@ -680,10 +742,11 @@
       "vendor": "알바장소",
       "transactionType": "income",
       "createdAt": "2025-06-03T11:30:00Z",
-      "updatedAt": "2025-06-03T11:30:00Z"
+      "updatedAt": "2025-06-03T11:30:00Z",
+      "userId": "db10",
+      "id": "aac7"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 24,
       "amount": 30000,
       "memo": "당근해서 돈벌었다",
@@ -691,10 +754,11 @@
       "vendor": "당근마켓",
       "transactionType": "income",
       "createdAt": "2025-05-23T11:30:00Z",
-      "updatedAt": "2025-05-23T11:30:00Z"
+      "updatedAt": "2025-05-23T11:30:00Z",
+      "userId": "db10",
+      "id": "1e3c"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 20,
       "amount": 100000,
       "memo": "알바비 들어왔다!",
@@ -702,10 +766,11 @@
       "vendor": "알바장소",
       "transactionType": "income",
       "createdAt": "2025-05-03T11:30:00Z",
-      "updatedAt": "2025-05-03T11:30:00Z"
+      "updatedAt": "2025-05-03T11:30:00Z",
+      "userId": "db10",
+      "id": "6877"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 9,
       "amount": 32000,
       "memo": "휴대폰 요금이 나갔다",
@@ -713,10 +778,11 @@
       "vendor": "통신사",
       "transactionType": "expense",
       "createdAt": "2025-05-01T11:30:00Z",
-      "updatedAt": "2025-05-01T11:30:00Z"
+      "updatedAt": "2025-05-01T11:30:00Z",
+      "userId": "db10",
+      "id": "b9c6"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 15,
       "amount": 80000,
       "memo": "옷 샀다",
@@ -724,10 +790,11 @@
       "vendor": "의류매장",
       "transactionType": "expense",
       "createdAt": "2025-06-08T11:30:00Z",
-      "updatedAt": "2025-06-08T11:30:00Z"
+      "updatedAt": "2025-06-08T11:30:00Z",
+      "userId": "db10",
+      "id": "bc34"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 1,
       "amount": 34000,
       "memo": "데이트할때 저녁!",
@@ -735,10 +802,11 @@
       "vendor": "레스토랑",
       "transactionType": "expense",
       "createdAt": "2025-06-10T11:30:00Z",
-      "updatedAt": "2025-06-10T11:30:00Z"
+      "updatedAt": "2025-06-10T11:30:00Z",
+      "userId": "db10",
+      "id": "f951"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 19,
       "amount": 5000,
       "memo": "아 돈을 잃어버렸다",
@@ -746,10 +814,11 @@
       "vendor": "기타",
       "transactionType": "expense",
       "createdAt": "2025-06-11T11:30:00Z",
-      "updatedAt": "2025-06-11T11:30:00Z"
+      "updatedAt": "2025-06-11T11:30:00Z",
+      "userId": "db10",
+      "id": "46e2"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 13,
       "amount": 5000,
       "memo": "커피 한잔 사먹었다",
@@ -757,10 +826,11 @@
       "vendor": "카페",
       "transactionType": "expense",
       "createdAt": "2025-04-29T11:30:00Z",
-      "updatedAt": "2025-04-29T11:30:00Z"
+      "updatedAt": "2025-04-29T11:30:00Z",
+      "userId": "db10",
+      "id": "2ca6"
     },
     {
-      "userEmail": "ccc",
       "categoryId": 1,
       "amount": 22000,
       "memo": "치킨먹었다",
@@ -768,10 +838,11 @@
       "vendor": "치킨집",
       "transactionType": "expense",
       "createdAt": "2025-05-28T11:30:00Z",
-      "updatedAt": "2025-05-28T11:30:00Z"
+      "updatedAt": "2025-05-28T11:30:00Z",
+      "userId": "db10",
+      "id": "2727"
     },
     {
-      "userEmail": "ddd",
       "categoryId": 20,
       "amount": 300000,
       "memo": "월급이다",
@@ -779,10 +850,11 @@
       "vendor": "회사",
       "transactionType": "income",
       "createdAt": "2025-05-15T11:30:00Z",
-      "updatedAt": "2025-05-15T11:30:00Z"
+      "updatedAt": "2025-05-15T11:30:00Z",
+      "userId": "47ae",
+      "id": "fa98"
     },
     {
-      "userEmail": "ddd",
       "categoryId": 20,
       "amount": 300000,
       "memo": "아싸 월급 들어왔다",
@@ -790,10 +862,11 @@
       "vendor": "회사",
       "transactionType": "income",
       "createdAt": "2025-06-15T11:30:00Z",
-      "updatedAt": "2025-06-15T11:30:00Z"
+      "updatedAt": "2025-06-15T11:30:00Z",
+      "userId": "47ae",
+      "id": "d2e9"
     },
     {
-      "userEmail": "ddd",
       "categoryId": 18,
       "amount": 1000000,
       "memo": "적금 만기!",
@@ -801,10 +874,11 @@
       "vendor": "은행",
       "transactionType": "income",
       "createdAt": "2025-06-03T11:30:00Z",
-      "updatedAt": "2025-06-03T11:30:00Z"
+      "updatedAt": "2025-06-03T11:30:00Z",
+      "userId": "47ae",
+      "id": "c22a"
     },
     {
-      "userEmail": "ddd",
       "categoryId": 19,
       "amount": 50000,
       "memo": "친구에게 돈을 빌려줬다",
@@ -812,10 +886,11 @@
       "vendor": "친구",
       "transactionType": "expense",
       "createdAt": "2025-05-02T11:30:00Z",
-      "updatedAt": "2025-05-02T11:30:00Z"
+      "updatedAt": "2025-05-02T11:30:00Z",
+      "userId": "47ae",
+      "id": "9c27"
     },
     {
-      "userEmail": "ddd",
       "categoryId": 7,
       "amount": 20000,
       "memo": "책을 샀다",
@@ -823,10 +898,11 @@
       "vendor": "서점",
       "transactionType": "expense",
       "createdAt": "2025-06-09T11:30:00Z",
-      "updatedAt": "2025-06-09T11:30:00Z"
+      "updatedAt": "2025-06-09T11:30:00Z",
+      "userId": "47ae",
+      "id": "2861"
     },
     {
-      "userEmail": "ddd",
       "categoryId": 1,
       "amount": 3000,
       "memo": "빵 사먹었다",
@@ -834,10 +910,11 @@
       "vendor": "베이커리",
       "transactionType": "expense",
       "createdAt": "2025-06-10T11:30:00Z",
-      "updatedAt": "2025-06-10T11:30:00Z"
+      "updatedAt": "2025-06-10T11:30:00Z",
+      "userId": "47ae",
+      "id": "acc7"
     },
     {
-      "userEmail": "ddd",
       "categoryId": 2,
       "amount": 50000,
       "memo": "교통비 빠져나가는 날",
@@ -845,10 +922,11 @@
       "vendor": "교통카드",
       "transactionType": "expense",
       "createdAt": "2025-05-25T11:30:00Z",
-      "updatedAt": "2025-05-25T11:30:00Z"
+      "updatedAt": "2025-05-25T11:30:00Z",
+      "userId": "47ae",
+      "id": "3e57"
     },
     {
-      "userEmail": "ddd",
       "categoryId": 19,
       "amount": 50000,
       "memo": "병원을 다녀옴",
@@ -856,10 +934,11 @@
       "vendor": "병원",
       "transactionType": "expense",
       "createdAt": "2025-04-04T11:30:00Z",
-      "updatedAt": "2025-04-04T11:30:00Z"
+      "updatedAt": "2025-04-04T11:30:00Z",
+      "userId": "47ae",
+      "id": "99ce"
     },
     {
-      "userEmail": "ddd",
       "categoryId": 1,
       "amount": 35000,
       "memo": "삼겹살 먹었다",
@@ -867,7 +946,9 @@
       "vendor": "고기집",
       "transactionType": "expense",
       "createdAt": "2025-05-20T11:30:00Z",
-      "updatedAt": "2025-05-20T11:30:00Z"
+      "updatedAt": "2025-05-20T11:30:00Z",
+      "userId": "47ae",
+      "id": "5ed0"
     }
   ],
   "category": [
@@ -970,7 +1051,11 @@
         }
       ],
       "income": [
-        { "categoryId": 20, "categoryName": "월급", "categoryIcon": "fa-solid fa-money-bill-wave" },
+        {
+          "categoryId": 20,
+          "categoryName": "월급",
+          "categoryIcon": "fa-solid fa-money-bill-wave"
+        },
         {
           "categoryId": 21,
           "categoryName": "부수입",
