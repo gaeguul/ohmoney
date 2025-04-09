@@ -52,6 +52,11 @@ const router = createRouter({
           name: 'category',
           component: AnalysisCategory,
         },
+        {
+          path: '/mypage',
+          name: 'mypage',
+          component: MypageView,
+        },
       ]
     },
     {
@@ -64,11 +69,7 @@ const router = createRouter({
       name: 'signin',
       component: SigninView,
     },
-    {
-      path: '/mypage',
-      name: 'mypage',
-      component: MypageView,
-    },
+
 
   ],
 })

@@ -9,7 +9,16 @@
       <nav class="menu">
         <router-link to="/home">캘린더</router-link>
         <router-link to="/accounts">내역</router-link>
-        <router-link to="/dashboard">분석</router-link>
+        <div class="analysis-menu">
+          <div class="menu-link" @click="toggleAnalysis">
+            <span :class="{ active: showAnalysisSubMenu }">분석</span>
+          </div>
+          <div v-show="showAnalysisSubMenu" class="submenu">
+            <router-link to="/dashboard/month">월별 분석</router-link>
+            <router-link to="/dashboard/category">카테고리별 분석</router-link>
+          </div>
+        </div>
+        <router-link to="/mypage">마이 페이지</router-link>
       </nav>
     </div>
 
@@ -33,6 +42,12 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('resize', handleResize)
 })
+
+//분석 하위 메뉴
+const showAnalysisSubMenu = ref(false)
+const toggleAnalysis = () => {
+  showAnalysisSubMenu.value = !showAnalysisSubMenu.value
+}
 </script>
 <style scoped>
 .sidebar {
@@ -55,7 +70,7 @@ onBeforeUnmount(() => {
 .user-box {
   background-color: #8b5cf6;
   color: white;
-  padding: 12px;
+  padding: 15px 20px;
   border-radius: 20px;
   font-weight: bold;
   margin-bottom: 40px;
@@ -107,5 +122,45 @@ onBeforeUnmount(() => {
   font-size: 24px;
   cursor: pointer;
   z-index: 1001;
+}
+
+/* 분석 하위 메뉴 */
+.menu-link {
+  cursor: pointer;
+  color: #555;
+  font-weight: 400;
+  margin-left: 4px;
+  margin-bottom: 20px;
+  user-select: none;
+  font-size: 16px;
+}
+
+.menu-link:hover span {
+  font-weight: bold;
+  color: #8b5cf6;
+}
+
+.menu-link .active {
+  color: #8b5cf6;
+  font-weight: bold;
+}
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-left: 16px;
+  margin-top: 4px;
+}
+
+.submenu a {
+  font-size: 14px;
+  color: #777;
+  text-decoration: none;
+}
+
+.submenu a.router-link-exact-active {
+  color: #8b5cf6;
+  font-weight: bold;
 }
 </style>
