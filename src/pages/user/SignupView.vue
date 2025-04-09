@@ -58,7 +58,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { computed } from 'vue'
-import axios from '@/api/axios'
+import axios from 'axios'
 
 const router = useRouter()
 const id = ref('')

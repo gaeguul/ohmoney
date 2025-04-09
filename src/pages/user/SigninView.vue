@@ -44,8 +44,9 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import axios from '@/api/axios'
+
 import { useUserStore } from '@/stores/userStore.js'
+import axios from 'axios'
 
 const userStore = useUserStore()
 
