@@ -3,16 +3,12 @@
     <div class="profile-header-container">
       <div class="profile-info">
         <div class="avatar">
-          <img src="@/assets/profile3.png" alt="기본 프로필" class="avatar" />
+          <img src="@/assets/profile.png" alt="기본 프로필" class="avatar" />
         </div>
         <div class="name-section">
           <h2 class="username">홍길동(id)</h2>
         </div>
       </div>
-
-      <!-- <div class="profile-actions">
-        <button class="edit-btn" @click="toggleEditMode">프로필 수정</button>
-      </div> -->
     </div>
 
     <!-- 프로필 수정 모드에 따라 표시되는 내용 -->
@@ -27,6 +23,7 @@
         <div class="form-group">
           <label>비밀번호</label>
           <input type="password" placeholder="비밀번호 입력" v-model="password" />
+          <span v-if="passwordTooShort" class="error">최소 8자리 이상 입력해주세요.</span>
         </div>
         <div class="form-group">
           <label>이름</label>
@@ -55,7 +52,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const showAlert = ref(false)
 const alertMessage = ref('')
@@ -66,6 +63,11 @@ const showToast = ref(false)
 const password = ref('')
 const nickname = ref('')
 
+// 비밀번호 길이 유효성 검사
+const passwordTooShort = computed(() => {
+  return password.value.length > 0 && password.value.length < 8
+})
+
 // 수정 완료 핸들러
 const handleSave = () => {
   if (!password.value || !nickname.value) {
@@ -73,7 +75,12 @@ const handleSave = () => {
     showAlert.value = true
     return
   }
-
+  //비밀번호 최소 8자리 이상
+  if (passwordTooShort.value) {
+    alertMessage.value = '비밀번호는 최소 8자리 이상이어야 합니다.'
+    showAlert.value = true
+    return
+  }
   // 정상 수정 완료
   toastMessage.value = '수정이 완료되었습니다.'
   showToast.value = true
@@ -411,6 +418,13 @@ const cancelEdit = () => {
   .alert-message,
   .toast-message {
     font-size: 14px;
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
   }
 }
 </style>

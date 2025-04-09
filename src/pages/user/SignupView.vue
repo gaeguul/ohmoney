@@ -18,6 +18,7 @@
         <div class="form-row">
           <label for="password">비밀번호</label>
           <input id="password" v-model="password" type="password" />
+          <span v-if="passwordTooShort" class="error">최소 8자리 이상 입력해주세요.</span>
         </div>
 
         <div class="form-row">
@@ -86,6 +87,11 @@ const passwordMatchError = computed(() => {
   return confirmPassword.value && password.value !== confirmPassword.value
 })
 
+//비밀번호 유효성 체크
+const passwordTooShort = computed(() => {
+  return password.value.length > 0 && password.value.length < 8
+})
+
 const handleSignup = async () => {
   if (!id.value || !password.value || !confirmPassword.value || !name.value) {
     openAlert('모든 항목을 입력해주세요!')
@@ -99,6 +105,12 @@ const handleSignup = async () => {
     openAlert('비밀번호가 일치하지 않습니다.')
     return
   }
+  //비밀번호가 너무 짧을 경우
+  if (passwordTooShort.value) {
+    openAlert('비밀번호는 최소 8자리 이상이어야 합니다.')
+    return
+  }
+
   try {
     const res = await axios.post('/user', {
       id: id.value,
