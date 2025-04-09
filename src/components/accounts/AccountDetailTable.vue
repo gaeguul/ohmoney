@@ -20,46 +20,51 @@
           class="detail-history-row"
           @click="goToEditForm(item.id)"
         >
-          <!-- 분류: 배지 표시 -->
           <td>
-            <span :class="item.categoryId >= 19 ? 'badge bg-danger' : 'badge bg-primary'">
-              {{ getCategoryLabel(item.categoryId) }}
+            <span
+              class="badge"
+              :style="{
+                backgroundColor: isExpense(item.categoryId)
+                  ? 'var(--color-expense)'
+                  : 'var(--color-income)',
+                color: '#fff',
+              }"
+            >
+              {{ isExpense(item.categoryId) ? '지출' : '수입' }}
             </span>
           </td>
-
-          <!-- 날짜 -->
           <td>{{ item.createdAt }}</td>
-
-          <!-- 카테고리명 -->
           <td>{{ getCategoryLabel(item.categoryId) }}</td>
-
-          <!-- 결제수단 -->
           <td>{{ item.paymentMethod }}</td>
-
-          <!-- 거래처 -->
           <td>{{ item.vendor }}</td>
-
-          <!-- 금액: 색상 구분 -->
           <td>
-            <span :class="item.type === '지출' ? 'text-danger' : 'text-primary'">
+            <span
+              :style="{
+                color: isExpense(item.categoryId) ? 'var(--color-expense)' : 'var(--color-income)',
+              }"
+            >
               {{ item.amount.toLocaleString() }} 원
             </span>
           </td>
-
-          <!-- 메모 -->
           <td>{{ item.memo }}</td>
-
-          <!-- 삭제 버튼 -->
           <td class="text-primary">
-            <button class="btn text-secondary btn-sm px-0" @click.stop="deleteHistory(item.id)">
+            <button class="btn delete-btn btn-sm" @click.stop="deleteHistory(item.id)">
               삭제하기
             </button>
           </td>
         </tr>
+
+        <tr
+          v-for="n in emptyRowCount"
+          :key="'empty-' + n"
+          class="detail-history-row no-hover"
+          style="height: 50px"
+        >
+          <td colspan="8"></td>
+        </tr>
       </tbody>
     </table>
 
-    <!-- 페이지네이션 -->
     <div class="d-flex justify-content-center p-3 gap-2">
       <button class="page-btn btn btn-outline-secondary btn-sm" @click="goToPage(currentPage - 1)">
         ←
@@ -85,93 +90,125 @@
 </template>
 
 <script setup>
-import { useCategoryStore } from '@/stores/ categoryStore.js'
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import axios from '@/api/axios'
+import { useCategoryStore } from '@/stores/categoryStore.js'
+import { useFilterStore } from '@/stores/filterStore.js'
+import axios from 'axios'
 
+const BASEURL = 'api/transactions'
 const router = useRouter()
+const categoryStore = useCategoryStore()
+const filterStore = useFilterStore()
 
-/** 소비내역 */
-const accountsDetail = ref([])
+const allHistories = ref([])
 
-// 소비내역 불러오기
 onMounted(async () => {
+  filterStore.resetFilters()
   try {
-    const res = await axios.get('/transactions')
-    accountsDetail.value = res.data
+    const res = await axios.get(BASEURL)
+    allHistories.value = res.data
   } catch (err) {
     console.error('내역 불러오기 실패:', err)
   }
+  categoryStore.fetchCategories()
 })
 
-// 소비내역 삭제하기
 const deleteHistory = async (id) => {
   try {
-    await axios.delete(`/${id}`)
-    // accountsDetail.value = accountsDetail.value.filter((item) => item.id !== id)
+    await axios.delete(`${BASEURL}/${id}`)
+    allHistories.value = allHistories.value.filter((item) => item.id !== id)
   } catch (err) {
     console.error('삭제 실패:', err)
   }
 }
 
-// 소비내역 수정하기
 const goToEditForm = (id) => {
-  router.push({ name: 'accountDetails', params: { id: id } })
+  router.push({ name: 'accountDetails', params: { id } })
 }
-
-/** 카테고리 */
-const categoryStore = useCategoryStore()
-onMounted(() => {
-  categoryStore.fetchCategories()
-})
 
 const getCategoryLabel = (id) => {
-  const category = categoryStore.categories.find((ctg) => ctg.categoryId === id)
-  return category ? category.categoryName : id
+  const income = categoryStore.categories.income?.find((ctg) => ctg.categoryId === id)
+  const expense = categoryStore.categories.expense?.find((ctg) => ctg.categoryId === id)
+  return income?.categoryName || expense?.categoryName || id
 }
 
-/** 페이지네이션 */
+const isExpense = (id) => {
+  return categoryStore.categories.expense?.some((ctg) => ctg.categoryId === id)
+}
+
+const filteredHistories = computed(() => {
+  const { startDate, endDate, type, category } = filterStore
+  const isAllEmpty = !startDate && !endDate && !type && !category
+
+  if (isAllEmpty) {
+    return allHistories.value
+  }
+
+  return allHistories.value.filter((item) => {
+    const matchDate =
+      (!startDate || item.createdAt >= startDate) && (!endDate || item.createdAt <= endDate)
+    const matchType = !type || isExpense(item.categoryId) === (type === 'expense')
+    const matchCategory = !category || item.categoryId === category
+
+    return matchDate && matchType && matchCategory
+  })
+})
+
 const itemsPerPage = 7
 const currentPage = ref(1)
 
 const paginatedData = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage
-  const end = start + itemsPerPage
-  return accountsDetail.value.slice(start, end)
+  return filteredHistories.value.slice(start, start + itemsPerPage)
 })
 
-const totalPages = computed(() => Math.ceil(accountsDetail.value.length / itemsPerPage))
+const totalPages = computed(() => Math.ceil(filteredHistories.value.length / itemsPerPage))
 
 const goToPage = (page) => {
   if (page >= 1 && page <= totalPages.value) {
     currentPage.value = page
   }
 }
+
+const emptyRowCount = computed(() => {
+  const diff = itemsPerPage - paginatedData.value.length
+  return diff > 0 ? diff : 0
+})
 </script>
 
 <style scoped>
 .detail-history-row td {
   cursor: pointer;
 }
-
-.detail-history-row:hover td {
+.detail-history-row:not(.no-hover):hover td {
   background-color: #f4eeff;
 }
-
+.detail-history-row.no-hover td {
+  cursor: default;
+  background-color: inherit !important;
+}
 .table-wrapper {
   height: 70vh;
 }
-
 .table-wrapper table {
   height: 100%;
   width: 100%;
 }
-
+.table-wrapper td {
+  height: 50px;
+}
 .table-wrapper th,
 .table-wrapper td {
   padding: 0.4rem;
   vertical-align: middle;
   background-color: #fafafa;
+}
+.delete-btn {
+  border: none;
+}
+.delete-btn:hover,
+.delete-btn:active {
+  color: var(--color-purple-400);
 }
 </style>
