@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { getMonthlySpending, getWeeklyAnalysis } from '../api/analysis'
+import { getIncomeExpense, getMonthlySpending, getWeeklyAnalysis } from '../api/analysis'
 
 export const useMonthlySpending = defineStore('spending', {
   state: () => ({
@@ -14,6 +14,21 @@ export const useMonthlySpending = defineStore('spending', {
       this.thisMonthTotal = result.thisMonthTotal
       this.lastMonthTotal = result.lastMonthTotal
       this.dailyExpenses = result.dailyExpenses
+    },
+  },
+})
+
+export const useIncomeExpense = defineStore('incomeExpense', {
+  state: () => ({
+    incomeTotal: 0,
+    expenseTotal: 0,
+  }),
+
+  actions: {
+    async fetchIncomeExpense(userId, year, month) {
+      const result = await getIncomeExpense(userId, year, month)
+      this.incomeTotal = result.incomeTotal
+      this.expenseTotal = result.expenseTotal
     },
   },
 })

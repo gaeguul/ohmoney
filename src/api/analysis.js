@@ -83,7 +83,32 @@ export const getMonthlySpending = async (userId, year, month) => {
 
 export const getThreeMonthsAnalysis = async () => {}
 
-export const getIncomeExpense = async () => {}
+export const getIncomeExpense = async (userId, year, month) => {
+  const res = await axios.get(`/api/summary?userId=${userId}`)
+  const data = res.data
+
+  const categoryIds = await fetchCategoryIds()
+
+  const thisMonth = `${year}-${String(month).padStart(2, '0')}`
+
+  let incomeTotal = 0
+  let expenseTotal = 0
+
+  data.forEach((item) => {
+    if (item.userId !== userId || item.duration !== thisMonth) return
+
+    if (categoryIds.income.has(item.categoryId)) {
+      incomeTotal += item.sumAmount
+    } else if (categoryIds.expense.has(item.categoryId)) {
+      expenseTotal += item.sumAmount
+    }
+  })
+
+  return {
+    incomeTotal,
+    expenseTotal,
+  }
+}
 
 export const getWeeklyAnalysis = async (userId, year, month) => {
   try {
