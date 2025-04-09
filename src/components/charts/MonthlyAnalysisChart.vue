@@ -19,9 +19,12 @@
 import IncomeExpenseChart from '@/components/charts/IncomeExpenseChart.vue'
 import ThreeMonthsAnalysisChart from '@/components/charts/ThreeMonthsAnalysisChart.vue'
 import { useThreeMonthsAnalysis } from '@/stores/analysisStore'
+import { useUserStore } from '@/stores/userStore'
 import { computed, onMounted } from 'vue'
 
-const userId = '7471'
+const userStore = useUserStore()
+const userId = userStore.id
+
 const store = useThreeMonthsAnalysis()
 
 const now = new Date()

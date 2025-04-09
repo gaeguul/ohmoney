@@ -6,10 +6,12 @@
 
 <script setup>
 import { useThreeMonthsAnalysis } from '@/stores/analysisStore'
+import { useUserStore } from '@/stores/userStore'
 import { onMounted, ref, watchEffect } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
-const userId = '7471'
+const userStore = useUserStore()
+const userId = userStore.id
 const store = useThreeMonthsAnalysis()
 
 const now = new Date()

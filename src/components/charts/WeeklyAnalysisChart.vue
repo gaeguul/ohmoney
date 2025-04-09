@@ -9,13 +9,16 @@
 
 <script setup>
 import { useWeeklySpending } from '@/stores/analysisStore'
+import { useUserStore } from '@/stores/userStore'
 import { computed, onMounted, ref, watchEffect } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
 const now = new Date()
 const year = now.getFullYear()
 const month = now.getMonth() + 1
-const userId = '7471'
+
+const userStore = useUserStore()
+const userId = userStore.id
 
 const store = useWeeklySpending()
 

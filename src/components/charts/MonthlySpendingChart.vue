@@ -21,13 +21,16 @@
 
 <script setup>
 import { useMonthlySpending } from '@/stores/analysisStore'
+import { useUserStore } from '@/stores/userStore'
 import { computed, onMounted, ref } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
 const now = new Date()
 const year = now.getFullYear()
 const month = now.getMonth() + 1
-const userId = '7471'
+
+const userStore = useUserStore()
+const userId = userStore.id
 
 const store = useMonthlySpending()
 
@@ -42,7 +45,11 @@ const totalExpenses = computed(() => store.thisMonthTotal.toLocaleString())
 const compareToLastMonth = computed(() => {
   const diff = store.thisMonthTotal - store.lastMonthTotal
   const abs = Math.abs(diff)
-  const sign = diff >= 0 ? '+' : '-'
+  if (diff === 0) {
+    return `${abs.toLocaleString()}`
+  }
+
+  const sign = diff > 0 ? '+' : '-'
   return `${sign}${abs.toLocaleString()}`
 })
 
