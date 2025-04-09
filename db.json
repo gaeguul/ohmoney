@@ -1046,7 +1046,7 @@
         },
         {
           "categoryId": 19,
-          "categoryName": "기타",
+          "categoryName": "기타 지출",
           "categoryIcon": "fa-solid fa-ellipsis"
         }
       ],
@@ -1073,7 +1073,7 @@
         },
         {
           "categoryId": 24,
-          "categoryName": "기타",
+          "categoryName": "기타 수입",
           "categoryIcon": "fa-solid fa-ellipsis"
         }
       ]
