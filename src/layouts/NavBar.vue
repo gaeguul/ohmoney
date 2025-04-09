@@ -56,7 +56,7 @@ onBeforeUnmount(() => {
 .user-box {
   background-color: #8b5cf6;
   color: white;
-  padding: 12px;
+  padding: 15px 20px;
   border-radius: 20px;
   font-weight: bold;
   margin-bottom: 40px;

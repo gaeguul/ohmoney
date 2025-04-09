@@ -2,16 +2,17 @@
   <div class="mypage-container">
     <div class="profile-header-container">
       <div class="profile-info">
-        <div class="avatar" />
+        <div class="avatar">
+          <img src="@/assets/profile3.png" alt="기본 프로필" class="avatar" />
+        </div>
         <div class="name-section">
-          <h2 class="username">홍길동</h2>
+          <h2 class="username">홍길동(id)</h2>
         </div>
       </div>
 
-      <div class="profile-actions">
-        <button class="logout-btn" @click="handleLogout">로그아웃</button>
+      <!-- <div class="profile-actions">
         <button class="edit-btn" @click="toggleEditMode">프로필 수정</button>
-      </div>
+      </div> -->
     </div>
 
     <!-- 프로필 수정 모드에 따라 표시되는 내용 -->
@@ -32,7 +33,7 @@
           <input type="text" placeholder="이름 입력" v-model="nickname" />
         </div>
         <div class="btn-group">
-          <button class="cancel-btn" @click="cancelEdit">취소</button>
+          <button class="cancel-btn" @click="cancelEdit">초기화</button>
           <button class="save-btn" @click="handleSave">수정하기</button>
         </div>
       </div>
@@ -47,7 +48,7 @@
     <!-- 수정 완료 시 알림 모달 -->
     <div v-if="showToast" class="alert-overlay">
       <div class="toast-box">
-        <p class="toast-message">{{ alertMessage }}</p>
+        <p class="toast-message">{{ toastMessage }}</p>
       </div>
     </div>
   </div>
@@ -55,10 +56,11 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 
 const showAlert = ref(false)
 const alertMessage = ref('')
+const toastMessage = ref('')
+
 const showToast = ref(false)
 
 const password = ref('')
@@ -73,33 +75,21 @@ const handleSave = () => {
   }
 
   // 정상 수정 완료
-  alertMessage.value = '수정이 완료되었습니다.'
+  toastMessage.value = '수정이 완료되었습니다.'
   showToast.value = true
-  editMode.value = false
 
   setTimeout(() => {
     showToast.value = false
   }, 2500)
 }
 
-const router = useRouter()
+// 수정 모드 상태
+const editMode = ref(true)
 
-// Edit Mode state
-const editMode = ref(false)
-
-// Toggle edit mode
-const toggleEditMode = () => {
-  editMode.value = true
-}
-
-// Cancel edit and go back to the previous state
+// 수정 취소
 const cancelEdit = () => {
-  editMode.value = false
-}
-
-// Logout and redirect to login page
-const handleLogout = () => {
-  router.push('/signin') // Redirect to login page
+  password.value = ''
+  nickname.value = ''
 }
 </script>
 
@@ -109,8 +99,9 @@ const handleLogout = () => {
 }
 
 .profile-header-container {
-  background-color: #b197f7;
-  padding: 60px 200px;
+  /* background-color: #b197f7; */
+  background-color: transparent;
+  padding: 40px 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,10 +116,10 @@ const handleLogout = () => {
 }
 
 .avatar {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  background-color: #d1bde6;
+  background-color: transparent;
   margin-right: 16px;
 }
 
@@ -140,6 +131,7 @@ const handleLogout = () => {
 .username {
   margin: 0;
   font-size: 28px;
+  color: black;
 }
 
 .profile-actions {
@@ -149,18 +141,9 @@ const handleLogout = () => {
   align-items: flex-start;
 }
 
-.logout-btn {
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
 .edit-btn {
-  background-color: white;
-  color: #673ab7;
+  background-color: #8b5cf6;
+  color: white;
   font-weight: bold;
   padding: 12px 24px;
   border: none;
@@ -169,23 +152,24 @@ const handleLogout = () => {
 }
 
 /* 버튼 클릭 시 */
-.logout-btn:active,
+
 .edit-btn:active {
-  background-color: #e0c9f7; /* 클릭했을 때 연보라색 변경 */
+  background-color: #7c3aed; /* 클릭했을 때 연보라색 변경 */
   transform: scale(0.98); /* 약간 눌린 효과 */
 }
 
 /* 버튼에 마우스를 올렸을 때 */
 .logout-btn:hover,
 .edit-btn:hover {
-  background-color: #e0c9f7;
+  background-color: #7c3aed;
   cursor: pointer;
 }
 
 .profile-body {
   display: flex;
   justify-content: flex-end;
-  padding: 60px 200px;
+  padding: 40px 200px;
+  border: 3px solid #a686ef;
 }
 
 .left {
@@ -279,15 +263,15 @@ const handleLogout = () => {
 
 .alert-box {
   background-color: white;
-  padding: 24px 32px;
+  padding: 36px 54px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
-  animation: fadeInOut 2.5s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .alert-message {
-  font-size: 16px;
+  font-size: 20px;
   color: #333;
 }
 
@@ -304,7 +288,7 @@ const handleLogout = () => {
 
 .toast-box {
   background-color: white;
-  padding: 24px 32px;
+  padding: 36px 54px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
@@ -312,8 +296,18 @@ const handleLogout = () => {
 }
 
 .toast-message {
-  font-size: 16px;
+  font-size: 20px;
   color: #333;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInOut {

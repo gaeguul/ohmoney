@@ -6,16 +6,20 @@
         <h2 class="subtitle">로그인</h2>
 
         <form @submit.prevent="handleLogin">
-          <label for="id">아이디</label>
-          <input id="id" v-model="id" type="text" />
+          <div class="form-row">
+            <label for="id">아이디</label>
+            <input id="id" v-model="id" type="text" />
+          </div>
 
-          <label for="password">비밀번호</label>
-          <input id="password" v-model="password" type="password" />
+          <div class="form-row">
+            <label for="password">비밀번호</label>
+            <input id="password" v-model="password" type="password" />
+          </div>
 
           <button type="submit" class="signup-button" @click="handleLogin">로그인</button>
-          <router-link to="/signup" style="text-decoration: none"
-            ><p style="color: gray">회원가입</p></router-link
-          >
+          <router-link to="/signup" class="signup-link">
+            <p style="color: gray">회원가입</p>
+          </router-link>
         </form>
       </div>
 
@@ -95,6 +99,18 @@ const handleLogin = async () => {
 </script>
 
 <style scoped>
+.form-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -147,6 +163,7 @@ form {
 
 input {
   padding: 10px;
+  width: 100%;
   font-size: 14px;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -183,13 +200,14 @@ input {
 
 .alert-box {
   background-color: white;
-  padding: 24px 32px;
+  padding: 36px 54px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
   animation: fadeIn 0.3s ease;
-  max-width: 300px;
-  width: 80%;
+  max-width: none;
+  width: auto;
+  min-width: 360px;
 }
 
 .alert-message {
@@ -212,6 +230,22 @@ input {
 
 .alert-button:hover {
   background-color: #7c3aed;
+}
+
+.signup-link {
+  text-decoration: none; /* 기본 상태 밑줄 제거 */
+}
+
+.signup-link p {
+  color: gray;
+  text-decoration: none; /* 기본 상태 밑줄 제거 */
+  margin: 0;
+  cursor: pointer;
+  transition: text-decoration 0.2s;
+}
+
+.signup-link p:hover {
+  text-decoration: underline; /* 마우스 올렸을 때만 밑줄 */
 }
 
 @keyframes fadeIn {

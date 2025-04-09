@@ -33,7 +33,7 @@
           <input id="name" v-model="name" type="text" />
         </div>
 
-        <hr class="divider" />
+        <!-- <hr class="divider" /> -->
 
         <button type="submit" class="signup-button">가입</button>
       </form>
@@ -158,7 +158,7 @@ const checkDuplicate = async () => {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 61px 395px 70px 381px;
+  padding: 30px 395px 30px 381px;
   box-sizing: border-box;
 }
 
@@ -187,7 +187,7 @@ const checkDuplicate = async () => {
 form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .form-row {
@@ -287,13 +287,14 @@ input {
 
 .alert-box {
   background-color: white;
-  padding: 24px 32px;
+  padding: 36px 54px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
   animation: fadeIn 0.3s ease;
-  max-width: 300px;
-  width: 80%;
+  max-width: none;
+  width: auto;
+  min-width: 360px;
 }
 
 .alert-message {
