@@ -43,6 +43,7 @@ export default {
           style: {
             fontSize: '40px',
             fontWeight: 'bold',
+            margin: '0 0 10px 0',
           },
         },
         plotOptions: {
@@ -52,7 +53,6 @@ export default {
                 show: true,
                 total: {
                   show: true,
-                  fooClick: () => (this.show = !this.show),
                   label: '총 소비금액',
                   fontSize: '50px',
                   fontWeight: 'bold',
