@@ -11,7 +11,7 @@
         <router-link to="/accounts">내역</router-link>
         <div class="analysis-menu">
           <div class="menu-link" @click="toggleAnalysis">
-            <span :class="{ active: showAnalysisSubMenu }">분석</span>
+            <span :class="{ active: isDashboardActive }">분석</span>
           </div>
           <div v-show="showAnalysisSubMenu" class="submenu">
             <router-link to="/dashboard/month">월별 분석</router-link>
@@ -28,9 +28,14 @@
 </template>
 
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 //현재 로그인 중인 사용자 이름 출력용
 import { useUserStore } from '@/stores/userStore.js'
+import { useRoute } from 'vue-router'
+const route = useRoute()
+
+const isDashboardActive = computed(() => route.path.startsWith('/dashboard'))
+
 const userStore = useUserStore()
 console.log(useUserStore.userName)
 const isMobile = ref(window.innerWidth <= 640)
