@@ -81,9 +81,9 @@
 </template>
 
 <script setup>
-import { reactive, computed } from 'vue'
+import { computed, reactive } from 'vue'
 import AccountIconGroup from './accountAssets/AccountIconGroup.vue'
-import accountFormIcon from '/src/config/db.json'
+import accountFormIcon from '/db.json'
 
 const state = reactive({ isExpense: true })
 console.log(accountFormIcon.category[0].expense)
