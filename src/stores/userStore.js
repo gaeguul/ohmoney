@@ -10,6 +10,7 @@ export const useUserStore = defineStore('user', {
   }),
   actions: {
     setUser(user) {
+      this.id = user.id
       this.userId = user.userId
       this.userName = user.userName
       this.password = user.password
