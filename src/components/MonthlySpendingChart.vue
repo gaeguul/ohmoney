@@ -1,16 +1,20 @@
 <template>
-  <div>
+  <div class="monthly-spending-chart mt-4 p-4">
     <div>
-      <div>🔎 {{ currentMonth }}월 총 지출</div>
-      <div>{{ totalExpenses }}원</div>
+      <h5 class="fw-bold">🔎 {{ currentMonth }}월 총 지출</h5>
+      <h4 class="fw-bold">{{ totalExpenses }}원</h4>
       <div>
         지난 달보다
-        <span> -{{ compareToLastMonth }}원 </span>
+        <span class="text-primary"> -{{ compareToLastMonth }}원 </span>
       </div>
     </div>
 
     <div id="chart">
       <VueApexCharts type="line" :options="chartOptions" :series="series" />
+      <div class="d-flex justify-content-between text-subtitle">
+        <div>1일</div>
+        <div>말일</div>
+      </div>
     </div>
   </div>
 </template>
@@ -20,10 +24,8 @@ import { ref } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
 const currentMonth = 4
-const totalExpenses = 746756
-const compareToLastMonth = 59400
-
-const categories = ['1일', '', '', '', '', '', '', '', '', '', '', '말일']
+const totalExpenses = '746,756'
+const compareToLastMonth = '59,400'
 
 const series = ref([
   {
@@ -53,7 +55,6 @@ const chartOptions = ref({
     },
   },
   xaxis: {
-    categories: categories,
     labels: { show: false },
     axisTicks: { show: false },
   },
@@ -85,4 +86,10 @@ const chartOptions = ref({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.monthly-spending-chart {
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  max-width: 500px;
+}
+</style>
