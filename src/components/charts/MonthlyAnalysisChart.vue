@@ -42,6 +42,11 @@ const compareToLastMonth = '59,400'
   .monthly-analysis-container {
     background-color: white;
     border-radius: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .monthly-analysis-container {
     max-width: 500px;
   }
 }
