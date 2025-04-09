@@ -42,11 +42,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
 import { useUserStore } from '@/stores/userStore.js'
 import axios from 'axios'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
 
@@ -84,10 +83,9 @@ const handleLogin = async () => {
   try {
     //json-server에서 id, pw가 일치하는 사용자 조회
 
-    const { data } = await axios.get('/api/user', {
+    const { data } = await axios.get(`/api/user`, {
       params: { userId: id.value, password: password.value },
     })
-    console.log('응답 데이터:', data)
     //로그인 성공한 경우
     if (data.length > 0) {
       const user = data[0] // 사용자 가져오기
@@ -97,9 +95,7 @@ const handleLogin = async () => {
         userId: user.userId,
         userName: user.userName,
         password: user.password,
-        id: user.id,
       })
-      localStorage.setItem('user', JSON.stringify(user))
       showWelcomeToast(`${user.userName} 님 안녕하세요!`)
     } else {
       // 로그인 실패 시 경고창
