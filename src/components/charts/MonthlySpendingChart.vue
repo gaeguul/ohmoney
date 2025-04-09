@@ -1,7 +1,7 @@
 <template>
   <div class="monthly-spending-chart mt-4 p-4">
     <div>
-      <h5 class="fw-bold">🔎 {{ currentMonth }}월 총 지출</h5>
+      <h5 class="fw-bold">🔎 {{ month }}월 총 지출</h5>
       <h4 class="fw-bold">{{ totalExpenses }}원</h4>
       <div>
         지난 달보다
@@ -24,14 +24,15 @@ import { useMonthlySpending } from '@/stores/analysisStore'
 import { computed, onMounted, ref } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
+const now = new Date()
+const year = now.getFullYear()
+const month = now.getMonth() + 1
 const userId = '7471'
-const currentMonth = 4
-const year = 2025
 
 const store = useMonthlySpending()
 
 onMounted(() => {
-  store.fetchSpending(userId, year, currentMonth)
+  store.fetchSpending(userId, year, month)
 })
 
 // 총 지출
@@ -87,7 +88,7 @@ const chartOptions = ref({
   tooltip: {
     custom: function ({ series, seriesIndex, dataPointIndex }) {
       const day = dataPointIndex + 1 // 0-based index → 1일부터 시작
-      const dateLabel = `${currentMonth}월 ${day}일`
+      const dateLabel = `${month}월 ${day}일`
       const value = series[seriesIndex][dataPointIndex].toLocaleString() + '원'
 
       return `
