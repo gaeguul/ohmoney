@@ -43,11 +43,34 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- 페이지네이션 -->
+    <div class="d-flex justify-content-center p-3 gap-2">
+      <button class="page-btn btn btn-outline-secondary btn-sm" @click="goToPage(currentPage - 1)">
+        &#8592;
+      </button>
+      <button
+        v-for="n in totalPages"
+        :key="n"
+        class="page-btn btn btn-sm"
+        :class="[
+          'page-btn btn btn-sm',
+          n === currentPage ? 'text-white border-0' : 'btn-outline-secondary',
+        ]"
+        :style="n === currentPage ? { backgroundColor: '#8540f5' } : {}"
+        @click="goToPage(n)"
+      >
+        {{ n }}
+      </button>
+      <button class="page-btn btn btn-outline-secondary btn-sm" @click="goToPage(currentPage + 1)">
+        &#8594;
+      </button>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -61,6 +84,27 @@ const deleteHistory = async (id) => {}
 //소비내역 수정하기
 const goToEditForm = (id) => {
   router.push({ name: 'accountDetails', params: { id: id } })
+}
+
+/** 페이지네이션 */
+const itemsPerPage = 7 //한 페이지당 보여줄 요소 개수
+const currentPage = ref(1)
+
+// 페이지네이션된 데이터 계산
+const paginatedData = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage
+  const end = start + itemsPerPage
+  return accountsDetail.value.slice(start, end)
+})
+
+// 전체 페이지 수 계산
+const totalPages = computed(() => Math.ceil(accountsDetail.value.length / itemsPerPage))
+
+// 페이지 이동 함수
+const goToPage = (page) => {
+  if (page >= 1 && page <= totalPages.value) {
+    currentPage.value = page
+  }
 }
 </script>
 
