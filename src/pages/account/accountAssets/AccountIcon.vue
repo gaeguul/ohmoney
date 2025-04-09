@@ -2,8 +2,8 @@
   <span v-for="item in props.icons" :key="item.name">
     <label class="submit">
       <input type="radio" name="cash" id="cash" />
-      <i :class="item.icon" class="custom-icon-color"></i>
-      <div>{{ item.name }}</div>
+      <i :class="item.categoryIcon" class="custom-icon-color"></i>
+      <div>{{ item.categoryName }}</div>
     </label>
   </span>
 </template>

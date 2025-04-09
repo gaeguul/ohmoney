@@ -1,0 +1,1082 @@
+{
+  "summary": [
+    {
+      "duration": "2025-04",
+      "categoryId": 15,
+      "sumAmount": 50000,
+      "createdAt": "2025-04-29T18:30:00Z",
+      "updatedAt": "2025-04-29T18:30:00Z",
+      "userId": "7471",
+      "id": "0efd"
+    },
+    {
+      "duration": "2025-04",
+      "categoryId": 20,
+      "sumAmount": 80000,
+      "createdAt": "2025-04-01T09:00:00Z",
+      "updatedAt": "2025-04-01T09:00:00Z",
+      "userId": "7471",
+      "id": "d774"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 1,
+      "sumAmount": 15000,
+      "createdAt": "2025-05-01T13:00:00Z",
+      "updatedAt": "2025-05-01T13:00:00Z",
+      "userId": "7471",
+      "id": "bec8"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 10,
+      "sumAmount": 9000,
+      "createdAt": "2025-05-01T14:30:00Z",
+      "updatedAt": "2025-05-01T14:30:00Z",
+      "userId": "7471",
+      "id": "e3b5"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 19,
+      "sumAmount": 12000,
+      "createdAt": "2025-05-05T17:30:00Z",
+      "updatedAt": "2025-05-25T14:20:00Z",
+      "userId": "7471",
+      "id": "70dd"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 1,
+      "sumAmount": 34000,
+      "createdAt": "2025-06-08T19:00:00Z",
+      "updatedAt": "2025-06-10T12:30:00Z",
+      "userId": "7471",
+      "id": "8735"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 15,
+      "sumAmount": 20000,
+      "createdAt": "2025-06-09T15:45:00Z",
+      "updatedAt": "2025-06-09T15:45:00Z",
+      "userId": "7471",
+      "id": "cbdb"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 20,
+      "sumAmount": 120000,
+      "createdAt": "2025-06-01T09:00:00Z",
+      "updatedAt": "2025-06-01T09:00:00Z",
+      "userId": "7471",
+      "id": "8904"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 22,
+      "sumAmount": 10000,
+      "createdAt": "2025-06-09T18:15:00Z",
+      "updatedAt": "2025-06-09T18:15:00Z",
+      "userId": "7471",
+      "id": "b8a9"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 24,
+      "sumAmount": 3000,
+      "createdAt": "2025-06-13T16:45:00Z",
+      "updatedAt": "2025-06-13T16:45:00Z",
+      "userId": "7471",
+      "id": "791b"
+    },
+    {
+      "duration": "2025-04",
+      "categoryId": 2,
+      "sumAmount": 12000,
+      "createdAt": "2025-04-20T19:30:00Z",
+      "updatedAt": "2025-04-20T19:30:00Z",
+      "userId": "cd1d",
+      "id": "4561"
+    },
+    {
+      "duration": "2025-04",
+      "categoryId": 20,
+      "sumAmount": 50000,
+      "createdAt": "2025-04-05T10:15:00Z",
+      "updatedAt": "2025-04-05T10:15:00Z",
+      "userId": "cd1d",
+      "id": "d2b0"
+    },
+    {
+      "duration": "2025-04",
+      "categoryId": 22,
+      "sumAmount": 50000,
+      "createdAt": "2025-04-01T17:45:00Z",
+      "updatedAt": "2025-04-01T17:45:00Z",
+      "userId": "cd1d",
+      "id": "621a"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 1,
+      "sumAmount": 50000,
+      "createdAt": "2025-05-05T19:30:00Z",
+      "updatedAt": "2025-05-05T19:30:00Z",
+      "userId": "cd1d",
+      "id": "420c"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 18,
+      "sumAmount": 50000,
+      "createdAt": "2025-05-19T10:00:00Z",
+      "updatedAt": "2025-05-19T10:00:00Z",
+      "userId": "cd1d",
+      "id": "2753"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 19,
+      "sumAmount": 3000,
+      "createdAt": "2025-05-25T17:15:00Z",
+      "updatedAt": "2025-05-25T17:15:00Z",
+      "userId": "cd1d",
+      "id": "b243"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 20,
+      "sumAmount": 100000,
+      "createdAt": "2025-05-05T09:45:00Z",
+      "updatedAt": "2025-05-05T09:45:00Z",
+      "userId": "cd1d",
+      "id": "80d3"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 12,
+      "sumAmount": 22000,
+      "createdAt": "2025-06-08T21:45:00Z",
+      "updatedAt": "2025-06-08T21:45:00Z",
+      "userId": "cd1d",
+      "id": "e257"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 15,
+      "sumAmount": 100000,
+      "createdAt": "2025-06-03T14:00:00Z",
+      "updatedAt": "2025-06-03T14:00:00Z",
+      "userId": "cd1d",
+      "id": "0bbc"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 20,
+      "sumAmount": 150000,
+      "createdAt": "2025-06-05T09:30:00Z",
+      "updatedAt": "2025-06-05T09:30:00Z",
+      "userId": "cd1d",
+      "id": "5db1"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 21,
+      "sumAmount": 10000,
+      "createdAt": "2025-06-09T16:30:00Z",
+      "updatedAt": "2025-06-09T16:30:00Z",
+      "userId": "cd1d",
+      "id": "aeb5"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 24,
+      "sumAmount": 30000,
+      "createdAt": "2025-06-13T11:20:00Z",
+      "updatedAt": "2025-06-13T11:20:00Z",
+      "userId": "cd1d",
+      "id": "1a89"
+    },
+    {
+      "duration": "2025-04",
+      "categoryId": 13,
+      "sumAmount": 5000,
+      "createdAt": "2025-04-29T14:00:00Z",
+      "updatedAt": "2025-04-29T14:00:00Z",
+      "userId": "db10",
+      "id": "5945"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 1,
+      "sumAmount": 22000,
+      "createdAt": "2025-05-28T20:15:00Z",
+      "updatedAt": "2025-05-28T20:15:00Z",
+      "userId": "db10",
+      "id": "a0a9"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 9,
+      "sumAmount": 32000,
+      "createdAt": "2025-05-01T12:45:00Z",
+      "updatedAt": "2025-05-01T12:45:00Z",
+      "userId": "db10",
+      "id": "4546"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 20,
+      "sumAmount": 100000,
+      "createdAt": "2025-05-03T11:30:00Z",
+      "updatedAt": "2025-05-03T11:30:00Z",
+      "userId": "db10",
+      "id": "2945"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 22,
+      "sumAmount": 10000,
+      "createdAt": "2025-05-15T18:00:00Z",
+      "updatedAt": "2025-05-15T18:00:00Z",
+      "userId": "db10",
+      "id": "c90c"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 24,
+      "sumAmount": 30000,
+      "createdAt": "2025-05-23T19:15:00Z",
+      "updatedAt": "2025-05-23T19:15:00Z",
+      "userId": "db10",
+      "id": "4969"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 1,
+      "sumAmount": 34000,
+      "createdAt": "2025-06-10T19:40:00Z",
+      "updatedAt": "2025-06-10T19:40:00Z",
+      "userId": "db10",
+      "id": "d347"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 15,
+      "sumAmount": 80000,
+      "createdAt": "2025-06-08T15:20:00Z",
+      "updatedAt": "2025-06-08T15:20:00Z",
+      "userId": "db10",
+      "id": "53c5"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 19,
+      "sumAmount": 5000,
+      "createdAt": "2025-06-11T13:10:00Z",
+      "updatedAt": "2025-06-11T13:10:00Z",
+      "userId": "db10",
+      "id": "9a58"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 20,
+      "sumAmount": 120000,
+      "createdAt": "2025-06-03T10:00:00Z",
+      "updatedAt": "2025-06-03T10:00:00Z",
+      "userId": "db10",
+      "id": "5555"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 22,
+      "sumAmount": 100000,
+      "createdAt": "2025-06-15T16:30:00Z",
+      "updatedAt": "2025-06-15T16:30:00Z",
+      "userId": "db10",
+      "id": "d970"
+    },
+    {
+      "duration": "2025-04",
+      "categoryId": 19,
+      "sumAmount": 50000,
+      "createdAt": "2025-04-04T13:45:00Z",
+      "updatedAt": "2025-04-04T13:45:00Z",
+      "userId": "47ae",
+      "id": "ad1f"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 1,
+      "sumAmount": 35000,
+      "createdAt": "2025-05-20T19:30:00Z",
+      "updatedAt": "2025-05-20T19:30:00Z",
+      "userId": "47ae",
+      "id": "70d0"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 2,
+      "sumAmount": 50000,
+      "createdAt": "2025-05-25T18:40:00Z",
+      "updatedAt": "2025-05-25T18:40:00Z",
+      "userId": "47ae",
+      "id": "c7df"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 19,
+      "sumAmount": 50000,
+      "createdAt": "2025-05-02T09:30:00Z",
+      "updatedAt": "2025-05-02T09:30:00Z",
+      "userId": "47ae",
+      "id": "c7cc"
+    },
+    {
+      "duration": "2025-05",
+      "categoryId": 20,
+      "sumAmount": 300000,
+      "createdAt": "2025-05-15T09:15:00Z",
+      "updatedAt": "2025-05-15T09:15:00Z",
+      "userId": "47ae",
+      "id": "867a"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 1,
+      "sumAmount": 3000,
+      "createdAt": "2025-06-10T08:45:00Z",
+      "updatedAt": "2025-06-10T08:45:00Z",
+      "userId": "47ae",
+      "id": "48bc"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 7,
+      "sumAmount": 20000,
+      "createdAt": "2025-06-09T16:00:00Z",
+      "updatedAt": "2025-06-09T16:00:00Z",
+      "userId": "47ae",
+      "id": "5775"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 18,
+      "sumAmount": 1000000,
+      "createdAt": "2025-06-03T14:15:00Z",
+      "updatedAt": "2025-06-03T14:15:00Z",
+      "userId": "47ae",
+      "id": "7363"
+    },
+    {
+      "duration": "2025-06",
+      "categoryId": 20,
+      "sumAmount": 300000,
+      "createdAt": "2025-06-15T12:50:00Z",
+      "updatedAt": "2025-06-15T12:50:00Z",
+      "userId": "47ae",
+      "id": "c09e"
+    }
+  ],
+  "user": [
+    {
+      "userId": "aaa",
+      "password": "bbb",
+      "userName": "human1",
+      "createdAt": "2025-01-15T10:30:00Z",
+      "updatedAt": "2025-01-15T10:30:00Z",
+      "id": "7471"
+    },
+    {
+      "userId": "bbb",
+      "password": "ccc",
+      "userName": "human2",
+      "createdAt": "2025-01-18T14:20:00Z",
+      "updatedAt": "2025-01-18T14:20:00Z",
+      "id": "cd1d"
+    },
+    {
+      "userId": "ccc",
+      "password": "ddd",
+      "userName": "human3",
+      "createdAt": "2025-02-05T09:45:00Z",
+      "updatedAt": "2025-02-05T09:45:00Z",
+      "id": "db10"
+    },
+    {
+      "userId": "ddd",
+      "password": "eee",
+      "userName": "human4",
+      "createdAt": "2025-02-12T16:30:00Z",
+      "updatedAt": "2025-02-12T16:30:00Z",
+      "id": "47ae"
+    },
+    {
+      "userId": "eee",
+      "password": "fff",
+      "userName": "human5",
+      "createdAt": "2025-03-01T11:15:00Z",
+      "updatedAt": "2025-03-01T11:15:00Z",
+      "id": "dcd5"
+    }
+  ],
+  "transactions": [
+    {
+      "categoryId": 10,
+      "amount": 9000,
+      "memo": "마스크팩 구입",
+      "paymentMethod": "카드",
+      "vendor": "올리브영",
+      "transactionType": "expense",
+      "createdAt": "2025-05-01T14:30:00Z",
+      "updatedAt": "2025-05-01T14:30:00Z",
+      "userId": "7471",
+      "id": "7a1b"
+    },
+    {
+      "categoryId": 22,
+      "amount": 10000,
+      "memo": "아싸 용돈",
+      "paymentMethod": "현금",
+      "vendor": "부모님",
+      "transactionType": "income",
+      "createdAt": "2025-06-09T18:15:00Z",
+      "updatedAt": "2025-06-09T18:15:00Z",
+      "userId": "7471",
+      "id": "af43"
+    },
+    {
+      "categoryId": 20,
+      "amount": 120000,
+      "memo": "아싸 월급",
+      "paymentMethod": "카드",
+      "vendor": "회사",
+      "transactionType": "income",
+      "createdAt": "2025-06-01T09:00:00Z",
+      "updatedAt": "2025-06-01T09:00:00Z",
+      "userId": "7471",
+      "id": "8d16"
+    },
+    {
+      "categoryId": 24,
+      "amount": 3000,
+      "memo": "길에서 주웠다",
+      "paymentMethod": "현금",
+      "vendor": "기타",
+      "transactionType": "income",
+      "createdAt": "2025-06-13T16:45:00Z",
+      "updatedAt": "2025-06-13T16:45:00Z",
+      "userId": "7471",
+      "id": "5ffb"
+    },
+    {
+      "categoryId": 1,
+      "amount": 15000,
+      "memo": "민정이랑 점심",
+      "paymentMethod": "카드",
+      "vendor": "백채김치찌개",
+      "transactionType": "expense",
+      "createdAt": "2025-05-01T13:00:00Z",
+      "updatedAt": "2025-05-01T13:00:00Z",
+      "userId": "7471",
+      "id": "0361"
+    },
+    {
+      "categoryId": 20,
+      "amount": 80000,
+      "memo": "아싸 월급",
+      "paymentMethod": "카드",
+      "vendor": "회사",
+      "transactionType": "income",
+      "createdAt": "2025-04-01T09:00:00Z",
+      "updatedAt": "2025-04-01T09:00:00Z",
+      "userId": "7471",
+      "id": "abae"
+    },
+    {
+      "categoryId": 19,
+      "amount": 9000,
+      "memo": "친구의 돈을 갚았다",
+      "paymentMethod": "카드",
+      "vendor": "친구",
+      "transactionType": "expense",
+      "createdAt": "2025-05-05T17:30:00Z",
+      "updatedAt": "2025-05-05T17:30:00Z",
+      "userId": "7471",
+      "id": "628d"
+    },
+    {
+      "categoryId": 15,
+      "amount": 20000,
+      "memo": "옷 샀다",
+      "paymentMethod": "카드",
+      "vendor": "의류매장",
+      "transactionType": "expense",
+      "createdAt": "2025-06-09T15:45:00Z",
+      "updatedAt": "2025-06-09T15:45:00Z",
+      "userId": "7471",
+      "id": "60d7"
+    },
+    {
+      "categoryId": 1,
+      "amount": 12000,
+      "memo": "혼밥했다",
+      "paymentMethod": "카드",
+      "vendor": "식당",
+      "transactionType": "expense",
+      "createdAt": "2025-06-10T12:30:00Z",
+      "updatedAt": "2025-06-10T12:30:00Z",
+      "userId": "7471",
+      "id": "86d2"
+    },
+    {
+      "categoryId": 19,
+      "amount": 3000,
+      "memo": "길에서 돈을 잃어버렸다",
+      "paymentMethod": "현금",
+      "vendor": "기타",
+      "transactionType": "expense",
+      "createdAt": "2025-05-25T14:20:00Z",
+      "updatedAt": "2025-05-25T14:20:00Z",
+      "userId": "7471",
+      "id": "e7a6"
+    },
+    {
+      "categoryId": 15,
+      "amount": 50000,
+      "memo": "사고싶은 옷을 샀다",
+      "paymentMethod": "카드",
+      "vendor": "패션몰",
+      "transactionType": "expense",
+      "createdAt": "2025-04-29T18:30:00Z",
+      "updatedAt": "2025-04-29T18:30:00Z",
+      "userId": "7471",
+      "id": "c1a1"
+    },
+    {
+      "categoryId": 1,
+      "amount": 22000,
+      "memo": "치킨먹었다",
+      "paymentMethod": "카드",
+      "vendor": "치킨집",
+      "transactionType": "expense",
+      "createdAt": "2025-06-08T19:00:00Z",
+      "updatedAt": "2025-06-08T19:00:00Z",
+      "userId": "7471",
+      "id": "c7d0"
+    },
+    {
+      "categoryId": 20,
+      "amount": 50000,
+      "memo": "아싸 월급",
+      "paymentMethod": "카드",
+      "vendor": "회사",
+      "transactionType": "income",
+      "createdAt": "2025-04-05T10:15:00Z",
+      "updatedAt": "2025-04-05T10:15:00Z",
+      "userId": "cd1d",
+      "id": "d4b7"
+    },
+    {
+      "categoryId": 21,
+      "amount": 10000,
+      "memo": "배당금이 들어왔다",
+      "paymentMethod": "카드",
+      "vendor": "증권사",
+      "transactionType": "income",
+      "createdAt": "2025-06-09T16:30:00Z",
+      "updatedAt": "2025-06-09T16:30:00Z",
+      "userId": "cd1d",
+      "id": "bb01"
+    },
+    {
+      "categoryId": 20,
+      "amount": 100000,
+      "memo": "아싸 월급",
+      "paymentMethod": "카드",
+      "vendor": "회사",
+      "transactionType": "income",
+      "createdAt": "2025-05-05T09:45:00Z",
+      "updatedAt": "2025-05-05T09:45:00Z",
+      "userId": "cd1d",
+      "id": "da80"
+    },
+    {
+      "categoryId": 24,
+      "amount": 30000,
+      "memo": "친구가 돈을 갚았다",
+      "paymentMethod": "현금",
+      "vendor": "친구",
+      "transactionType": "income",
+      "createdAt": "2025-06-13T11:20:00Z",
+      "updatedAt": "2025-06-13T11:20:00Z",
+      "userId": "cd1d",
+      "id": "8ca4"
+    },
+    {
+      "categoryId": 20,
+      "amount": 150000,
+      "memo": "아싸 월급",
+      "paymentMethod": "카드",
+      "vendor": "회사",
+      "transactionType": "income",
+      "createdAt": "2025-06-05T09:30:00Z",
+      "updatedAt": "2025-06-05T09:30:00Z",
+      "userId": "cd1d",
+      "id": "e59f"
+    },
+    {
+      "categoryId": 22,
+      "amount": 50000,
+      "memo": "아싸 용돈",
+      "paymentMethod": "현금",
+      "vendor": "부모님",
+      "transactionType": "income",
+      "createdAt": "2025-04-01T17:45:00Z",
+      "updatedAt": "2025-04-01T17:45:00Z",
+      "userId": "cd1d",
+      "id": "2854"
+    },
+    {
+      "categoryId": 1,
+      "amount": 50000,
+      "memo": "한우를 먹었다",
+      "paymentMethod": "카드",
+      "vendor": "한우전문점",
+      "transactionType": "expense",
+      "createdAt": "2025-05-05T19:30:00Z",
+      "updatedAt": "2025-05-05T19:30:00Z",
+      "userId": "cd1d",
+      "id": "4773"
+    },
+    {
+      "categoryId": 15,
+      "amount": 100000,
+      "memo": "신발을 샀다",
+      "paymentMethod": "카드",
+      "vendor": "신발가게",
+      "transactionType": "expense",
+      "createdAt": "2025-06-03T14:00:00Z",
+      "updatedAt": "2025-06-03T14:00:00Z",
+      "userId": "cd1d",
+      "id": "3a28"
+    },
+    {
+      "categoryId": 2,
+      "amount": 12000,
+      "memo": "택시비",
+      "paymentMethod": "카드",
+      "vendor": "택시",
+      "transactionType": "expense",
+      "createdAt": "2025-04-20T19:30:00Z",
+      "updatedAt": "2025-04-20T19:30:00Z",
+      "userId": "cd1d",
+      "id": "22df"
+    },
+    {
+      "categoryId": 19,
+      "amount": 3000,
+      "memo": "약국에서 약을 샀다",
+      "paymentMethod": "카드",
+      "vendor": "약국",
+      "transactionType": "expense",
+      "createdAt": "2025-05-25T17:15:00Z",
+      "updatedAt": "2025-05-25T17:15:00Z",
+      "userId": "cd1d",
+      "id": "8d13"
+    },
+    {
+      "categoryId": 18,
+      "amount": 50000,
+      "memo": "적금을 넣었다",
+      "paymentMethod": "카드",
+      "vendor": "은행",
+      "transactionType": "expense",
+      "createdAt": "2025-05-19T10:00:00Z",
+      "updatedAt": "2025-05-19T10:00:00Z",
+      "userId": "cd1d",
+      "id": "ba6e"
+    },
+    {
+      "categoryId": 12,
+      "amount": 22000,
+      "memo": "술을 마셨다",
+      "paymentMethod": "카드",
+      "vendor": "술집",
+      "transactionType": "expense",
+      "createdAt": "2025-06-08T21:45:00Z",
+      "updatedAt": "2025-06-08T21:45:00Z",
+      "userId": "cd1d",
+      "id": "0a77"
+    },
+    {
+      "categoryId": 22,
+      "amount": 10000,
+      "memo": "용돈을 받았다",
+      "paymentMethod": "현금",
+      "vendor": "부모님",
+      "transactionType": "income",
+      "createdAt": "2025-05-15T11:30:00Z",
+      "updatedAt": "2025-05-15T11:30:00Z",
+      "userId": "db10",
+      "id": "795e"
+    },
+    {
+      "categoryId": 22,
+      "amount": 100000,
+      "memo": "아싸 용돈",
+      "paymentMethod": "카드",
+      "vendor": "부모님",
+      "transactionType": "income",
+      "createdAt": "2025-06-15T11:30:00Z",
+      "updatedAt": "2025-06-15T11:30:00Z",
+      "userId": "db10",
+      "id": "1927"
+    },
+    {
+      "categoryId": 20,
+      "amount": 120000,
+      "memo": "아싸 알바비가 들어왔다",
+      "paymentMethod": "카드",
+      "vendor": "알바장소",
+      "transactionType": "income",
+      "createdAt": "2025-06-03T11:30:00Z",
+      "updatedAt": "2025-06-03T11:30:00Z",
+      "userId": "db10",
+      "id": "aac7"
+    },
+    {
+      "categoryId": 24,
+      "amount": 30000,
+      "memo": "당근해서 돈벌었다",
+      "paymentMethod": "현금",
+      "vendor": "당근마켓",
+      "transactionType": "income",
+      "createdAt": "2025-05-23T11:30:00Z",
+      "updatedAt": "2025-05-23T11:30:00Z",
+      "userId": "db10",
+      "id": "1e3c"
+    },
+    {
+      "categoryId": 20,
+      "amount": 100000,
+      "memo": "알바비 들어왔다!",
+      "paymentMethod": "카드",
+      "vendor": "알바장소",
+      "transactionType": "income",
+      "createdAt": "2025-05-03T11:30:00Z",
+      "updatedAt": "2025-05-03T11:30:00Z",
+      "userId": "db10",
+      "id": "6877"
+    },
+    {
+      "categoryId": 9,
+      "amount": 32000,
+      "memo": "휴대폰 요금이 나갔다",
+      "paymentMethod": "카드",
+      "vendor": "통신사",
+      "transactionType": "expense",
+      "createdAt": "2025-05-01T11:30:00Z",
+      "updatedAt": "2025-05-01T11:30:00Z",
+      "userId": "db10",
+      "id": "b9c6"
+    },
+    {
+      "categoryId": 15,
+      "amount": 80000,
+      "memo": "옷 샀다",
+      "paymentMethod": "카드",
+      "vendor": "의류매장",
+      "transactionType": "expense",
+      "createdAt": "2025-06-08T11:30:00Z",
+      "updatedAt": "2025-06-08T11:30:00Z",
+      "userId": "db10",
+      "id": "bc34"
+    },
+    {
+      "categoryId": 1,
+      "amount": 34000,
+      "memo": "데이트할때 저녁!",
+      "paymentMethod": "카드",
+      "vendor": "레스토랑",
+      "transactionType": "expense",
+      "createdAt": "2025-06-10T11:30:00Z",
+      "updatedAt": "2025-06-10T11:30:00Z",
+      "userId": "db10",
+      "id": "f951"
+    },
+    {
+      "categoryId": 19,
+      "amount": 5000,
+      "memo": "아 돈을 잃어버렸다",
+      "paymentMethod": "현금",
+      "vendor": "기타",
+      "transactionType": "expense",
+      "createdAt": "2025-06-11T11:30:00Z",
+      "updatedAt": "2025-06-11T11:30:00Z",
+      "userId": "db10",
+      "id": "46e2"
+    },
+    {
+      "categoryId": 13,
+      "amount": 5000,
+      "memo": "커피 한잔 사먹었다",
+      "paymentMethod": "카드",
+      "vendor": "카페",
+      "transactionType": "expense",
+      "createdAt": "2025-04-29T11:30:00Z",
+      "updatedAt": "2025-04-29T11:30:00Z",
+      "userId": "db10",
+      "id": "2ca6"
+    },
+    {
+      "categoryId": 1,
+      "amount": 22000,
+      "memo": "치킨먹었다",
+      "paymentMethod": "카드",
+      "vendor": "치킨집",
+      "transactionType": "expense",
+      "createdAt": "2025-05-28T11:30:00Z",
+      "updatedAt": "2025-05-28T11:30:00Z",
+      "userId": "db10",
+      "id": "2727"
+    },
+    {
+      "categoryId": 20,
+      "amount": 300000,
+      "memo": "월급이다",
+      "paymentMethod": "카드",
+      "vendor": "회사",
+      "transactionType": "income",
+      "createdAt": "2025-05-15T11:30:00Z",
+      "updatedAt": "2025-05-15T11:30:00Z",
+      "userId": "47ae",
+      "id": "fa98"
+    },
+    {
+      "categoryId": 20,
+      "amount": 300000,
+      "memo": "아싸 월급 들어왔다",
+      "paymentMethod": "카드",
+      "vendor": "회사",
+      "transactionType": "income",
+      "createdAt": "2025-06-15T11:30:00Z",
+      "updatedAt": "2025-06-15T11:30:00Z",
+      "userId": "47ae",
+      "id": "d2e9"
+    },
+    {
+      "categoryId": 18,
+      "amount": 1000000,
+      "memo": "적금 만기!",
+      "paymentMethod": "카드",
+      "vendor": "은행",
+      "transactionType": "income",
+      "createdAt": "2025-06-03T11:30:00Z",
+      "updatedAt": "2025-06-03T11:30:00Z",
+      "userId": "47ae",
+      "id": "c22a"
+    },
+    {
+      "categoryId": 19,
+      "amount": 50000,
+      "memo": "친구에게 돈을 빌려줬다",
+      "paymentMethod": "카드",
+      "vendor": "친구",
+      "transactionType": "expense",
+      "createdAt": "2025-05-02T11:30:00Z",
+      "updatedAt": "2025-05-02T11:30:00Z",
+      "userId": "47ae",
+      "id": "9c27"
+    },
+    {
+      "categoryId": 7,
+      "amount": 20000,
+      "memo": "책을 샀다",
+      "paymentMethod": "카드",
+      "vendor": "서점",
+      "transactionType": "expense",
+      "createdAt": "2025-06-09T11:30:00Z",
+      "updatedAt": "2025-06-09T11:30:00Z",
+      "userId": "47ae",
+      "id": "2861"
+    },
+    {
+      "categoryId": 1,
+      "amount": 3000,
+      "memo": "빵 사먹었다",
+      "paymentMethod": "카드",
+      "vendor": "베이커리",
+      "transactionType": "expense",
+      "createdAt": "2025-06-10T11:30:00Z",
+      "updatedAt": "2025-06-10T11:30:00Z",
+      "userId": "47ae",
+      "id": "acc7"
+    },
+    {
+      "categoryId": 2,
+      "amount": 50000,
+      "memo": "교통비 빠져나가는 날",
+      "paymentMethod": "카드",
+      "vendor": "교통카드",
+      "transactionType": "expense",
+      "createdAt": "2025-05-25T11:30:00Z",
+      "updatedAt": "2025-05-25T11:30:00Z",
+      "userId": "47ae",
+      "id": "3e57"
+    },
+    {
+      "categoryId": 19,
+      "amount": 50000,
+      "memo": "병원을 다녀옴",
+      "paymentMethod": "카드",
+      "vendor": "병원",
+      "transactionType": "expense",
+      "createdAt": "2025-04-04T11:30:00Z",
+      "updatedAt": "2025-04-04T11:30:00Z",
+      "userId": "47ae",
+      "id": "99ce"
+    },
+    {
+      "categoryId": 1,
+      "amount": 35000,
+      "memo": "삼겹살 먹었다",
+      "paymentMethod": "카드",
+      "vendor": "고기집",
+      "transactionType": "expense",
+      "createdAt": "2025-05-20T11:30:00Z",
+      "updatedAt": "2025-05-20T11:30:00Z",
+      "userId": "47ae",
+      "id": "5ed0"
+    }
+  ],
+  "category": [
+    {
+      "expense": [
+        {
+          "categoryId": 1,
+          "categoryName": "식비",
+          "categoryIcon": "fa-solid fa-utensils"
+        },
+        {
+          "categoryId": 2,
+          "categoryName": "교통 / 차량",
+          "categoryIcon": "fa-solid fa-train-subway"
+        },
+        {
+          "categoryId": 3,
+          "categoryName": "공과금",
+          "categoryIcon": "fa-solid fa-file-invoice-dollar"
+        },
+        {
+          "categoryId": 4,
+          "categoryName": "캠핑",
+          "categoryIcon": "fa-solid fa-campground"
+        },
+        {
+          "categoryId": 5,
+          "categoryName": "문화 생활",
+          "categoryIcon": "fa-solid fa-clapperboard"
+        },
+        {
+          "categoryId": 6,
+          "categoryName": "마트 / 생필품",
+          "categoryIcon": "fa-solid fa-cart-shopping"
+        },
+        {
+          "categoryId": 7,
+          "categoryName": "교육",
+          "categoryIcon": "fa-solid fa-file-pen"
+        },
+        {
+          "categoryId": 8,
+          "categoryName": "구독비",
+          "categoryIcon": "fa-brands fa-youtube"
+        },
+        {
+          "categoryId": 9,
+          "categoryName": "통신비",
+          "categoryIcon": "fa-solid fa-mobile-screen-button"
+        },
+        {
+          "categoryId": 10,
+          "categoryName": "미용",
+          "categoryIcon": "fa-solid fa-spray-can-sparkles"
+        },
+        {
+          "categoryId": 11,
+          "categoryName": "운동",
+          "categoryIcon": "fa-solid fa-dumbbell"
+        },
+        {
+          "categoryId": 12,
+          "categoryName": "술 / 음료",
+          "categoryIcon": "fa-solid fa-beer-mug-empty"
+        },
+        {
+          "categoryId": 13,
+          "categoryName": "카페",
+          "categoryIcon": "fa-solid fa-mug-hot"
+        },
+        {
+          "categoryId": 14,
+          "categoryName": "경조사 / 선물",
+          "categoryIcon": "fa-solid fa-cake-candles"
+        },
+        {
+          "categoryId": 15,
+          "categoryName": "의류",
+          "categoryIcon": "fa-solid fa-shirt"
+        },
+        {
+          "categoryId": 16,
+          "categoryName": "여행",
+          "categoryIcon": "fa-solid fa-plane"
+        },
+        {
+          "categoryId": 17,
+          "categoryName": "육아",
+          "categoryIcon": "fa-solid fa-baby-carriage"
+        },
+        {
+          "categoryId": 18,
+          "categoryName": "적금",
+          "categoryIcon": "fa-solid fa-piggy-bank"
+        },
+        {
+          "categoryId": 19,
+          "categoryName": "기타",
+          "categoryIcon": "fa-solid fa-ellipsis"
+        }
+      ],
+      "income": [
+        {
+          "categoryId": 20,
+          "categoryName": "월급",
+          "categoryIcon": "fa-solid fa-money-bill-wave"
+        },
+        {
+          "categoryId": 21,
+          "categoryName": "부수입",
+          "categoryIcon": "fa-solid fa-piggy-bank"
+        },
+        {
+          "categoryId": 22,
+          "categoryName": "용돈",
+          "categoryIcon": "fa-solid fa-hand-holding-dollar"
+        },
+        {
+          "categoryId": 23,
+          "categoryName": "서비스",
+          "categoryIcon": "fa-solid fa-bell-concierge"
+        },
+        {
+          "categoryId": 24,
+          "categoryName": "기타",
+          "categoryIcon": "fa-solid fa-ellipsis"
+        }
+      ]
+    }
+  ]
+}
