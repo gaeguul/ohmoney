@@ -113,7 +113,7 @@ const handleSignup = async () => {
 
   const now = new Date().toISOString() //회원가입한 시기 저장
   try {
-    const res = await axios.post('/user', {
+    const res = await axios.post('/api/user', {
       userId: id.value,
       password: password.value,
       userName: name.value,
