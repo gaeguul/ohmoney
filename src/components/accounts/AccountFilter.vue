@@ -71,6 +71,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import axios from 'axios'
 
 // 필터 상태
 const type = ref('') //수입,지출 분류
@@ -106,7 +107,23 @@ const historyCategories = computed(() => {
 })
 
 // 카테고리 데이터 불러오기
-onMounted(async () => {})
+onMounted(async () => {
+  try {
+    const res = await axios.get('http://localhost:3000/category')
+    const data = res.data[0]
+
+    categoryMap.expense = data.expense.map((item) => ({
+      value: item.categoryId,
+      label: item.categoryName,
+    }))
+    categoryMap.income = data.income.map((item) => ({
+      value: item.categoryId,
+      label: item.categoryName,
+    }))
+  } catch (err) {
+    console.error('카테고리 불러오기 실패:', err)
+  }
+})
 
 // 기간 필터
 const isDropdownOpen = ref(false)
@@ -145,4 +162,15 @@ onBeforeUnmount(() => {
   background-color: white !important;
   color: gray !important;
 }
+.dropdown-menu {
+  height: 20vh;
+  overflow: scroll;
+}
+/* .dropdown-item:hover {
+  background-color: var(--color-purple-100);
+}
+.dropdown-item:active {
+  background-color: var(—color-purple-400);
+  color: white;
+} */
 </style>
