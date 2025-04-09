@@ -81,7 +81,48 @@ export const getMonthlySpending = async (userId, year, month) => {
   }
 }
 
-export const getThreeMonthsAnalysis = async () => {}
+/**
+ * @returns 최근 3개월 소비 내역
+ */
+export const getThreeMonthsAnalysis = async (userId, currentYear, currentMonth) => {
+  const res = await axios.get(`/api/summary?userId=${userId}`)
+  const data = res.data
+
+  const categoryIds = await fetchCategoryIds()
+
+  // 최근 3개월 구하기
+  const months = []
+  for (let i = 0; i < 3; i++) {
+    let year = currentYear
+    let month = currentMonth - i
+    if (month <= 0) {
+      month += 12
+      year -= 1
+    }
+    months.push({ year, month, key: `${year}-${String(month).padStart(2, '0')}` })
+  }
+
+  // 초기화된 결과 객체
+  const result = {}
+  months.forEach(({ key }) => {
+    result[key] = {
+      expenseTotal: 0,
+    }
+  })
+
+  data.forEach((item) => {
+    if (item.userId !== userId) return
+
+    const itemMonth = item.duration
+    if (!result[itemMonth]) return
+
+    if (categoryIds.expense.has(item.categoryId)) {
+      result[itemMonth].expenseTotal += item.sumAmount
+    }
+  })
+
+  return result
+}
 
 export const getIncomeExpense = async (userId, year, month) => {
   const res = await axios.get(`/api/summary?userId=${userId}`)

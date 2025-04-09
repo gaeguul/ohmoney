@@ -5,67 +5,88 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { useThreeMonthsAnalysis } from '@/stores/analysisStore'
+import { onMounted, ref, watchEffect } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
-const rawLabels = ['2월 지출', '3월 지출', '4월 지출']
-const seriesData = [45, 52, 38]
+const userId = '7471'
+const store = useThreeMonthsAnalysis()
 
-const series = ref([
-  {
-    name: 'Daily Expenses',
-    data: seriesData,
-  },
-])
+const now = new Date()
+const year = now.getFullYear()
+const month = now.getMonth() + 1
 
-const categoriesWithData = rawLabels.map((label, idx) => {
-  return [`${seriesData[idx].toLocaleString()}원`, label]
+onMounted(() => {
+  store.fetchThreeMonths(userId, year, month)
 })
 
-const chartOptions = ref({
-  chart: {
-    type: 'line',
-    width: '100%',
-    toolbar: { show: false },
-    zoom: {
-      enabled: false,
+// 최근 3개월 key 구하기
+const getLastThreeMonthsKeys = () => {
+  const keys = []
+  for (let i = 2; i >= 0; i--) {
+    const date = new Date(year, month - 1 - i, 1)
+    const y = date.getFullYear()
+    const m = String(date.getMonth() + 1).padStart(2, '0')
+    keys.push(`${y}-${m}`)
+  }
+  return keys
+}
+
+const series = ref([])
+const chartOptions = ref({})
+
+watchEffect(() => {
+  const keys = getLastThreeMonthsKeys()
+  const data = keys.map((key) => {
+    const entry = store.analysis[key]
+    return entry ? entry.expenseTotal : 0
+  })
+
+  const categoriesWithData = keys.map((key, idx) => {
+    const m = Number(key.split('-')[1])
+    const value = data[idx] || 0
+    return [`${value.toLocaleString()}원`, `${m}월 지출`]
+  })
+
+  series.value = [
+    {
+      name: 'Monthly Expense',
+      data,
     },
-  },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: 60,
-      borderRadius: 10,
-      distributed: true,
+  ]
+
+  chartOptions.value = {
+    chart: {
+      type: 'bar',
+      toolbar: { show: false },
+      zoom: { enabled: false },
     },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  tooltip: {
-    enabled: false,
-  },
-  xaxis: {
-    categories: categoriesWithData,
-    axisBorder: { show: false }, // 축 선 제거
-    axisTicks: { show: false }, // 축 눈금 제거
-    labels: {
-      rotate: 0,
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: 60,
+        borderRadius: 10,
+        distributed: true,
+      },
     },
-  },
-  yaxis: {
-    show: false, // 전체 축 제거
-    labels: { show: false }, // 축 글자 제거
-    axisBorder: { show: false }, // 축 선 제거
-    axisTicks: { show: false }, // 축 눈금 제거
-  },
-  colors: ['#D9D9D9', '#D9D9D9', '#7999FE'],
-  grid: {
-    show: false,
-  },
-  legend: {
-    show: false,
-  },
+    dataLabels: { enabled: false },
+    tooltip: { enabled: false },
+    xaxis: {
+      categories: categoriesWithData,
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+      labels: { rotate: 0 },
+    },
+    yaxis: {
+      show: false,
+      labels: { show: false },
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+    },
+    colors: ['#D9D9D9', '#D9D9D9', '#7999FE'],
+    grid: { show: false },
+    legend: { show: false },
+  }
 })
 </script>
 
