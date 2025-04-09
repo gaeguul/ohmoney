@@ -53,6 +53,7 @@
 <script setup>
 import { useUserStore } from '@/stores/userStore'
 import axios from 'axios'
+import { computed, ref } from 'vue'
 
 const userStore = useUserStore()
 const showAlert = ref(false)
