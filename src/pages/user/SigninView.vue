@@ -97,6 +97,7 @@ const handleLogin = async () => {
         userId: user.userId,
         userName: user.userName,
         password: user.password,
+        id: user.id,
       })
       localStorage.setItem('user', JSON.stringify(user))
       showWelcomeToast(`${user.userName} 님 안녕하세요!`)
