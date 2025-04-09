@@ -22,4 +22,5 @@ export const useUserStore = defineStore('user', {
       this.isLoggedIn = false
     },
   },
+  // persist: true, // 로그인 상태 유지 추가!
 })

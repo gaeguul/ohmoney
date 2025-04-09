@@ -32,6 +32,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 //현재 로그인 중인 사용자 이름 출력용
 import { useUserStore } from '@/stores/userStore.js'
 const userStore = useUserStore()
+console.log(useUserStore.userName)
 const isMobile = ref(window.innerWidth <= 640)
 
 const handleResize = () => {
