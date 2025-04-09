@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../pages/HomeVue.vue'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import SignupView from '@/pages/user/SignupView.vue'
 import SigninView from '@/pages/user/SigninView.vue'
 import MypageView from '@/pages/user/MypageView.vue'
@@ -14,8 +15,44 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'defaultlayout',
+      component: DefaultLayout,
+      children:[
+        {
+          path: '',
+          redirect: '/home' // ✅ 기본 자식 라우트는 /home으로 이동
+        },
+        {
+          path: '/home',
+          name: 'home',
+          component: Home,
+        },
+        {
+          path: '/accounts',
+          name: 'accounts',
+          component: AccountListPage,
+        },
+        {
+          path: '/accounts/:id',
+          name: 'accountDetails',
+          component: AccountEditPage,
+        },
+        {
+          path: '/accounts/new',
+          name: 'newAccount',
+          component: AccountCreatePage,
+        },
+        {
+          path: '/dashboard',
+          name: 'dashboard',
+          component: AnalysisDashboard,
+        },
+        {
+          path: '/category',
+          name: 'category',
+          component: AnalysisCategory,
+        },
+      ]
     },
     {
       path: '/signup',
@@ -32,31 +69,7 @@ const router = createRouter({
       name: 'mypage',
       component: MypageView,
     },
-    {
-      path: '/accounts',
-      name: 'accounts',
-      component: AccountListPage,
-    },
-    {
-      path: '/accounts/:id',
-      name: 'accountDetails',
-      component: AccountEditPage,
-    },
-    {
-      path: '/accounts/new',
-      name: 'newAccount',
-      component: AccountCreatePage,
-    },
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: AnalysisDashboard,
-    },
-    {
-      path: '/category',
-      name: 'category',
-      component: AnalysisCategory,
-    },
+
   ],
 })
 
