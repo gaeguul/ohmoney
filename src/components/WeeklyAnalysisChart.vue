@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>주간별 분석</div>
+  <div class="p-4 weekly-analysis-chart">
+    <h4 class="fw-bold">주간별 분석</h4>
     <div id="chart">
       <VueApexCharts type="bar" :options="chartOptions" :series="series" />
     </div>
@@ -22,7 +22,7 @@ const series = ref([
 ])
 
 const categoriesWithData = rawLabels.map((label, idx) => {
-  return `${label} - ${seriesData[idx].toLocaleString()}원`
+  return [`${seriesData[idx].toLocaleString()}원`, label]
 })
 
 const chartOptions = ref({
@@ -34,7 +34,7 @@ const chartOptions = ref({
     bar: {
       horizontal: true,
       borderRadius: 10,
-      barHeight: 40,
+      barHeight: '60%',
     },
   },
   dataLabels: {
@@ -49,13 +49,6 @@ const chartOptions = ref({
     axisBorder: { show: false },
     axisTicks: { show: false },
   },
-  yaxis: {
-    labels: {
-      style: {
-        fontSize: '13px',
-      },
-    },
-  },
   colors: ['#FDC144'],
   grid: {
     show: false,
@@ -65,3 +58,22 @@ const chartOptions = ref({
   },
 })
 </script>
+
+<style>
+.weekly-analysis-chart {
+  max-width: 500px;
+}
+
+.apexcharts-yaxis-texts-g text tspan:nth-child(1) {
+  font-size: 16px;
+  font-family: 'Pretendard-Regular';
+  font-weight: 600;
+  fill: black;
+}
+
+.apexcharts-yaxis-texts-g text tspan:nth-child(2) {
+  font-size: 14px;
+  font-family: 'Pretendard-Regular';
+  fill: #bebebe;
+}
+</style>
