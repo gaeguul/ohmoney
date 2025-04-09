@@ -2,7 +2,7 @@
   <transition name="slide-fade">
     <div
       v-if="store.isOpen"
-      class="w-25 bg-white border rounded-3 p-4 d-flex flex-column justify-content-between dailyWrapper"
+      class="w-100 bg-white border rounded-3 p-4 d-flex flex-column justify-content-between dailyWrapper"
     >
       <!-- 일일 가계 내역 -->
       <div class="d-flex flex-column gap-1">
@@ -114,6 +114,7 @@ const netIncome = computed(() => {
 }
 
 .iconWrapper {
+  font-size: 2rem;
   width: 3rem;
   height: 3rem;
   display: flex;
@@ -123,9 +124,7 @@ const netIncome = computed(() => {
 }
 
 .categoryIcon {
-  font-size: 2rem;
-  width: 2rem;
-  height: 2rem;
+  font-size: 1em;
   color: white;
 }
 
@@ -156,5 +155,41 @@ const netIncome = computed(() => {
 .slide-fade-leave-to {
   opacity: 0;
   transform: translateX(40px);
+}
+
+@media (max-width: 1074px) {
+  .iconWrapper {
+    font-size: 1.6rem;
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .categoryIcon {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 980px) {
+  .iconWrapper {
+    font-size: 0.8rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .categoryIcon {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 940px) {
+  .iconWrapper {
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .categoryIcon {
+    font-size: 1em;
+  }
 }
 </style>
