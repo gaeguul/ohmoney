@@ -27,6 +27,7 @@
                 :class="{
                   'text-primary': date?.getDay() === 6,
                   'text-danger': date?.getDay() === 0,
+                  'text-muted': !isCurrentMonth(date),
                 }"
               >
                 {{ date?.getDate() || '' }}
@@ -123,6 +124,11 @@ function formatDate(date) {
   const dd = String(date.getDate()).padStart(2, '0')
   return `${yyyy}-${mm}-${dd}`
 }
+
+// 현재 달의 날짜인지 확인
+const isCurrentMonth = (date) => {
+  return date?.getMonth() === props.month
+}
 </script>
 
 <style scoped>
@@ -157,5 +163,9 @@ tbody td:hover {
 
 .textExpense {
   color: var(--color-expense);
+}
+
+.text-muted {
+  opacity: 0.4;
 }
 </style>
