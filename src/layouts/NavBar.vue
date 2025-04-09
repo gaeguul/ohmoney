@@ -4,21 +4,48 @@
 
     <!-- 전체 메뉴 영역 -->
     <div class="sidebar-content">
-      <div class="user-box">{{ userStore.userName }} 님의 가계부</div>
+      <div class="user-box">{{ userStore.userName }}님의 가계부</div>
 
       <nav class="menu">
-        <router-link to="/home">캘린더</router-link>
-        <router-link to="/accounts">내역</router-link>
-        <div class="analysis-menu">
-          <div class="menu-link" @click="toggleAnalysis">
-            <span :class="{ active: isDashboardActive }">분석</span>
+        <div class="menu-item" :class="{ active: route.path === '/home' }" @click="goTo('/home')">
+          캘린더
+        </div>
+
+        <div
+          class="menu-item"
+          :class="{ active: route.path === '/accounts' }"
+          @click="goTo('/accounts')"
+        >
+          내역
+        </div>
+
+        <div class="menu-item" @click="toggleAnalysis">
+          <span :class="{ active: isDashboardActive }">분석</span>
+        </div>
+        <div v-show="showAnalysisSubMenu" class="submenu">
+          <div
+            class="submenu-item"
+            :class="{ active: route.path === '/dashboard/month' }"
+            @click="goTo('/dashboard/month')"
+          >
+            월별 분석
           </div>
-          <div v-show="showAnalysisSubMenu" class="submenu">
-            <router-link to="/dashboard/month">월별 분석</router-link>
-            <router-link to="/dashboard/category">카테고리별 분석</router-link>
+          <div
+            class="submenu-item"
+            :class="{ active: route.path === '/dashboard/category' }"
+            @click="goTo('/dashboard/category')"
+          >
+            카테고리별 분석
           </div>
         </div>
-        <router-link to="/mypage">마이 페이지</router-link>
+
+        <div
+          class="menu-item"
+          :class="{ active: route.path === '/mypage2' }"
+          @click="goTo('/mypage2')"
+        >
+          마이 페이지
+        </div>
       </nav>
     </div>
 
@@ -31,13 +58,25 @@
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 //현재 로그인 중인 사용자 이름 출력용
 import { useUserStore } from '@/stores/userStore.js'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
+const router = useRouter()
 
+const goTo = (path) => {
+  if (route.path !== path) {
+    router.push(path)
+  }
+  showAnalysisSubMenu.value = false
+}
+
+const showAnalysisSubMenu = ref(false)
+const toggleAnalysis = () => {
+  showAnalysisSubMenu.value = !showAnalysisSubMenu.value
+}
 const isDashboardActive = computed(() => route.path.startsWith('/dashboard'))
 
 const userStore = useUserStore()
-console.log(useUserStore.userName)
+console.log(useUserStore)
 const isMobile = ref(window.innerWidth <= 640)
 
 const handleResize = () => {
@@ -50,12 +89,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('resize', handleResize)
 })
-
-//분석 하위 메뉴
-const showAnalysisSubMenu = ref(false)
-const toggleAnalysis = () => {
-  showAnalysisSubMenu.value = !showAnalysisSubMenu.value
-}
 </script>
 <style scoped>
 .sidebar {
@@ -87,27 +120,33 @@ const toggleAnalysis = () => {
   gap: 8px;
 }
 
+.analysis-menu {
+  display: inline-block;
+  vertical-align: middle;
+  /* padding-top: 1px; 또는 2px: 미세하게 위로 올리기 */
+}
+
 .menu {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-left: 4px;
 }
-
-.menu a {
-  text-decoration: none;
+.menu-item {
+  font-size: 16px;
   color: #555;
-  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
 }
 
-.menu a:hover {
+.menu-item:hover {
   font-weight: bold;
   color: #8b5cf6;
 }
 
-.menu a.router-link-exact-active {
-  color: #8b5cf6;
+.menu-item.active {
   font-weight: bold;
+  color: #8b5cf6;
 }
 
 .logout {
@@ -132,27 +171,6 @@ const toggleAnalysis = () => {
   z-index: 1001;
 }
 
-/* 분석 하위 메뉴 */
-.menu-link {
-  cursor: pointer;
-  color: #555;
-  font-weight: 400;
-  margin-left: 4px;
-  margin-bottom: 20px;
-  user-select: none;
-  font-size: 16px;
-}
-
-.menu-link:hover span {
-  font-weight: bold;
-  color: #8b5cf6;
-}
-
-.menu-link .active {
-  color: #8b5cf6;
-  font-weight: bold;
-}
-
 .submenu {
   display: flex;
   flex-direction: column;
@@ -160,15 +178,17 @@ const toggleAnalysis = () => {
   margin-left: 16px;
   margin-top: 4px;
 }
-
-.submenu a {
+.submenu-item {
   font-size: 14px;
   color: #777;
-  text-decoration: none;
+  cursor: pointer;
 }
-
-.submenu a.router-link-exact-active {
-  color: #8b5cf6;
+.submenu-item:hover {
   font-weight: bold;
+  color: #8b5cf6;
+}
+.submenu-item.active {
+  font-weight: bold;
+  color: #8b5cf6;
 }
 </style>
