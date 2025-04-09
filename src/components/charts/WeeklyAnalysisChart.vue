@@ -61,6 +61,7 @@ watchEffect(() => {
     chart: {
       type: 'bar',
       toolbar: { show: false },
+      height: '350px',
     },
     plotOptions: {
       bar: {
