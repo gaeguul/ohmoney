@@ -33,7 +33,7 @@
               {{ isExpense(item.categoryId) ? '지출' : '수입' }}
             </span>
           </td>
-          <td>{{ item.createdAt }}</td>
+          <td>{{ formatDate(item.createdAt) }}</td>
           <td>{{ getCategoryLabel(item.categoryId) }}</td>
           <td>{{ item.paymentMethod }}</td>
           <td>{{ item.vendor }}</td>
@@ -92,6 +92,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/userStore'
 import { useCategoryStore } from '@/stores/categoryStore.js'
 import { useFilterStore } from '@/stores/filterStore.js'
 import axios from 'axios'
@@ -100,13 +101,14 @@ const BASEURL = 'api/transactions'
 const router = useRouter()
 const categoryStore = useCategoryStore()
 const filterStore = useFilterStore()
+const userStore = useUserStore()
 
 const allHistories = ref([])
 
 onMounted(async () => {
   filterStore.resetFilters()
   try {
-    const res = await axios.get(BASEURL)
+    const res = await axios.get(`${BASEURL}?userId=${userStore.id}`)
     allHistories.value = res.data
   } catch (err) {
     console.error('내역 불러오기 실패:', err)
@@ -121,6 +123,16 @@ const deleteHistory = async (id) => {
   } catch (err) {
     console.error('삭제 실패:', err)
   }
+}
+
+const formatDate = (dateStr) => {
+  const date = new Date(dateStr)
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const daysKor = ['일', '월', '화', '수', '목', '금', '토']
+  const dayOfWeek = daysKor[date.getDay()]
+  return `${year}-${month}-${day} (${dayOfWeek})`
 }
 
 const goToEditForm = (id) => {
@@ -141,18 +153,22 @@ const filteredHistories = computed(() => {
   const { startDate, endDate, type, category } = filterStore
   const isAllEmpty = !startDate && !endDate && !type && !category
 
-  if (isAllEmpty) {
-    return allHistories.value
+  let result = allHistories.value.slice()
+
+  if (!isAllEmpty) {
+    result = result.filter((item) => {
+      const matchDate =
+        (!startDate || item.createdAt >= startDate) && (!endDate || item.createdAt <= endDate)
+      const matchType = !type || isExpense(item.categoryId) === (type === 'expense')
+      const matchCategory = !category || item.categoryId === category
+      return matchDate && matchType && matchCategory
+    })
   }
 
-  return allHistories.value.filter((item) => {
-    const matchDate =
-      (!startDate || item.createdAt >= startDate) && (!endDate || item.createdAt <= endDate)
-    const matchType = !type || isExpense(item.categoryId) === (type === 'expense')
-    const matchCategory = !category || item.categoryId === category
+  // 날짜 기준 오름차순 정렬
+  result.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
 
-    return matchDate && matchType && matchCategory
-  })
+  return result
 })
 
 const itemsPerPage = 7
@@ -189,7 +205,7 @@ const emptyRowCount = computed(() => {
   background-color: inherit !important;
 }
 .table-wrapper {
-  height: 70vh;
+  height: 60vh;
 }
 .table-wrapper table {
   height: 100%;
