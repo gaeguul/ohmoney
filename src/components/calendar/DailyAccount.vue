@@ -22,8 +22,8 @@
                 ]"
               >
                 <i
-                  v-if="flatCategoryMap[`${item.type}-${item.category}`]"
-                  :class="flatCategoryMap[`${item.type}-${item.category}`].icon"
+                  v-if="flatCategoryMap[`${item.transactionType}-${item.categoryId}`]"
+                  :class="flatCategoryMap[`${item.transactionType}-${item.categoryId}`].icon"
                   class="categoryIcon"
                 ></i>
               </div>
@@ -59,12 +59,17 @@
 
 <script setup>
 import { useCalendarStore } from '@/stores/useCalendarStore'
-import { computed } from 'vue'
-import categoryData from '@/assets/category.json'
+import { useCategoryStore } from '@/stores/categoryStore'
+import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const calendarStore = useCalendarStore()
+const categoryStore = useCategoryStore()
 const router = useRouter()
+
+onMounted(async () => {
+  await categoryStore.fetchCategories()
+})
 
 // 날짜 포맷팅
 const formattedDate = computed(() => {
@@ -79,15 +84,18 @@ const formattedDate = computed(() => {
 // 카테고리 매핑
 const flatCategoryMap = computed(() => {
   const map = {}
-  const raw = categoryData.category[0] // 배열 안에 expense/income 객체 하나
-
-  raw.expense.forEach((item) => {
-    map[`expense-${item.categoryId}`] = item
+  categoryStore.categories.expense.forEach((item) => {
+    map[`expense-${item.categoryId}`] = {
+      icon: item.categoryIcon,
+      name: item.categoryName,
+    }
   })
-  raw.income.forEach((item) => {
-    map[`income-${item.categoryId}`] = item
+  categoryStore.categories.income.forEach((item) => {
+    map[`income-${item.categoryId}`] = {
+      icon: item.categoryIcon,
+      name: item.categoryName,
+    }
   })
-
   return map
 })
 
@@ -99,10 +107,10 @@ const handleClickItem = (item) => {
 // 순수익 계산
 const netIncome = computed(() => {
   const income = calendarStore.accountList
-    .filter((item) => item.type === 'income')
+    .filter((item) => item.transactionType === 'income')
     .reduce((acc, item) => acc + item.amount, 0)
   const expense = calendarStore.accountList
-    .filter((item) => item.type === 'expense')
+    .filter((item) => item.transactionType === 'expense')
     .reduce((acc, item) => acc + item.amount, 0)
 
   return (income - expense).toLocaleString()
