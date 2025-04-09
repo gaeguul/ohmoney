@@ -36,3 +36,8 @@
 .text-subtitle {
   color: var(--color-text-subtitle);
 }
+
+.bg-subtle {
+  background-color: var(--bg-subtle);
+  border-radius: 20px;
+}
