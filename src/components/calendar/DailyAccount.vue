@@ -7,7 +7,7 @@
       <!-- 일일 가계 내역 -->
       <div class="d-flex flex-column gap-1">
         <h4>{{ formattedDate }}</h4>
-        <ul class="w-100 h-100 mt-3 dailyAccountList">
+        <ul class="w-100 h-100 mt-3 dailyAccountList d-flex flex-column gap-3">
           <li
             v-for="item in store.accountList"
             :key="item.useId"
