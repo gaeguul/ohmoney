@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>{{ currentYearMonth }}</div>
+    <h1 class="fw-bold">{{ currentYearMonth }}</h1>
     <MonthlySpendingChart />
     <MonthlyAnalysisChart />
     <WeeklyAnalysisChart />
@@ -15,4 +15,4 @@ import WeeklyAnalysisChart from '@/components/WeeklyAnalysisChart.vue'
 const currentYearMonth = '2025년 4월'
 </script>
 
-<style></style>
+<style scoped></style>
