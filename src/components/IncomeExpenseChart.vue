@@ -1,5 +1,5 @@
 <template>
-  <div id="chart">
+  <div id="chart" class="p-4 flex-grow-1 income-expense-chart">
     <VueApexCharts type="bar" :options="chartOptions" :series="series" />
   </div>
 </template>
@@ -8,7 +8,7 @@
 import { ref } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
-const rawLabels = ['수입', '지출']
+const rawLabels = ['4월 수입', '4월 지출']
 const seriesData = [45, 100]
 
 const series = ref([
@@ -19,7 +19,7 @@ const series = ref([
 ])
 
 const categoriesWithData = rawLabels.map((label, idx) => {
-  return `${label} - ${seriesData[idx].toLocaleString()}원`
+  return [`${seriesData[idx].toLocaleString()}원`, label]
 })
 
 const chartOptions = ref({
@@ -65,4 +65,21 @@ const chartOptions = ref({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.income-expense-chart {
+  max-width: 500px;
+}
+
+.apexcharts-xaxis-texts-g text tspan:nth-child(1) {
+  font-family: 'Pretendard-Regular';
+  font-size: 18px;
+  fill: black;
+  font-weight: 600;
+}
+
+.apexcharts-xaxis-texts-g text tspan:nth-child(2) {
+  font-size: 14px;
+  font-family: 'Pretendard-Regular';
+  fill: #bebebe;
+}
+</style>
