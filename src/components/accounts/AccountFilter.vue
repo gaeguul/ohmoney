@@ -26,11 +26,87 @@
         </div>
       </div>
     </div>
+
+    <!-- 분류 토글 -->
+    <div class="dropdown">
+      <button
+        class="btn filter-btn btn-outline-secondary dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        {{ typeLabel }}
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" href="#" @click.prevent="setType('income')">수입</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#" @click.prevent="setType('expense')">지출</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 카테고리 토글 -->
+    <div class="dropdown">
+      <button
+        class="filter-btn btn btn-outline-secondary dropdown-toggle"
+        type="button"
+        :disabled="!type"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        {{ categoryLabel }}
+      </button>
+      <ul class="dropdown-menu">
+        <li v-for="ctg in historyCategories" :key="ctg.categoryId">
+          <a class="dropdown-item" href="#" @click.prevent="setCategory(ctg.value)">
+            {{ ctg.label }}
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+
+// 필터 상태
+const type = ref('') //수입,지출 분류
+const category = ref('') //카테고리
+
+// 필터 값 세팅
+const setType = (val) => {
+  type.value = val
+  category.value = ''
+}
+//카테고리 값 세팅
+const setCategory = (val) => {
+  category.value = val
+}
+
+// 분류 값 계산
+const typeLabel = computed(() => {
+  return type.value === 'income' ? '수입' : type.value === 'expense' ? '지출' : '분류'
+})
+const categoryLabel = computed(() => {
+  if (!type.value) return '카테고리'
+  const match = historyCategories.value.find((ctg) => ctg.value === category.value)
+  return match ? match.label : '카테고리'
+})
+
+// 카테고리 목록
+const categoryMap = {
+  income: [],
+  expense: [],
+}
+const historyCategories = computed(() => {
+  return categoryMap[type.value] || []
+})
+
+// 카테고리 데이터 불러오기
+onMounted(async () => {})
 
 // 기간 필터
 const isDropdownOpen = ref(false)
