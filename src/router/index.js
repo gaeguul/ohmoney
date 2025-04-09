@@ -9,12 +9,18 @@ import AccountEditPage from '@/pages/account/AccountEditPage.vue'
 import AccountCreatePage from '@/pages/account/AccountCreatePage.vue'
 import AnalysisDashboard from '@/pages/analysis/AnalysisDashboard.vue'
 import AnalysisCategory from '@/pages/analysis/AnalysisCategory.vue'
+import MonthlyAnalysisChart from '@/components/charts/MonthlyAnalysisChart.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      redirect: '/signin'
+    },
+    {
+      path: '/main',
       name: 'defaultlayout',
       component: DefaultLayout,
       children:[
@@ -46,6 +52,18 @@ const router = createRouter({
           path: '/dashboard',
           name: 'dashboard',
           component: AnalysisDashboard,
+          children: [
+            {
+              path: 'month', // /dashboard/month
+              name: 'dashboard-month',
+              component: MonthlyAnalysisChart
+            },
+            {
+              path: 'category', // /dashboard/category
+              name: 'dashboard-category',
+              component:AnalysisCategory
+            }
+          ]
         },
         {
           path: '/category',

@@ -44,7 +44,11 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import axios from '@/api/axios'
+
+import { useUserStore } from '@/stores/userStore.js'
+import axios from 'axios'
+
+const userStore = useUserStore()
 
 //로그인 성공 시 환영 메시지
 const showWelcome = ref(false)
@@ -55,7 +59,7 @@ const showWelcomeToast = (message) => {
   showWelcome.value = true
   setTimeout(() => {
     showWelcome.value = false
-    router.push('/')
+    router.push('/main')
   }, 3000)
 }
 
@@ -78,15 +82,24 @@ const handleLogin = async () => {
   }
 
   try {
-    // 백엔드 또는 json-server에서 id, pw가 일치하는 사용자 조회
-    const { data } = await axios.get(`/user`, {
-      params: { id: id.value, pw: password.value },
+    //json-server에서 id, pw가 일치하는 사용자 조회
+
+    const { data } = await axios.get('/api/user', {
+      params: { userId: id.value, password: password.value },
     })
-
+    console.log('응답 데이터:', data)
+    //로그인 성공한 경우
     if (data.length > 0) {
-      const userName = data[0].name // 사용자 이름 가져오기
+      const user = data[0] // 사용자 가져오기
 
-      showWelcomeToast(`${userName} 님 안녕하세요!`)
+      // 저장소에 사용자 정보 저장
+      userStore.setUser({
+        userId: user.userId,
+        userName: user.userName,
+        password: user.password,
+      })
+      localStorage.setItem('user', JSON.stringify(user))
+      showWelcomeToast(`${user.userName} 님 안녕하세요!`)
     } else {
       // 로그인 실패 시 경고창
       openAlert('아이디 또는 비밀번호가 일치하지 않습니다!')
