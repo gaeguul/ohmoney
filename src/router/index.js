@@ -23,10 +23,10 @@ const router = createRouter({
       path: '/main',
       name: 'defaultlayout',
       component: DefaultLayout,
-      children:[
+      children: [
         {
           path: '',
-          redirect: '/home' // ✅ 기본 자식 라우트는 /home으로 이동
+          redirect: '/home', // ✅ 기본 자식 라우트는 /home으로 이동
         },
         {
           path: '/home',
@@ -49,7 +49,7 @@ const router = createRouter({
           component: AccountCreatePage,
         },
         {
-          path: '/dashboard',
+          path: '/dashboard/month',
           name: 'dashboard',
           component: AnalysisDashboard,
           children: [
@@ -66,7 +66,7 @@ const router = createRouter({
           ]
         },
         {
-          path: '/category',
+          path: '/dashboard/category',
           name: 'category',
           component: AnalysisCategory,
         },
@@ -75,7 +75,7 @@ const router = createRouter({
           name: 'mypage',
           component: MypageView,
         },
-      ]
+      ],
     },
     {
       path: '/signup',
@@ -87,8 +87,6 @@ const router = createRouter({
       name: 'signin',
       component: SigninView,
     },
-
-
   ],
 })
 
