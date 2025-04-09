@@ -5,7 +5,7 @@
       <h4 class="fw-bold">{{ totalExpenses }}원</h4>
       <div>
         지난 달보다
-        <span class="text-primary"> -{{ compareToLastMonth }}원 </span>
+        <span class="text-primary"> {{ compareToLastMonth }}원 </span>
       </div>
     </div>
 
@@ -20,19 +20,41 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { useMonthlySpending } from '@/stores/analysis'
+import { computed, onMounted, ref } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
+const userId = '7471'
 const currentMonth = 4
-const totalExpenses = '746,756'
-const compareToLastMonth = '59,400'
+const year = 2025
 
-const series = ref([
-  {
-    name: 'Daily Expenses',
-    data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10],
-  },
-])
+const store = useMonthlySpending()
+
+onMounted(() => {
+  store.fetchSpending(userId, year, currentMonth)
+})
+
+// 총 지출
+const totalExpenses = computed(() => store.thisMonthTotal.toLocaleString())
+
+// 전달과 비교
+const compareToLastMonth = computed(() => {
+  const diff = store.thisMonthTotal - store.lastMonthTotal
+  const abs = Math.abs(diff)
+  const sign = diff >= 0 ? '+' : '-'
+  return `${sign}${abs.toLocaleString()}`
+})
+
+const series = computed(() => {
+  const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'))
+  const data = days.map((day) => store.dailyExpenses[day] || 0)
+  return [
+    {
+      name: 'Daily Expenses',
+      data,
+    },
+  ]
+})
 
 const chartOptions = ref({
   chart: {
@@ -62,13 +84,14 @@ const chartOptions = ref({
     show: false,
   },
   tooltip: {
-    custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-      const label = w.globals.labels[dataPointIndex]
+    custom: function ({ series, seriesIndex, dataPointIndex }) {
+      const day = dataPointIndex + 1 // 0-based index → 1일부터 시작
+      const dateLabel = `${currentMonth}월 ${day}일`
       const value = series[seriesIndex][dataPointIndex].toLocaleString() + '원'
 
       return `
             <div class="custom-tooltip">
-              <div>${label}</div>
+              <div>${dateLabel}</div>
               <div>${value}</div>
             </div>
           `
