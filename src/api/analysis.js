@@ -5,8 +5,23 @@ const formatYearMonth = (date) => {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
 }
 
+// 주차 계산 함수
+const getWeek = (date) => {
+  const currentDate = date.getDate()
+  const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay()
+  return Math.ceil((currentDate + firstDay) / 7)
+}
+
+// 월별 최대 주차 계산
+const maxWeeksInMonth = (year, month) => {
+  const firstOfMonth = new Date(year, month - 1, 1)
+  const lastOfMonth = new Date(year, month, 0)
+  const used = firstOfMonth.getDay() + lastOfMonth.getDate()
+  return Math.ceil(used / 7)
+}
+
 // categoryId만 가져오는 함수
-export const fetchCategoryIds = async () => {
+const fetchCategoryIds = async () => {
   try {
     const res = await axios.get('/api/category') // 카테고리 API 호출
     const category = res.data?.[0] || { income: [], expense: [] }
@@ -70,4 +85,43 @@ export const getThreeMonthsAnalysis = async () => {}
 
 export const getIncomeExpense = async () => {}
 
-export const getWeeklyAnalysis = async () => {}
+export const getWeeklyAnalysis = async (userId, year, month) => {
+  try {
+    const res = await axios.get(`/api/transactions?userId=${userId}`)
+    const transactions = res.data || []
+    const thisMonth = `${year}-${String(month).padStart(2, '0')}`
+
+    // 1. 주차 초기화
+    const maxWeek = maxWeeksInMonth(year, month)
+    const weeklyExpense = {}
+
+    for (let i = 1; i <= maxWeek; i++) {
+      weeklyExpense[`week${i}`] = 0
+    }
+
+    // 2. 데이터 누적
+    transactions.forEach((tx) => {
+      if (tx.userId !== userId) return
+      if (tx.transactionType !== 'expense') return
+
+      const txDate = new Date(tx.createdAt)
+      const txYearMonth = `${txDate.getFullYear()}-${String(txDate.getMonth() + 1).padStart(2, '0')}`
+
+      if (txYearMonth !== thisMonth) return
+
+      const weekNum = getWeek(txDate)
+      const weekKey = `week${weekNum}`
+
+      if (!weeklyExpense[weekKey]) {
+        weeklyExpense[weekKey] = 0
+      }
+
+      weeklyExpense[weekKey] += tx.amount
+    })
+
+    return weeklyExpense
+  } catch (error) {
+    console.error('getWeeklyAnalysis 에러:', error)
+    return {}
+  }
+}
