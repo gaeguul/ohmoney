@@ -14,6 +14,7 @@ import CategoryGroup from './CategoryGroup.vue'
 import db from '/db.json'
 
 const id = '7471' // Example ID, replace with actual ID as needed
+
 const findById = (id) => {
   const date = new Date()
 

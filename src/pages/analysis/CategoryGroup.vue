@@ -4,7 +4,7 @@
       <div v-for="sum in summaryIncome" :key="sum.id" class="card">
         <div class="card-body">
           <div>{{ findCategoryName(sum) }}</div>
-          <i>${{ sum.sumAmount }}</i>
+          <i>￦{{ sum.sumAmount }}</i>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
       <div v-for="sum in summaryExpense" :key="sum.id" class="card">
         <div class="card-body">
           <div>{{ findCategoryName(sum) }}</div>
-          <i>${{ sum.sumAmount }}</i>
+          <i>￦{{ sum.sumAmount }}</i>
         </div>
       </div>
     </div>
@@ -47,6 +47,8 @@ const props = defineProps({
   summary: { type: Array, required: true },
   category: { type: Array, required: true },
 })
+const chartWidth = 800
+const chartHeight = 800
 
 onMounted(() => {
   summaryIncomeChart.labels = summaryIncome.map((item) => findCategoryName(item))
@@ -90,7 +92,7 @@ const findCategoryName = (sum) => {
 </script>
 <style scoped>
 .card-body > div {
-  width: 80px;
+  width: 180px;
   font-size: 20px;
   font-size: smaller;
   font-weight: lighter;
@@ -104,7 +106,9 @@ const findCategoryName = (sum) => {
 
 .content {
   display: flex;
-  flex-direction: column; /* 카드 그룹과 차트를 세로로 배치 */
+  flex-direction: column;
+  align-content: center;
+  overflow: hidden;
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -112,17 +116,19 @@ const findCategoryName = (sum) => {
 .card-group {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   margin-bottom: 100px;
   margin-top: 100px;
   gap: 8px;
 }
 
 .card {
-  width: 130px;
-  height: 100px;
+  width: 200px;
+  height: 130px;
   flex: 0 0 auto;
   border-radius: 10%;
   background-color: white;
   margin: 4px;
+  font-size: xx-large;
 }
 </style>
