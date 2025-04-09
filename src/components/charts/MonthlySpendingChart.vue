@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { useMonthlySpending } from '@/stores/analysis'
+import { useMonthlySpending } from '@/stores/analysisStore'
 import { computed, onMounted, ref } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
@@ -79,6 +79,7 @@ const chartOptions = ref({
   xaxis: {
     labels: { show: false },
     axisTicks: { show: false },
+    tooltip: { enabled: false },
   },
   yaxis: {
     show: false,
