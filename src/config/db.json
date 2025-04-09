@@ -1,5 +1,5 @@
 {
-  "sum": [
+  "summary": [
     {
       "userId": "aaa",
       "duration": "2025-04",
@@ -339,568 +339,523 @@
   ],
   "user": [
     {
-      "id": "aaa",
-      "pw": "bbb",
-      "name": "human1",
+      "userId": "aaa",
+      "password": "bbb",
+      "usercategoryName": "human1",
       "createdAt": "2025-01-15T10:30:00Z",
       "updatedAt": "2025-01-15T10:30:00Z"
     },
     {
-      "id": "bbb",
-      "pw": "ccc",
-      "name": "human2",
+      "userId": "bbb",
+      "password": "ccc",
+      "usercategoryName": "human2",
       "createdAt": "2025-01-18T14:20:00Z",
       "updatedAt": "2025-01-18T14:20:00Z"
     },
     {
-      "id": "ccc",
-      "pw": "ddd",
-      "name": "human3",
+      "userId": "ccc",
+      "password": "ddd",
+      "usercategoryName": "human3",
       "createdAt": "2025-02-05T09:45:00Z",
       "updatedAt": "2025-02-05T09:45:00Z"
     },
     {
-      "id": "ddd",
-      "pw": "eee",
-      "name": "human4",
+      "userId": "ddd",
+      "password": "eee",
+      "usercategoryName": "human4",
       "createdAt": "2025-02-12T16:30:00Z",
       "updatedAt": "2025-02-12T16:30:00Z"
     },
     {
-      "id": "eee",
-      "pw": "fff",
-      "name": "human5",
+      "userId": "eee",
+      "password": "fff",
+      "usercategoryName": "human5",
       "createdAt": "2025-03-01T11:15:00Z",
       "updatedAt": "2025-03-01T11:15:00Z"
     }
   ],
-  "uses": [
+  "transactions": [
     {
       "userId": "aaa",
-      "date": "2025-05-01",
-      "category": 10,
+      "categoryId": 10,
       "amount": 9000,
       "memo": "마스크팩 구입",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "올리브영",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-01T14:30:00Z",
       "updatedAt": "2025-05-01T14:30:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-06-09",
-      "category": 22,
+      "categoryId": 22,
       "amount": 10000,
       "memo": "아싸 용돈",
-      "payment_method": "현금",
+      "paymentMethod": "현금",
       "vendor": "부모님",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-06-09T18:15:00Z",
       "updatedAt": "2025-06-09T18:15:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-06-01",
-      "category": 20,
+      "categoryId": 20,
       "amount": 120000,
       "memo": "아싸 월급",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "회사",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-06-01T09:00:00Z",
       "updatedAt": "2025-06-01T09:00:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-06-13",
-      "category": 24,
+      "categoryId": 24,
       "amount": 3000,
       "memo": "길에서 주웠다",
-      "payment_method": "현금",
+      "paymentMethod": "현금",
       "vendor": "기타",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-06-13T16:45:00Z",
       "updatedAt": "2025-06-13T16:45:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-05-01",
-      "category": 1,
+      "categoryId": 1,
       "amount": 15000,
       "memo": "민정이랑 점심",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "백채김치찌개",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-01T13:00:00Z",
       "updatedAt": "2025-05-01T13:00:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-04-01",
-      "category": 20,
+      "categoryId": 20,
       "amount": 80000,
       "memo": "아싸 월급",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "회사",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-04-01T09:00:00Z",
       "updatedAt": "2025-04-01T09:00:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-05-05",
-      "category": 19,
+      "categoryId": 19,
       "amount": 9000,
       "memo": "친구의 돈을 갚았다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "친구",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-05T17:30:00Z",
       "updatedAt": "2025-05-05T17:30:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-06-09",
-      "category": 15,
+      "categoryId": 15,
       "amount": 20000,
       "memo": "옷 샀다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "의류매장",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-06-09T15:45:00Z",
       "updatedAt": "2025-06-09T15:45:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-06-10",
-      "category": 1,
+      "categoryId": 1,
       "amount": 12000,
       "memo": "혼밥했다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "식당",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-06-10T12:30:00Z",
       "updatedAt": "2025-06-10T12:30:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-05-25",
-      "category": 19,
+      "categoryId": 19,
       "amount": 3000,
       "memo": "길에서 돈을 잃어버렸다",
-      "payment_method": "현금",
+      "paymentMethod": "현금",
       "vendor": "기타",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-25T14:20:00Z",
       "updatedAt": "2025-05-25T14:20:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-04-29",
-      "category": 15,
+      "categoryId": 15,
       "amount": 50000,
       "memo": "사고싶은 옷을 샀다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "패션몰",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-04-29T18:30:00Z",
       "updatedAt": "2025-04-29T18:30:00Z"
     },
     {
       "userId": "aaa",
-      "date": "2025-06-08",
-      "category": 1,
+      "categoryId": 1,
       "amount": 22000,
       "memo": "치킨먹었다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "치킨집",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-06-08T19:00:00Z",
       "updatedAt": "2025-06-08T19:00:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-04-05",
-      "category": 20,
+      "categoryId": 20,
       "amount": 50000,
       "memo": "아싸 월급",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "회사",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-04-05T10:15:00Z",
       "updatedAt": "2025-04-05T10:15:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-06-09",
-      "category": 21,
+      "categoryId": 21,
       "amount": 10000,
       "memo": "배당금이 들어왔다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "증권사",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-06-09T16:30:00Z",
       "updatedAt": "2025-06-09T16:30:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-05-05",
-      "category": 20,
+      "categoryId": 20,
       "amount": 100000,
       "memo": "아싸 월급",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "회사",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-05-05T09:45:00Z",
       "updatedAt": "2025-05-05T09:45:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-06-13",
-      "category": 24,
+      "categoryId": 24,
       "amount": 30000,
       "memo": "친구가 돈을 갚았다",
-      "payment_method": "현금",
+      "paymentMethod": "현금",
       "vendor": "친구",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-06-13T11:20:00Z",
       "updatedAt": "2025-06-13T11:20:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-06-05",
-      "category": 20,
+      "categoryId": 20,
       "amount": 150000,
       "memo": "아싸 월급",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "회사",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-06-05T09:30:00Z",
       "updatedAt": "2025-06-05T09:30:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-04-01",
-      "category": 22,
+      "categoryId": 22,
       "amount": 50000,
       "memo": "아싸 용돈",
-      "payment_method": "현금",
+      "paymentMethod": "현금",
       "vendor": "부모님",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-04-01T17:45:00Z",
       "updatedAt": "2025-04-01T17:45:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-05-05",
-      "category": 1,
+      "categoryId": 1,
       "amount": 50000,
       "memo": "한우를 먹었다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "한우전문점",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-05T19:30:00Z",
       "updatedAt": "2025-05-05T19:30:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-06-03",
-      "category": 15,
+      "categoryId": 15,
       "amount": 100000,
       "memo": "신발을 샀다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "신발가게",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-06-03T14:00:00Z",
       "updatedAt": "2025-06-03T14:00:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-04-20",
-      "category": 2,
+      "categoryId": 2,
       "amount": 12000,
       "memo": "택시비",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "택시",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-04-20T19:30:00Z",
       "updatedAt": "2025-04-20T19:30:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-05-25",
-      "category": 19,
+      "categoryId": 19,
       "amount": 3000,
       "memo": "약국에서 약을 샀다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "약국",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-25T17:15:00Z",
       "updatedAt": "2025-05-25T17:15:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-05-19",
-      "category": 18,
+      "categoryId": 18,
       "amount": 50000,
       "memo": "적금을 넣었다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "은행",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-19T10:00:00Z",
       "updatedAt": "2025-05-19T10:00:00Z"
     },
     {
       "userId": "bbb",
-      "date": "2025-06-08",
-      "category": 12,
+      "categoryId": 12,
       "amount": 22000,
       "memo": "술을 마셨다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "술집",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-06-08T21:45:00Z",
       "updatedAt": "2025-06-08T21:45:00Z"
     },
-
     {
       "userId": "ccc",
-      "date": "2025-05-15",
-      "category": 22,
+      "categoryId": 22,
       "amount": 10000,
       "memo": "용돈을 받았다",
-      "payment_method": "현금",
+      "paymentMethod": "현금",
       "vendor": "부모님",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-05-15T11:30:00Z",
       "updatedAt": "2025-05-15T11:30:00Z"
     },
     {
       "userId": "ccc",
-      "date": "2025-06-15",
-      "category": 22,
+      "categoryId": 22,
       "amount": 100000,
       "memo": "아싸 용돈",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "부모님",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-06-15T11:30:00Z",
       "updatedAt": "2025-06-15T11:30:00Z"
     },
     {
       "userId": "ccc",
-      "date": "2025-06-03",
-      "category": 20,
+      "categoryId": 20,
       "amount": 120000,
       "memo": "아싸 알바비가 들어왔다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "알바장소",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-06-03T11:30:00Z",
       "updatedAt": "2025-06-03T11:30:00Z"
     },
     {
       "userId": "ccc",
-      "date": "2025-05-23",
-      "category": 24,
+      "categoryId": 24,
       "amount": 30000,
       "memo": "당근해서 돈벌었다",
-      "payment_method": "현금",
+      "paymentMethod": "현금",
       "vendor": "당근마켓",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-05-23T11:30:00Z",
       "updatedAt": "2025-05-23T11:30:00Z"
     },
     {
       "userId": "ccc",
-      "date": "2025-05-03",
-      "category": 20,
+      "categoryId": 20,
       "amount": 100000,
       "memo": "알바비 들어왔다!",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "알바장소",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-05-03T11:30:00Z",
       "updatedAt": "2025-05-03T11:30:00Z"
     },
     {
       "userId": "ccc",
-      "date": "2025-05-01",
-      "category": 9,
+      "categoryId": 9,
       "amount": 32000,
       "memo": "휴대폰 요금이 나갔다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "통신사",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-01T11:30:00Z",
       "updatedAt": "2025-05-01T11:30:00Z"
     },
     {
       "userId": "ccc",
-      "date": "2025-06-08",
-      "category": 15,
+      "categoryId": 15,
       "amount": 80000,
       "memo": "옷 샀다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "의류매장",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-06-08T11:30:00Z",
       "updatedAt": "2025-06-08T11:30:00Z"
     },
     {
       "userId": "ccc",
-      "date": "2025-06-10",
-      "category": 1,
+      "categoryId": 1,
       "amount": 34000,
       "memo": "데이트할때 저녁!",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "레스토랑",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-06-10T11:30:00Z",
       "updatedAt": "2025-06-10T11:30:00Z"
     },
     {
       "userId": "ccc",
-      "date": "2025-06-11",
-      "category": 19,
+      "categoryId": 19,
       "amount": 5000,
       "memo": "아 돈을 잃어버렸다",
-      "payment_method": "현금",
+      "paymentMethod": "현금",
       "vendor": "기타",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-06-11T11:30:00Z",
       "updatedAt": "2025-06-11T11:30:00Z"
     },
     {
       "userId": "ccc",
-      "date": "2025-04-29",
-      "category": 13,
+      "categoryId": 13,
       "amount": 5000,
       "memo": "커피 한잔 사먹었다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "카페",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-04-29T11:30:00Z",
       "updatedAt": "2025-04-29T11:30:00Z"
     },
     {
       "userId": "ccc",
-      "date": "2025-05-28",
-      "category": 1,
+      "categoryId": 1,
       "amount": 22000,
       "memo": "치킨먹었다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "치킨집",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-28T11:30:00Z",
       "updatedAt": "2025-05-28T11:30:00Z"
     },
     {
       "userId": "ddd",
-      "date": "2025-05-15",
-      "category": 20,
+      "categoryId": 20,
       "amount": 300000,
       "memo": "월급이다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "회사",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-05-15T11:30:00Z",
       "updatedAt": "2025-05-15T11:30:00Z"
     },
     {
       "userId": "ddd",
-      "date": "2025-06-15",
-      "category": 20,
+      "categoryId": 20,
       "amount": 300000,
       "memo": "아싸 월급 들어왔다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "회사",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-06-15T11:30:00Z",
       "updatedAt": "2025-06-15T11:30:00Z"
     },
     {
       "userId": "ddd",
-      "date": "2025-06-03",
-      "category": 18,
+      "categoryId": 18,
       "amount": 1000000,
       "memo": "적금 만기!",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "은행",
-      "type": "income",
+      "transactionType": "income",
       "createdAt": "2025-06-03T11:30:00Z",
       "updatedAt": "2025-06-03T11:30:00Z"
     },
     {
       "userId": "ddd",
-      "date": "2025-05-02",
-      "category": 19,
+      "categoryId": 19,
       "amount": 50000,
       "memo": "친구에게 돈을 빌려줬다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "친구",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-02T11:30:00Z",
       "updatedAt": "2025-05-02T11:30:00Z"
     },
     {
       "userId": "ddd",
-      "date": "2025-06-09",
-      "category": 7,
+      "categoryId": 7,
       "amount": 20000,
       "memo": "책을 샀다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "서점",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-06-09T11:30:00Z",
       "updatedAt": "2025-06-09T11:30:00Z"
     },
     {
       "userId": "ddd",
-      "date": "2025-06-10",
-      "category": 1,
+      "categoryId": 1,
       "amount": 3000,
       "memo": "빵 사먹었다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "베이커리",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-06-10T11:30:00Z",
       "updatedAt": "2025-06-10T11:30:00Z"
     },
     {
       "userId": "ddd",
-      "date": "2025-05-25",
-      "category": 2,
+      "categoryId": 2,
       "amount": 50000,
       "memo": "교통비 빠져나가는 날",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "교통카드",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-25T11:30:00Z",
       "updatedAt": "2025-05-25T11:30:00Z"
     },
     {
       "userId": "ddd",
-      "date": "2025-04-04",
-      "category": 19,
+      "categoryId": 19,
       "amount": 50000,
       "memo": "병원을 다녀옴",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "병원",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-04-04T11:30:00Z",
       "updatedAt": "2025-04-04T11:30:00Z"
     },
     {
       "userId": "ddd",
-      "date": "2025-05-20",
-      "category": 1,
+      "categoryId": 1,
       "amount": 35000,
       "memo": "삼겹살 먹었다",
-      "payment_method": "카드",
+      "paymentMethod": "카드",
       "vendor": "고기집",
-      "type": "expense",
+      "transactionType": "expense",
       "createdAt": "2025-05-20T11:30:00Z",
       "updatedAt": "2025-05-20T11:30:00Z"
     }
@@ -910,121 +865,121 @@
       "expense": [
         {
           "categoryId": 1,
-          "name": "식비",
-          "icon": "fa-solid fa-utensils"
+          "categoryName": "식비",
+          "categoryIcon": "fa-solid fa-utensils"
         },
         {
           "categoryId": 2,
-          "name": "교통 / 차량",
-          "icon": "fa-solid fa-train-subway"
+          "categoryName": "교통 / 차량",
+          "categoryIcon": "fa-solid fa-train-subway"
         },
         {
           "categoryId": 3,
-          "name": "공과금",
-          "icon": "fa-solid fa-file-invoice-dollar"
+          "categoryName": "공과금",
+          "categoryIcon": "fa-solid fa-file-invoice-dollar"
         },
         {
           "categoryId": 4,
-          "name": "캠핑",
-          "icon": "fa-solid fa-campground"
+          "categoryName": "캠핑",
+          "categoryIcon": "fa-solid fa-campground"
         },
         {
           "categoryId": 5,
-          "name": "문화 생활",
-          "icon": "fa-solid fa-clapperboard"
+          "categoryName": "문화 생활",
+          "categoryIcon": "fa-solid fa-clapperboard"
         },
         {
           "categoryId": 6,
-          "name": "마트 / 생필품",
-          "icon": "fa-solid fa-cart-shopping"
+          "categoryName": "마트 / 생필품",
+          "categoryIcon": "fa-solid fa-cart-shopping"
         },
         {
           "categoryId": 7,
-          "name": "교육",
-          "icon": "fa-solid fa-file-pen"
+          "categoryName": "교육",
+          "categoryIcon": "fa-solid fa-file-pen"
         },
         {
           "categoryId": 8,
-          "name": "구독비",
-          "icon": "fa-brands fa-youtube"
+          "categoryName": "구독비",
+          "categoryIcon": "fa-brands fa-youtube"
         },
         {
           "categoryId": 9,
-          "name": "통신비",
-          "icon": "fa-solid fa-mobile-screen-button"
+          "categoryName": "통신비",
+          "categoryIcon": "fa-solid fa-mobile-screen-button"
         },
         {
           "categoryId": 10,
-          "name": "미용",
-          "icon": "fa-solid fa-spray-can-sparkles"
+          "categoryName": "미용",
+          "categoryIcon": "fa-solid fa-spray-can-sparkles"
         },
         {
           "categoryId": 11,
-          "name": "운동",
-          "icon": "fa-solid fa-dumbbell"
+          "categoryName": "운동",
+          "categoryIcon": "fa-solid fa-dumbbell"
         },
         {
           "categoryId": 12,
-          "name": "술 / 음료",
-          "icon": "fa-solid fa-beer-mug-empty"
+          "categoryName": "술 / 음료",
+          "categoryIcon": "fa-solid fa-beer-mug-empty"
         },
         {
           "categoryId": 13,
-          "name": "카페",
-          "icon": "fa-solid fa-mug-hot"
+          "categoryName": "카페",
+          "categoryIcon": "fa-solid fa-mug-hot"
         },
         {
           "categoryId": 14,
-          "name": "경조사 / 선물",
-          "icon": "fa-solid fa-cake-candles"
+          "categoryName": "경조사 / 선물",
+          "categoryIcon": "fa-solid fa-cake-candles"
         },
         {
           "categoryId": 15,
-          "name": "의류",
-          "icon": "fa-solid fa-shirt"
+          "categoryName": "의류",
+          "categoryIcon": "fa-solid fa-shirt"
         },
         {
           "categoryId": 16,
-          "name": "여행",
-          "icon": "fa-solid fa-plane"
+          "categoryName": "여행",
+          "categoryIcon": "fa-solid fa-plane"
         },
         {
           "categoryId": 17,
-          "name": "육아",
-          "icon": "fa-solid fa-baby-carriage"
+          "categoryName": "육아",
+          "categoryIcon": "fa-solid fa-baby-carriage"
         },
         {
           "categoryId": 18,
-          "name": "적금",
-          "icon": "fa-solid fa-piggy-bank"
+          "categoryName": "적금",
+          "categoryIcon": "fa-solid fa-piggy-bank"
         },
         {
           "categoryId": 19,
-          "name": "기타",
-          "icon": "fa-solid fa-ellipsis"
+          "categoryName": "기타",
+          "categoryIcon": "fa-solid fa-ellipsis"
         }
       ],
       "income": [
-        { "categoryId": 20, "name": "월급", "icon": "fa-solid fa-money-bill-wave" },
+        { "categoryId": 20, "categoryName": "월급", "categoryIcon": "fa-solid fa-money-bill-wave" },
         {
           "categoryId": 21,
-          "name": "부수입",
-          "icon": "fa-solid fa-piggy-bank"
+          "categoryName": "부수입",
+          "categoryIcon": "fa-solid fa-piggy-bank"
         },
         {
           "categoryId": 22,
-          "name": "용돈",
-          "icon": "fa-solid fa-hand-holding-dollar"
+          "categoryName": "용돈",
+          "categoryIcon": "fa-solid fa-hand-holding-dollar"
         },
         {
           "categoryId": 23,
-          "name": "서비스",
-          "icon": "fa-solid fa-bell-concierge"
+          "categoryName": "서비스",
+          "categoryIcon": "fa-solid fa-bell-concierge"
         },
         {
           "categoryId": 24,
-          "name": "기타",
-          "icon": "fa-solid fa-ellipsis"
+          "categoryName": "기타",
+          "categoryIcon": "fa-solid fa-ellipsis"
         }
       ]
     }
