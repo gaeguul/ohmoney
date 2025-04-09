@@ -107,13 +107,16 @@ onBeforeUnmount(() => {
     position: fixed !important;
     top: 0;
     left: 0;
-    width: 95vw;
+    width: 75vw;
     height: 100vh;
     background-color: white;
     z-index: 999;
     overflow-y: auto;
     padding: 24px 24px;
     box-sizing: border-box;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
   }
 
   .main-content {
