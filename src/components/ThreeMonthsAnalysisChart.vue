@@ -1,21 +1,12 @@
 <template>
-  <div>
-    <div>
-      <div>{{ currentMonth }}월 분석</div>
-      <div>이번 달에는 지난 달보다 {{ compareToLastMonth }}원 덜 쓰셨어요!</div>
-    </div>
-    <div id="chart">
-      <VueApexCharts type="bar" :options="chartOptions" :series="series" />
-    </div>
+  <div id="chart" class="p-4 flex-grow-1 three-months-analysis-chart">
+    <VueApexCharts type="bar" :options="chartOptions" :series="series" />
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
-
-const currentMonth = 4
-const compareToLastMonth = 59400
 
 const rawLabels = ['2월 지출', '3월 지출', '4월 지출']
 const seriesData = [45, 52, 38]
@@ -28,12 +19,13 @@ const series = ref([
 ])
 
 const categoriesWithData = rawLabels.map((label, idx) => {
-  return `${label} - ${seriesData[idx].toLocaleString()}원`
+  return [`${seriesData[idx].toLocaleString()}원`, label]
 })
 
 const chartOptions = ref({
   chart: {
     type: 'line',
+    width: '100%',
     toolbar: { show: false },
     zoom: {
       enabled: false,
@@ -57,6 +49,9 @@ const chartOptions = ref({
     categories: categoriesWithData,
     axisBorder: { show: false }, // 축 선 제거
     axisTicks: { show: false }, // 축 눈금 제거
+    labels: {
+      rotate: 0,
+    },
   },
   yaxis: {
     show: false, // 전체 축 제거
@@ -74,4 +69,22 @@ const chartOptions = ref({
 })
 </script>
 
-<style scoped></style>
+<style>
+.three-months-analysis-chart {
+  max-width: 500px;
+}
+
+.apexcharts-xaxis-texts-g text tspan:nth-child(1) {
+  font-family: 'Pretendard-Regular';
+  font-size: 18px;
+  fill: black;
+  font-weight: 600;
+}
+
+.apexcharts-xaxis-texts-g text tspan:nth-child(2) {
+  font-size: 14px;
+  font-family: 'Pretendard-Regular';
+
+  fill: #bebebe;
+}
+</style>
