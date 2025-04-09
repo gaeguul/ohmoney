@@ -15,31 +15,31 @@
           <td
             v-for="(date, dIndex) in week"
             :key="dIndex"
-            :class="[
-              { 'bg-body-tertiary': isToday(date) },
-              { 'selected-date': formatDate(date) === calendarStore.selectedDate },
-            ]"
+            :class="[{ 'selected-date': formatDate(date) === calendarStore.selectedDate }]"
             style="width: 14.28%"
             @click="calendarStore.toggleDate(date)"
           >
-            <div class="d-flex flex-column h-100 w-100">
+            <div class="d-flex flex-column h-100 w-100 justify-content-between">
               <p
                 :class="{
                   'text-primary': date?.getDay() === 6,
                   'text-danger': date?.getDay() === 0,
                   'text-muted': !isCurrentMonth(date),
+                  'today-circle': isToday(date),
                 }"
               >
                 {{ date?.getDate() || '' }}
               </p>
 
-              <!-- 수입/지출 합계 숫자 -->
-              <p class="textIncome small mb-0" v-if="dailySummaryMap[formatDate(date)]?.income">
-                +{{ dailySummaryMap[formatDate(date)].income.toLocaleString() }}
-              </p>
-              <p class="textExpense small mb-0" v-if="dailySummaryMap[formatDate(date)]?.expense">
-                -{{ dailySummaryMap[formatDate(date)].expense.toLocaleString() }}
-              </p>
+              <div class="d-flex flex-column align-items-end">
+                <!-- 수입/지출 합계 숫자 -->
+                <p class="textIncome small mb-0" v-if="dailySummaryMap[formatDate(date)]?.income">
+                  +{{ dailySummaryMap[formatDate(date)].income.toLocaleString() }}
+                </p>
+                <p class="textExpense small mb-0" v-if="dailySummaryMap[formatDate(date)]?.expense">
+                  -{{ dailySummaryMap[formatDate(date)].expense.toLocaleString() }}
+                </p>
+              </div>
             </div>
           </td>
         </tr>
@@ -154,7 +154,19 @@ tbody td:hover {
 }
 
 .selected-date {
+  width: 14.28%;
   background-color: var(--color-gray-100);
+}
+
+.today-circle {
+  background-color: var(--color-purple-400);
+  color: white !important;
+  border-radius: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  text-align: center;
+  line-height: 1.6rem;
+  font-weight: bold;
 }
 
 .textIncome {
