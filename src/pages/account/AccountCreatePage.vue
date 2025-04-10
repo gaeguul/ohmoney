@@ -11,7 +11,7 @@
       <div class="col">
         <div class="row">
           <div class="label">날짜</div>
-          <input type="text" placeholder="xxxx-xx-xx" class="input-field" v-model.trim="tempDate" />
+          <input type="date" class="input-field" v-model.trim="tempDate" />
         </div>
         <div class="row">
           <div class="label">분류</div>
@@ -134,16 +134,7 @@ const newTransaction = reactive({
   userId: userStore.id,
 })
 
-const isValidDateFormat = (dateStr) => {
-  return /^\d{4}-\d{2}-\d{2}$/.test(dateStr)
-}
-
 const submitForm = async () => {
-  if (!isValidDateFormat(tempDate.value)) {
-    alert('날짜 형식이 올바르지 않습니다. (예: 2025-04-01)')
-    return
-  }
-
   const date = new Date(tempDate.value)
   newTransaction.createdAt = date
   newTransaction.updatedAt = date
@@ -153,7 +144,6 @@ const submitForm = async () => {
   await axios.post(BASEurlT, { ...newTransaction })
 
   updateSum(duration)
-  router.push('/home')
 }
 
 const updateSum = async (duration) => {
@@ -173,6 +163,8 @@ const updateSum = async (duration) => {
     sumAmount: Number(target.sumAmount) + Number(newTransaction.amount),
     updatedAt: newTransaction.updatedAt,
   })
+
+  router.push('/home')
 }
 
 const icons = computed(() =>
