@@ -597,9 +597,9 @@
     {
       "duration": "2025-04",
       "categoryId": 16,
-      "sumAmount": 289000,
+      "sumAmount": 1289000,
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2025-04-01T00:00:00Z",
+      "updatedAt": "2025-04-18T00:00:00.000Z",
       "userId": "7471",
       "id": "3054"
     },
@@ -867,9 +867,9 @@
     {
       "duration": "2025-04",
       "categoryId": 1,
-      "sumAmount": 252400,
+      "sumAmount": 262400,
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2025-04-10T07:49:22.209Z",
+      "updatedAt": "2025-04-29T00:00:00.000Z",
       "userId": "7471",
       "id": "20d4"
     },
@@ -2424,9 +2424,9 @@
     {
       "duration": "2025-04",
       "categoryId": 17,
-      "sumAmount": 119500,
+      "sumAmount": 200100,
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2025-04-01T00:00:00Z",
+      "updatedAt": "2025-04-10T13:58:35.236Z",
       "userId": "7471",
       "id": "b2db"
     },
@@ -12253,14 +12253,14 @@
       "id": "f80e"
     },
     {
-      "categoryId": 17,
-      "amount": 9500,
-      "memo": "Dummy",
+      "categoryId": 21,
+      "amount": "90100",
+      "memo": "Dummy ㅇㄴㅁㄴㅁㅇ",
       "paymentMethod": "현금",
       "vendor": "회사",
-      "transactionType": "expense",
+      "transactionType": "income",
       "createdAt": "2025-04-01T00:00:00.000Z",
-      "updatedAt": "2025-04-10T05:05:26.231Z",
+      "updatedAt": "2025-04-10T14:01:13.792Z",
       "userId": "7471",
       "id": "2bbc",
       "date": ""
@@ -15677,12 +15677,37 @@
       "id": "85d9",
       "categoryId": 1,
       "memo": "ㄴ",
-      "paymentMethod": "card",
+      "paymentMethod": "카드",
       "amount": "10000",
-      "vendor": "ㄴ",
-      "transactionType": "",
+      "vendor": "ㄴㄴㄴㅁㅇㅁㅇㄴㅁㅇ",
+      "transactionType": "expense",
       "createdAt": "2025-04-01T00:00:00.000Z",
-      "updatedAt": "2025-04-01T00:00:00.000Z",
+      "updatedAt": "2025-04-10T13:58:17.824Z",
+      "userId": "7471",
+      "date": ""
+    },
+    {
+      "id": "b8aa",
+      "categoryId": 1,
+      "memo": "맛있",
+      "paymentMethod": "카드",
+      "amount": 10000,
+      "vendor": "중식",
+      "transactionType": "expense",
+      "createdAt": "2025-04-29T00:00:00.000Z",
+      "updatedAt": "2025-04-29T00:00:00.000Z",
+      "userId": "7471"
+    },
+    {
+      "id": "b5ac",
+      "categoryId": 16,
+      "memo": "꿀잼",
+      "paymentMethod": "카드",
+      "amount": 1000000,
+      "vendor": "미국",
+      "transactionType": "expense",
+      "createdAt": "2025-04-18T00:00:00.000Z",
+      "updatedAt": "2025-04-18T00:00:00.000Z",
       "userId": "7471"
     }
   ],

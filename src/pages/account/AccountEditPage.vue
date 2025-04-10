@@ -4,6 +4,7 @@
       v-model:newTransaction="newTransaction"
       :originTransaction="originTransaction"
       v-model:tempDate="tempDate"
+      v-model:isExpense="state.isExpense"
       :submitForm="submitForm"
       :updateSum="updateSum"
     />
@@ -18,7 +19,6 @@ import db from '/db.json'
 import axios from 'axios'
 import { useRouter, useRoute } from 'vue-router'
 
-const state = reactive({ isExpense: true })
 const userStore = useUserStore()
 const BASEurlT = 'http://localhost:3000/transactions'
 const BASEurlS = 'http://localhost:3000/summary'
@@ -26,6 +26,7 @@ const tempDate = ref('')
 const router = useRouter()
 const route = useRoute()
 const categoryId = route.params.id
+const state = reactive({ isExpense: true })
 
 const newTransaction = reactive({
   date: '',

@@ -119,6 +119,7 @@ import { computed, reactive } from 'vue'
 import AccountIconGroup from './accountAssets/AccountIconGroup.vue'
 import accountFormIcon from '/db.json'
 import { useRoute } from 'vue-router'
+import { onMounted } from 'vue'
 const props = defineProps({
   submitForm: {
     type: Function,
@@ -137,7 +138,7 @@ const route = useRoute()
 const categoryId = route.params.id
 const tempDate = defineModel('tempDate')
 const newTransaction = defineModel('newTransaction')
-const state = reactive({ isExpense: true })
+const state = defineModel('isExpense')
 
 const submit = () => {
   if (!validateForm()) return
@@ -198,15 +199,15 @@ const validateForm = () => {
 }
 
 const icons = computed(() =>
-  state.isExpense ? accountFormIcon.category[0].expense : accountFormIcon.category[0].income,
+  state.value ? accountFormIcon.category[0].expense : accountFormIcon.category[0].income,
 )
 
 const changeCategoryExpense = () => {
-  state.isExpense = true
+  state.value = true
 }
 
 const changeCategoryIncome = () => {
-  state.isExpense = false
+  state.value = false
 }
 </script>
 

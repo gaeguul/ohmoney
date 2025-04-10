@@ -3,6 +3,7 @@
     <AccountForm
       v-model:newTransaction="newTransaction"
       v-model:tempDate="tempDate"
+      v-model:isExpense="state.isExpense"
       :submitForm="submitForm"
       :updateSum="updateSum"
     />
@@ -22,6 +23,7 @@ const BASEurlT = 'http://localhost:3000/transactions'
 const BASEurlS = 'http://localhost:3000/summary'
 const tempDate = ref('')
 const router = useRouter()
+const state = reactive({ isExpense: true })
 
 const newTransaction = reactive({
   categoryId: '',
