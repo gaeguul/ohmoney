@@ -135,7 +135,8 @@ const usageDays = computed(() => {
   const created = new Date(createdDate.getFullYear(), createdDate.getMonth(), createdDate.getDate())
   const now = new Date()
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-  return Math.floor((today - created) / (1000 * 60 * 60 * 24))
+  const diff = Math.floor((today - created) / (1000 * 60 * 60 * 24))
+  return diff + 1 //등록일도 1일로 포함
 })
 
 const logout = () => {
