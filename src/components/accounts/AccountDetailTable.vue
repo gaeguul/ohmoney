@@ -192,7 +192,7 @@ const filteredHistories = computed(() => {
 })
 
 // 페이지네이션 관련 계산
-const itemsPerPage = 7
+const itemsPerPage = 10
 const currentPage = ref(1)
 const pageGroupSize = 10
 
