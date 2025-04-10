@@ -200,7 +200,7 @@ const clearCategory = () => {
 }
 .dropdown-menu {
   margin-top: 5px;
-  max-height: 25vh;
+  max-height: 30vh;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--color-gray-300) transparent;
@@ -217,5 +217,10 @@ const clearCategory = () => {
 }
 .dropdown-item:active .category-icon-tag {
   color: var(--color-purple-100) !important;
+}
+.filter-btn:disabled {
+  color: var(--color-gray-600) !important;
+  border-color: var(--color-gray-500) !important;
+  cursor: not-allowed;
 }
 </style>
