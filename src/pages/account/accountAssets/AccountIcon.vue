@@ -1,7 +1,14 @@
 <template>
   <span v-for="item in props.icons" :key="item.name">
     <label class="submit">
-      <input type="radio" name="cash" id="cash" />
+
+      <input
+        type="radio"
+        name="category"
+        :value="item.categoryId"
+        v-model="modelValue"
+        class="hidden-radio"
+      />
       <i :class="item.categoryIcon" class="custom-icon-color"></i>
       <div>{{ item.categoryName }}</div>
     </label>
@@ -12,6 +19,7 @@
 const props = defineProps({
   icons: { type: Array, required: true },
 })
+const modelValue = defineModel()
 </script>
 
 <style scoped>
@@ -20,12 +28,8 @@ const props = defineProps({
   flex-direction: column;
   align-items: center;
 }
-.submit input[type='radio'] {
-  opacity: 0;
-}
-
-.submit input[type='radio'] + i {
-  margin-bottom: 5px;
+.hidden-radio {
+  display: none;
 }
 
 .submit input[type='radio']:checked + i {
