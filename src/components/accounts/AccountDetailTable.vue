@@ -237,15 +237,14 @@ const emptyRowCount = computed(() => {
 .detail-history-row:not(.no-hover):hover td {
   background-color: #f4eeff;
 }
-.detail-history-row.no-hover td {
-  cursor: default;
-  background-color: inherit !important;
-}
-.table-wrapper {
+
+.table-wrapper table {
   height: 60vh;
+  overflow-x: auto; /* 👉 가로 스크롤 가능하게 */
+  scrollbar-width: none;
 }
 .table-wrapper table {
-  height: 100%;
+  min-width: 768px;
   width: 100%;
 }
 .table-wrapper td {
@@ -255,7 +254,7 @@ const emptyRowCount = computed(() => {
 .table-wrapper td {
   padding: 0.4rem;
   vertical-align: middle;
-  background-color: #fafafa;
+  background-color: var(--color-gray-100);
 }
 .delete-btn {
   border: none;
@@ -263,5 +262,12 @@ const emptyRowCount = computed(() => {
 .delete-btn:hover,
 .delete-btn:active {
   color: var(--color-purple-400);
+}
+/* 화면 너비가 768px 이하일 때 (태블릿 이하) */
+@media (max-width: 640px) {
+  .table-wrapper th,
+  .table-wrapper td {
+    background-color: white;
+  }
 }
 </style>
