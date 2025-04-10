@@ -78,7 +78,6 @@ const toggleAnalysis = () => {
 const isDashboardActive = computed(() => route.path.startsWith('/dashboard'))
 
 const userStore = useUserStore()
-console.log(useUserStore)
 const isMobile = ref(window.innerWidth <= 640)
 
 const handleResize = () => {
