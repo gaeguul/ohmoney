@@ -5,12 +5,15 @@
 
     <!-- 캘린더 테이블 -->
     <div class="calendar-layout" :class="{ 'is-mobile': isMobile }">
-      <div class="calendar-table-wrapper" :class="{ 'full-width': !store.isOpen && !isMobile }">
+      <div
+        class="calendar-table-wrapper"
+        :class="{ 'full-width': !calendarStore.isOpen && !isMobile }"
+      >
         <CalendarTable :year="year" :month="month" />
       </div>
 
       <!-- 일일 계좌 내역 -->
-      <div v-if="store.isOpen" class="daily-account-wrapper">
+      <div v-if="calendarStore.isOpen" class="daily-account-wrapper">
         <DailyAccount />
       </div>
     </div>
@@ -24,8 +27,7 @@ import CalendarTable from '../components/calendar/CalendarTable.vue'
 import DailyAccount from '../components/calendar/DailyAccount.vue'
 import { useCalendarStore } from '@/stores/useCalendarStore'
 
-const store = useCalendarStore()
-
+const calendarStore = useCalendarStore()
 const today = new Date()
 const year = ref(today.getFullYear())
 const month = ref(today.getMonth())
@@ -40,6 +42,7 @@ const checkIsMobile = () => {
 onMounted(() => {
   checkIsMobile()
   window.addEventListener('resize', checkIsMobile)
+  calendarStore.fetchTransactions()
 })
 </script>
 

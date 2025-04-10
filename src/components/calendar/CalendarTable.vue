@@ -107,13 +107,14 @@ const isToday = (date) => {
 // 일일 income/expense 합계 저장
 const dailySummaryMap = computed(() => {
   const summary = {}
-  calendarStore.allData.forEach((item) => {
+  calendarStore.transactionList.forEach((item) => {
     const date = item.date
     if (!summary[date]) {
       summary[date] = { income: 0, expense: 0 }
     }
-    summary[date][item.type] += item.amount
+    summary[date][item.transactionType] += item.amount
   })
+
   return summary
 })
 
@@ -132,6 +133,11 @@ const isCurrentMonth = (date) => {
 </script>
 
 <style scoped>
+table {
+  min-width: 313px;
+  width: 100%;
+}
+
 td {
   height: 100px;
   vertical-align: middle;
@@ -151,6 +157,7 @@ tbody td:hover {
 .calendar-wrapper {
   border-radius: 12px;
   overflow: hidden;
+  overflow-x: auto;
 }
 
 .selected-date {
@@ -179,5 +186,31 @@ tbody td:hover {
 
 .text-muted {
   opacity: 0.4;
+}
+
+@media (max-width: 866px) {
+  .textIncome,
+  .textExpense {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .textIncome,
+  .textExpense {
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.25rem;
+  }
+}
+
+@media (max-width: 478px) {
+  .textIncome,
+  .textExpense {
+    font-size: 0.6rem;
+  }
 }
 </style>
