@@ -8,7 +8,7 @@
         {{ gap > 0 ? '더' : '덜' }} 쓰셨어요!
       </div>
     </div>
-    <div class="analysis-container d-flex flex-col gap-4 w-100 flex-wrap">
+    <div class="chart-container gap-4 flex-wrap">
       <ThreeMonthsAnalysisChart />
       <IncomeExpenseChart />
     </div>
@@ -44,12 +44,13 @@ const gap = computed(() => currentExpense.value - lastMonthExpense.value)
 </script>
 
 <style scoped>
-/* 641px 이상이면 가로로 배치하고, 공간을 균등 분할 */
-@media (min-width: 641px) {
-  .chart-wrapper {
-    flex: 1;
-  }
+.chart-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
+@media (min-width: 641px) {
   .monthly-analysis-container {
     background-color: white;
     border-radius: 20px;

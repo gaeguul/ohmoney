@@ -98,7 +98,7 @@ watchEffect(() => {
 
 <style>
 .weekly-analysis-chart {
-  max-width: 500px;
+  max-width: 100%;
   background-color: white;
   border-radius: 20px;
 }

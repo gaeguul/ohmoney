@@ -1,5 +1,5 @@
 <template>
-  <div id="chart" class="p-4 mt-4 flex-grow-1 income-expense-chart">
+  <div id="chart" class="mt-4 flex-grow-1 income-expense-chart">
     <VueApexCharts type="bar" :options="chartOptions" :series="series" />
   </div>
 </template>

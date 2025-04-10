@@ -67,6 +67,7 @@ const series = computed(() => {
 const chartOptions = ref({
   chart: {
     type: 'line',
+    width: 500,
     toolbar: { show: false },
     zoom: {
       enabled: false,
@@ -119,10 +120,6 @@ const chartOptions = ref({
 </script>
 
 <style scoped>
-.monthly-spending-chart {
-  max-width: 500px;
-}
-
 @media (min-width: 641px) {
   .monthly-spending-chart {
     background-color: white;
