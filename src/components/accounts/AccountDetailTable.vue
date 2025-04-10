@@ -237,7 +237,6 @@ const emptyRowCount = computed(() => {
 .detail-history-row:not(.no-hover):hover td {
   background-color: #f4eeff;
 }
-
 .table-wrapper table {
   height: 60vh;
   overflow-x: auto; /* 👉 가로 스크롤 가능하게 */
@@ -263,7 +262,6 @@ const emptyRowCount = computed(() => {
 .delete-btn:active {
   color: var(--color-purple-400);
 }
-/* 화면 너비가 768px 이하일 때 (태블릿 이하) */
 @media (max-width: 640px) {
   .table-wrapper th,
   .table-wrapper td {
