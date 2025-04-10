@@ -1,11 +1,10 @@
 <template>
-  <div class="analysis-category container">
-    <header><h1>카테고리 별 분석</h1></header>
+  <div class="analysis-category container-fluid">
+    <h2 class="fw-bold mb-5">카테고리 별 분석</h2>
     <div id="body">
       <div id="figure">
         <CategoryGroup :summary="findById(id)" :category="db.category[0]" />
       </div>
-      <div id="chart"></div>
     </div>
   </div>
 </template>
@@ -13,7 +12,7 @@
 import CategoryGroup from './CategoryGroup.vue'
 import db from '/db.json'
 
-const id = '7471' // Example ID, replace with actual ID as needed
+const id = '7471'
 
 const findById = (id) => {
   const date = new Date()
@@ -26,14 +25,12 @@ const findById = (id) => {
         parseInt(year) === date.getFullYear() && parseInt(month) === date.getMonth() + 1 // getMonth()는 0-based!
       )
     })
-  // return db.summary.filter((category) => category.userId === id)
 }
 </script>
 <style scoped>
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 header h1 {
   font-weight: bold;
@@ -42,6 +39,7 @@ header h1 {
   padding: auto;
 }
 #body {
+  width: 100%;
   display: flex;
   align-content: center;
   gap: 10px;

@@ -29,6 +29,7 @@ const chartOptions = ref({
     zoom: {
       enabled: false,
     },
+    fontFamily: 'inherit',
   },
   plotOptions: {
     bar: {

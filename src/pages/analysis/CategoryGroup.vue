@@ -1,42 +1,42 @@
 <template>
-  <div class="content">
-    <div class="card-group">
-      <div v-for="sum in summaryIncome" :key="sum.id" class="card">
-        <div class="card-body">
-          <div>{{ findCategoryName(sum) }}</div>
-          <i>￦{{ sum.sumAmount }}</i>
+  <div class="w-100 row">
+    <div class="col d-flex gap-5">
+      <div class="content">
+        <CategoryCircleChart
+          class="foo-chart"
+          :width="chartWidth"
+          :height="chartHeight"
+          :loading="loading"
+          :labels="summaryIncomeChart.labels"
+          :data="summaryIncomeChart.data"
+          title="카테고리 별 수입"
+        />
+        <div class="list-group">
+          <div v-for="sum in summaryIncome" :key="sum.id" class="list-item">
+            <span>{{ findCategoryName(sum) }}</span>
+            <span>{{ sum.sumAmount.toLocaleString() }}원</span>
+          </div>
         </div>
       </div>
-    </div>
-    <CategoryCircleChart
-      class="foo-chart"
-      :width="chartWidth"
-      :height="chartHeight"
-      :loading="loading"
-      :labels="summaryIncomeChart.labels"
-      :data="summaryIncomeChart.data"
-      title="카테고리 별 수입"
-    />
-  </div>
 
-  <div class="content">
-    <div class="card-group">
-      <div v-for="sum in summaryExpense" :key="sum.id" class="card">
-        <div class="card-body">
-          <div>{{ findCategoryName(sum) }}</div>
-          <i>￦{{ sum.sumAmount }}</i>
+      <div class="content w-100">
+        <CategoryCircleChart
+          class="foo-chart"
+          :width="chartWidth"
+          :height="chartHeight"
+          :loading="loading"
+          :labels="summaryExpenseChart.labels"
+          :data="summaryExpenseChart.data"
+          title="카테고리 별 지출"
+        />
+        <div class="list-group">
+          <div v-for="sum in summaryExpense" :key="sum.id" class="list-item">
+            <span>{{ findCategoryName(sum) }}</span>
+            <span>{{ sum.sumAmount.toLocaleString() }}원</span>
+          </div>
         </div>
       </div>
     </div>
-    <CategoryCircleChart
-      class="foo-chart"
-      :width="chartWidth"
-      :height="chartHeight"
-      :loading="loading"
-      :labels="summaryExpenseChart.labels"
-      :data="summaryExpenseChart.data"
-      title="카테고리 별 지출"
-    />
   </div>
 </template>
 <script setup>
@@ -47,8 +47,8 @@ const props = defineProps({
   summary: { type: Array, required: true },
   category: { type: Array, required: true },
 })
-const chartWidth = 800
-const chartHeight = 800
+const chartWidth = 400
+const chartHeight = 400
 
 onMounted(() => {
   summaryIncomeChart.labels = summaryIncome.map((item) => findCategoryName(item))
@@ -82,8 +82,6 @@ const summaryExpenseChart = reactive({
 })
 
 const findCategoryName = (sum) => {
-  // console.log(summaryExpense.sort((a, b) =>{ b.sumAmount - a.sumAmount}))
-
   let name = ''
   const categoryId = sum.categoryId
 
@@ -96,50 +94,38 @@ const findCategoryName = (sum) => {
     name = props.category.income.find((category) => category.categoryId === categoryId)
   }
 
-  // console.log(summaryExpenseChart)
-  // const name = props.category.expense.find((category) => category.categoryId === sum).categoryName
   return name.categoryName
 }
 </script>
 <style scoped>
-.card-body > div {
-  width: 180px;
-  font-size: 20px;
-  font-size: smaller;
-  font-weight: lighter;
+.list-group {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.card-body > i {
-  width: 80px;
-  color: #7c4ce8;
-  font-weight: bold;
-  font-style: normal;
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.list-item:last-child {
+  border-bottom: none;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   align-content: center;
-  overflow: hidden;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.card-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-bottom: 100px;
-  margin-top: 100px;
-  gap: 8px;
-}
-
-.card {
-  width: 200px;
-  height: 130px;
-  flex: 0 0 auto;
-  border-radius: 10%;
-  background-color: white;
-  margin: 4px;
-  font-size: xx-large;
+  gap: 40px;
+  padding: 0 30px;
 }
 </style>
