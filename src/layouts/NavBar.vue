@@ -66,7 +66,9 @@ const goTo = (path) => {
   if (route.path !== path) {
     router.push(path)
   }
-  showAnalysisSubMenu.value = false
+  if (!path.startsWith('/dashboard')) {
+    showAnalysisSubMenu.value = false
+  }
 }
 
 const showAnalysisSubMenu = ref(false)
