@@ -85,7 +85,31 @@ const router = createRouter({
       name: 'signin',
       component: SigninView,
     },
+    {
+      path: '/mypage',
+      name: 'mypage',
+      component: newMypageView,
+      meta: { requiresAuth: true },
+    },
   ],
 })
+router.beforeEach((to, from, next) => {
+  const userStore = useUserStore()
 
+  // localStorage에 있으면 복원
+  if (!userStore.isLoggedIn && localStorage.getItem('user')) {
+    try {
+      const saved = JSON.parse(localStorage.getItem('user'))
+      userStore.setUser(saved)
+    } catch {
+      localStorage.removeItem('user')
+    }
+  }
+
+  if (to.meta.requiresAuth && !userStore.isLoggedIn) {
+    next('/signin')
+  } else {
+    next()
+  }
+})
 export default router
