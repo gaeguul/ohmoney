@@ -22,6 +22,7 @@
                 name="uses"
                 id="지출"
                 value="expense"
+                @change="changeCategoryExpense"
                 v-model="newTransaction.transactionType"
               />
               <span>지출</span>
@@ -32,6 +33,7 @@
                 name="uses"
                 id="수입"
                 value="income"
+                @change="changeCategoryIncome"
                 v-model="newTransaction.transactionType"
               />
               <span>수입</span>
