@@ -11,12 +11,7 @@
       <div class="col">
         <div class="row">
           <div class="label">날짜</div>
-          <input
-            type="text"
-            placeholder="xxxx-xx-xx"
-            class="input-field"
-            v-model.trim="newTransaction.date"
-          />
+          <input type="text" placeholder="xxxx-xx-xx" class="input-field" v-model.trim="tempDate" />
         </div>
         <div class="row">
           <div class="label">분류</div>
@@ -26,13 +21,22 @@
                 type="radio"
                 name="uses"
                 id="지출"
+                value="expense"
                 checked="checked"
                 @change="changeCategoryExpense"
+                v-model="newTransaction.transactionType"
               />
               <span>지출</span>
             </label>
             <label class="submit">
-              <input type="radio" name="uses" id="수입" @change="changeCategoryIncome" />
+              <input
+                type="radio"
+                name="uses"
+                id="수입"
+                value="income"
+                @change="changeCategoryIncome"
+                v-model="newTransaction.transactionType"
+              />
               <span>수입</span>
             </label>
           </div>
@@ -108,12 +112,15 @@ import AccountIconGroup from './accountAssets/AccountIconGroup.vue'
 import accountFormIcon from '/db.json'
 import { useUserStore } from '@/stores/userStore'
 import db from '/db.json'
+import axios from 'axios'
 
 const state = reactive({ isExpense: true })
 const userStore = useUserStore()
+const BASEurlT = 'http://localhost:3000/transactions'
+const BASEurlS = 'http://localhost:3000/summary'
+const tempDate = ref('')
 
 const newTransaction = reactive({
-  date: '',
   categoryId: '',
   memo: '',
   paymentMethod: '',
@@ -122,11 +129,57 @@ const newTransaction = reactive({
   transactionType: '',
   createdAt: '',
   updatedAt: '',
-  userId: userStore.userId,
+  userId: userStore.id,
 })
 
-const submitForm = () => {
-  console.log(newTransaction)
+const isValidDateFormat = (dateStr) => {
+  return /^\d{4}-\d{2}-\d{2}$/.test(dateStr)
+}
+
+const submitForm = async () => {
+  if (!isValidDateFormat(tempDate.value)) {
+    alert('날짜 형식이 올바르지 않습니다. (예: 2025-04-01)')
+    return
+  }
+
+  const date = new Date(tempDate.value)
+  newTransaction.createdAt = date
+  newTransaction.updatedAt = date
+
+  const duration = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0')
+
+  await axios.post(BASEurlT, { ...newTransaction })
+
+  updateSum(duration)
+}
+
+const updateSum = async (duration) => {
+  const target = db.summary.find(
+    (item) =>
+      item.duration === duration &&
+      item.userId === newTransaction.userId &&
+      item.categoryId === newTransaction.categoryId,
+  )
+  console.log('target', target)
+
+  if (!target) {
+    console.error('해당 summary 항목을 찾을 수 없습니다.')
+    return
+  }
+
+  await axios.patch(`${BASEurlS}/${target.id}`, {
+    sumAmount: Number(target.sumAmount) + Number(newTransaction.amount),
+    updatedAt: newTransaction.updatedAt,
+  })
+
+  console.log(
+    db.summary.find(
+      (item) =>
+        item.duration === duration &&
+        item.userId === newTransaction.userId &&
+        item.categoryId === newTransaction.categoryId,
+    ),
+  )
 }
 
 const icons = computed(() =>
@@ -135,12 +188,10 @@ const icons = computed(() =>
 
 const changeCategoryExpense = () => {
   state.isExpense = true
-  newTransaction.transactionType = 'expense'
 }
 
 const changeCategoryIncome = () => {
   state.isExpense = false
-  newTransaction.transactionType = 'income'
 }
 </script>
 
