@@ -177,8 +177,15 @@ const filteredHistories = computed(() => {
 
   if (!isAllEmpty) {
     result = result.filter((item) => {
-      const matchDate =
-        (!startDate || item.createdAt >= startDate) && (!endDate || item.createdAt <= endDate)
+      const itemDate = new Date(item.createdAt)
+      const start = startDate ? new Date(startDate) : null
+      const end = endDate ? new Date(endDate) : null
+
+      if (end) {
+        end.setDate(end.getDate() + 1)
+      }
+
+      const matchDate = (!start || itemDate >= start) && (!end || itemDate < end)
       const matchType = !type || isExpense(item.categoryId) === (type === 'expense')
       const matchCategory = !category || item.categoryId === category
       return matchDate && matchType && matchCategory
