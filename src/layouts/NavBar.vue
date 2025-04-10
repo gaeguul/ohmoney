@@ -4,7 +4,13 @@
 
     <!-- 전체 메뉴 영역 -->
     <div class="sidebar-content">
-      <div class="user-box">{{ userStore.userName }}님의 가계부</div>
+      <div class="user-box">
+        <div class="top-line">
+          <span class="icon">👤</span>
+          <span class="username">{{ userStore.userName }}님의</span>
+        </div>
+        <div class="bottom-line">가계부</div>
+      </div>
 
       <nav class="menu">
         <div class="menu-item" :class="{ active: route.path === '/home' }" @click="goTo('/home')">
@@ -117,10 +123,26 @@ onBeforeUnmount(() => {
   font-weight: bold;
   margin-bottom: 40px;
   display: flex;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  gap: 6px;
 }
 
+.top-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+}
+
+.bottom-line {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: right; /* ✅ 오른쪽 정렬 */
+}
+
+.icon {
+  font-size: 18px;
+}
 .analysis-menu {
   display: inline-block;
   vertical-align: middle;
