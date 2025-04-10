@@ -8,66 +8,103 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { useWeeklySpending } from '@/stores/analysisStore'
+import { useUserStore } from '@/stores/userStore'
+import { computed, onMounted, ref, watchEffect } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
-const rawLabels = ['4월 1주', '4월 2주', '4월 3주', '4월 4주']
-const seriesData = [0, 61262, 137350, 210644]
+const now = new Date()
+const year = now.getFullYear()
+const month = now.getMonth() + 1
 
-const series = ref([
-  {
-    name: 'Weekly Expenses',
-    data: seriesData,
-  },
-])
+const userStore = useUserStore()
+const userId = userStore.id
 
-const categoriesWithData = rawLabels.map((label, idx) => {
-  return [`${seriesData[idx].toLocaleString()}원`, label]
+const store = useWeeklySpending()
+
+onMounted(() => {
+  store.fetchWeeklySpending(userId, year, month)
 })
 
-const chartOptions = ref({
-  chart: {
-    type: 'bar',
-    toolbar: { show: false },
-  },
-  plotOptions: {
-    bar: {
-      horizontal: true,
-      borderRadius: 10,
-      barHeight: '60%',
+// 월 텍스트 예: "4월"
+const monthLabel = computed(() => `${month}월`)
+
+// 주차 키 배열 정렬
+const sortedWeeks = computed(() => {
+  return Object.keys(store.weeklyExpense).sort((a, b) => {
+    const getNum = (key) => parseInt(key.replace('week', ''), 10)
+    return getNum(a) - getNum(b)
+  })
+})
+
+// 시리즈 데이터와 주차 라벨 (예: "4월 1주")
+const series = ref([])
+const chartOptions = ref({})
+
+watchEffect(() => {
+  const data = sortedWeeks.value.map((weekKey) => store.weeklyExpense[weekKey] || 0)
+  const labels = sortedWeeks.value.map((weekKey) => {
+    const num = parseInt(weekKey.replace('week', ''), 10)
+    return `${monthLabel.value} ${num}주`
+  })
+
+  const categoriesWithData = data.map((amount, idx) => [
+    `${amount.toLocaleString()}원`,
+    labels[idx],
+  ])
+
+  series.value = [
+    {
+      name: 'Weekly Expenses',
+      data,
     },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  tooltip: {
-    enabled: false,
-  },
-  xaxis: {
-    categories: categoriesWithData,
-    labels: { show: false },
-    axisBorder: { show: false },
-    axisTicks: { show: false },
-  },
-  colors: ['#FDC144'],
-  grid: {
-    show: false,
-  },
-  legend: {
-    show: false,
-  },
+  ]
+
+  chartOptions.value = {
+    chart: {
+      type: 'bar',
+      toolbar: { show: false },
+      height: '350px',
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+        borderRadius: 10,
+        barHeight: '60%',
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    tooltip: {
+      enabled: false,
+    },
+    xaxis: {
+      categories: categoriesWithData,
+      labels: { show: false },
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+    },
+    colors: ['#FDC144'],
+    grid: {
+      show: false,
+    },
+    legend: {
+      show: false,
+    },
+  }
 })
 </script>
 
 <style>
 .weekly-analysis-chart {
-  max-width: 500px;
+  max-width: 100%;
   background-color: white;
   border-radius: 20px;
 }
 
 .apexcharts-yaxis-texts-g text tspan:nth-child(1) {
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Pretendard-Regular';
   font-weight: 600;
   fill: black;

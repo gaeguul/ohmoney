@@ -42,11 +42,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
 import { useUserStore } from '@/stores/userStore.js'
 import axios from 'axios'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
 
@@ -84,7 +83,7 @@ const handleLogin = async () => {
   try {
     //json-server에서 id, pw가 일치하는 사용자 조회
 
-    const { data } = await axios.get('/api/user', {
+    const { data } = await axios.get(`/api/user`, {
       params: { userId: id.value, password: password.value },
     })
     console.log('응답 데이터:', data)
