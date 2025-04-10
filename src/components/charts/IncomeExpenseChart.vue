@@ -1,67 +1,76 @@
 <template>
-  <div id="chart" class="p-4 mt-4 flex-grow-1 income-expense-chart">
+  <div id="chart" class="mt-4 flex-grow-1 income-expense-chart">
     <VueApexCharts type="bar" :options="chartOptions" :series="series" />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { useIncomeExpense } from '@/stores/analysisStore'
+import { useUserStore } from '@/stores/userStore'
+import { onMounted, ref, watchEffect } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
 
-const rawLabels = ['4월 수입', '4월 지출']
-const seriesData = [45, 100]
+const now = new Date()
+const year = now.getFullYear()
+const month = now.getMonth() + 1
 
-const series = ref([
-  {
-    name: 'Income and Expenses',
-    data: seriesData,
-  },
-])
+const userStore = useUserStore()
+const userId = userStore.id
 
-const categoriesWithData = rawLabels.map((label, idx) => {
-  return [`${seriesData[idx].toLocaleString()}원`, label]
+const store = useIncomeExpense()
+
+onMounted(() => {
+  store.fetchIncomeExpense(userId, year, month)
 })
+const series = ref([])
+const chartOptions = ref({})
 
-const chartOptions = ref({
-  chart: {
-    type: 'line',
-    toolbar: { show: false },
-    zoom: {
-      enabled: false,
+watchEffect(() => {
+  const data = [store.incomeTotal, store.expenseTotal]
+  const labels = [`${month}월 수입`, `${month}월 지출`]
+  const categoriesWithData = data.map((amount, idx) => [
+    `${amount.toLocaleString()}원`,
+    labels[idx],
+  ])
+
+  series.value = [
+    {
+      name: 'Income and Expenses',
+      data,
     },
-  },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: 60,
-      borderRadius: 10,
-      distributed: true,
+  ]
+
+  chartOptions.value = {
+    chart: {
+      type: 'bar',
+      toolbar: { show: false },
+      zoom: { enabled: false },
     },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  tooltip: {
-    enabled: false,
-  },
-  xaxis: {
-    categories: categoriesWithData,
-    axisBorder: { show: false }, // 축 선 제거
-    axisTicks: { show: false }, // 축 눈금 제거
-  },
-  yaxis: {
-    show: false, // 전체 축 제거
-    labels: { show: false }, // 축 글자 제거
-    axisBorder: { show: false }, // 축 선 제거
-    axisTicks: { show: false }, // 축 눈금 제거
-  },
-  colors: ['#D9D9D9', '#D9D9D9'],
-  grid: {
-    show: false,
-  },
-  legend: {
-    show: false,
-  },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: 60,
+        borderRadius: 10,
+        distributed: true,
+      },
+    },
+    dataLabels: { enabled: false },
+    tooltip: { enabled: false },
+    xaxis: {
+      categories: categoriesWithData,
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+    },
+    yaxis: {
+      show: false,
+      labels: { show: false },
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+    },
+    colors: ['#1bbf85', '#ef5a5a'],
+    grid: { show: false },
+    legend: { show: false },
+  }
 })
 </script>
 

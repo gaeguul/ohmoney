@@ -42,11 +42,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
 import { useUserStore } from '@/stores/userStore.js'
 import axios from 'axios'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
 
@@ -84,7 +83,7 @@ const handleLogin = async () => {
   try {
     //json-server에서 id, pw가 일치하는 사용자 조회
 
-    const { data } = await axios.get('/api/user', {
+    const { data } = await axios.get(`/api/user`, {
       params: { userId: id.value, password: password.value },
     })
     console.log('응답 데이터:', data)
@@ -225,16 +224,20 @@ input {
   max-width: none;
   width: auto;
   min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .alert-message {
-  font-size: 25px;
-  color: #7c3aed;
-  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .alert-button {
-  padding: 10px 20px;
+  padding: 10px 30px;
   background-color: #8b5cf6;
   color: white;
   border: none;
@@ -243,6 +246,7 @@ input {
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: 10px;
 }
 
 .alert-button:hover {
