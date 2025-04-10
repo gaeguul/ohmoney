@@ -149,7 +149,7 @@ const netIncome = computed(() => {
 
 .dailyAccountList {
   max-height: 360px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .incomeIcon {
