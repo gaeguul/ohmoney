@@ -14,6 +14,7 @@
         </tr>
       </thead>
       <tbody>
+        <!-- 거래 내역 표시 -->
         <tr
           v-for="item in paginatedData"
           :key="item.id"
@@ -54,6 +55,7 @@
           </td>
         </tr>
 
+        <!-- 남은 칸을 빈 줄로 채우기 -->
         <tr
           v-for="n in emptyRowCount"
           :key="'empty-' + n"
@@ -65,12 +67,18 @@
       </tbody>
     </table>
 
+    <!-- 페이지네이션 영역 -->
     <div class="d-flex justify-content-center p-3 gap-2">
-      <button class="page-btn btn btn-outline-secondary btn-sm" @click="goToPage(currentPage - 1)">
+      <button
+        class="page-btn btn btn-outline-secondary btn-sm"
+        :disabled="startPageInGroup === 1"
+        @click="goToPage(startPageInGroup - 1)"
+      >
         ←
       </button>
+
       <button
-        v-for="n in totalPages"
+        v-for="n in pageNumbersInGroup"
         :key="n"
         class="page-btn btn btn-sm"
         :class="[
@@ -82,7 +90,12 @@
       >
         {{ n }}
       </button>
-      <button class="page-btn btn btn-outline-secondary btn-sm" @click="goToPage(currentPage + 1)">
+
+      <button
+        class="page-btn btn btn-outline-secondary btn-sm"
+        :disabled="endPageInGroup === totalPages"
+        @click="goToPage(endPageInGroup + 1)"
+      >
         →
       </button>
     </div>
@@ -103,19 +116,22 @@ const categoryStore = useCategoryStore()
 const filterStore = useFilterStore()
 const userStore = useUserStore()
 
-const allHistories = ref([])
+const allHistories = ref([]) // 전체 거래 내역
 
+// 초기 데이터 로딩
 onMounted(async () => {
-  filterStore.resetFilters()
+  filterStore.resetFilters() // 페이지 진입 시 필터 초기화
   try {
     const res = await axios.get(`${BASEURL}?userId=${userStore.id}`)
     allHistories.value = res.data
   } catch (err) {
     console.error('내역 불러오기 실패:', err)
   }
+
   categoryStore.fetchCategories()
 })
 
+// 내역 삭제
 const deleteHistory = async (id) => {
   try {
     await axios.delete(`${BASEURL}/${id}`)
@@ -125,30 +141,34 @@ const deleteHistory = async (id) => {
   }
 }
 
+// 날짜 포맷 변경 (2024-04-10 (수) 형식)
 const formatDate = (dateStr) => {
   const date = new Date(dateStr)
   const year = date.getFullYear()
   const month = String(date.getMonth() + 1).padStart(2, '0')
   const day = String(date.getDate()).padStart(2, '0')
   const daysKor = ['일', '월', '화', '수', '목', '금', '토']
-  const dayOfWeek = daysKor[date.getDay()]
-  return `${year}-${month}-${day} (${dayOfWeek})`
+  return `${year}-${month}-${day} (${daysKor[date.getDay()]})`
 }
 
+// 수정 페이지로 이동
 const goToEditForm = (id) => {
   router.push({ name: 'accountDetails', params: { id } })
 }
 
+// 카테고리 이름 조회
 const getCategoryLabel = (id) => {
   const income = categoryStore.categories.income?.find((ctg) => ctg.categoryId === id)
   const expense = categoryStore.categories.expense?.find((ctg) => ctg.categoryId === id)
   return income?.categoryName || expense?.categoryName || id
 }
 
+// 해당 카테고리가 지출인지 여부
 const isExpense = (id) => {
   return categoryStore.categories.expense?.some((ctg) => ctg.categoryId === id)
 }
 
+// 필터 조건에 맞게 거래 내역 필터링
 const filteredHistories = computed(() => {
   const { startDate, endDate, type, category } = filterStore
   const isAllEmpty = !startDate && !endDate && !type && !category
@@ -171,8 +191,24 @@ const filteredHistories = computed(() => {
   return result
 })
 
-const itemsPerPage = 7
+// 페이지네이션 관련 계산
+const itemsPerPage = 10
 const currentPage = ref(1)
+const pageGroupSize = 10
+
+const currentPageGroup = computed(() => Math.floor((currentPage.value - 1) / pageGroupSize))
+const startPageInGroup = computed(() => currentPageGroup.value * pageGroupSize + 1)
+const endPageInGroup = computed(() =>
+  Math.min(startPageInGroup.value + pageGroupSize - 1, totalPages.value),
+)
+
+const pageNumbersInGroup = computed(() => {
+  const pages = []
+  for (let i = startPageInGroup.value; i <= endPageInGroup.value; i++) {
+    pages.push(i)
+  }
+  return pages
+})
 
 const paginatedData = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage
@@ -187,6 +223,7 @@ const goToPage = (page) => {
   }
 }
 
+// 남은 칸을 채우기 위한 빈 줄 수
 const emptyRowCount = computed(() => {
   const diff = itemsPerPage - paginatedData.value.length
   return diff > 0 ? diff : 0
@@ -200,15 +237,13 @@ const emptyRowCount = computed(() => {
 .detail-history-row:not(.no-hover):hover td {
   background-color: #f4eeff;
 }
-.detail-history-row.no-hover td {
-  cursor: default;
-  background-color: inherit !important;
-}
-.table-wrapper {
+.table-wrapper table {
   height: 60vh;
+  overflow-x: auto; /* 👉 가로 스크롤 가능하게 */
+  scrollbar-width: none;
 }
 .table-wrapper table {
-  height: 100%;
+  min-width: 768px;
   width: 100%;
 }
 .table-wrapper td {
@@ -218,7 +253,7 @@ const emptyRowCount = computed(() => {
 .table-wrapper td {
   padding: 0.4rem;
   vertical-align: middle;
-  background-color: #fafafa;
+  background-color: var(--color-gray-100);
 }
 .delete-btn {
   border: none;
@@ -226,5 +261,11 @@ const emptyRowCount = computed(() => {
 .delete-btn:hover,
 .delete-btn:active {
   color: var(--color-purple-400);
+}
+@media (max-width: 640px) {
+  .table-wrapper th,
+  .table-wrapper td {
+    background-color: white;
+  }
 }
 </style>
