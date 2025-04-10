@@ -14,13 +14,30 @@
         v-if="isDropdownOpen"
         style="display: block; min-width: 250px"
       >
+        <button
+          class="btn btn-sm position-absolute"
+          :style="{ top: '8px', right: '8px', color: 'var(--color-gray-500)' }"
+          @click.stop="clearDateFilter"
+        >
+          초기화
+        </button>
         <div class="mb-2">
           <label class="form-label">시작일</label>
-          <input type="date" class="form-control" v-model="filterStore.startDate" />
+          <input
+            type="date"
+            class="form-control"
+            v-model="filterStore.startDate"
+            :max="filterStore.endDate"
+          />
         </div>
         <div>
           <label class="form-label">종료일</label>
-          <input type="date" class="form-control" v-model="filterStore.endDate" />
+          <input
+            type="date"
+            class="form-control"
+            v-model="filterStore.endDate"
+            :min="filterStore.startDate"
+          />
         </div>
       </div>
     </div>
@@ -36,6 +53,9 @@
         {{ typeLabel }}
       </button>
       <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" href="#" @click.prevent="clearType">분류</a>
+        </li>
         <li>
           <a class="dropdown-item" href="#" @click.prevent="setType('income')">수입</a>
         </li>
@@ -57,6 +77,9 @@
         {{ categoryLabel }}
       </button>
       <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" href="#" @click.prevent="clearCategory">카테고리</a>
+        </li>
         <li v-for="ctg in historyCategories" :key="ctg.categoryId">
           <a class="dropdown-item" href="#" @click.prevent="setCategory(ctg.value)">
             <i
@@ -76,12 +99,15 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useCategoryStore } from '@/stores/categoryStore'
 import { useFilterStore } from '@/stores/filterStore'
+import { star } from 'fontawesome'
 
 const categoryStore = useCategoryStore()
 const filterStore = useFilterStore()
 
 const dropdownRef = ref(null)
 const isDropdownOpen = ref(false)
+
+//기간 필터
 
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value
@@ -100,19 +126,38 @@ onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside)
 })
 
-// Setters
+const dateLabel = computed(() => {
+  const { startDate, endDate } = filterStore
+  if (startDate && endDate) {
+    return `${startDate} - ${endDate}`
+  }
+  return '기간'
+})
+
+const clearDateFilter = () => {
+  filterStore.startDate = ''
+  filterStore.endDate = ''
+}
+
+//분류 필터
 const setType = (val) => {
   filterStore.type = val
   filterStore.category = ''
 }
-const setCategory = (val) => {
-  filterStore.category = val
-}
 
-// computed values
 const typeLabel = computed(() => {
   return filterStore.type === 'income' ? '수입' : filterStore.type === 'expense' ? '지출' : '분류'
 })
+
+const clearType = () => {
+  filterStore.type = ''
+  filterStore.category = ''
+}
+
+//카테고리 필터
+const setCategory = (val) => {
+  filterStore.category = val
+}
 
 const categoryLabel = computed(() => {
   if (!filterStore.type) return '카테고리'
@@ -139,13 +184,9 @@ const historyCategories = computed(() => {
   return categoryMap.value[filterStore.type] || []
 })
 
-const dateLabel = computed(() => {
-  const { startDate, endDate } = filterStore
-  if (startDate && endDate) {
-    return `${startDate} ~ ${endDate}`
-  }
-  return '기간'
-})
+const clearCategory = () => {
+  filterStore.category = ''
+}
 </script>
 
 <style scoped>
