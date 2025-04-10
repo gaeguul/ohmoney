@@ -78,8 +78,6 @@
 </template>
 
 <script setup>
-console.log(window.innerWidth)
-
 import { useUserStore } from '@/stores/userStore'
 import { useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
