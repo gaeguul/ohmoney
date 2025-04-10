@@ -9,10 +9,12 @@
   </div>
 </template>
 <script setup>
+import { useUserStore } from '@/stores/userStore'
 import CategoryGroup from './CategoryGroup.vue'
 import db from '/db.json'
 
-const id = '7471'
+const userStore = useUserStore()
+const id = userStore.id
 
 const findById = (id) => {
   const date = new Date()
