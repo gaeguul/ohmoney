@@ -58,12 +58,23 @@ onMounted(() => {
   summaryExpenseChart.data = summaryExpense.map((item) => item.sumAmount)
 })
 
-const summaryIncome = props.summary.filter((item) => item.categoryId > 20)
+const summaryIncome = props.summary
+  .filter((item) => item.categoryId > 20)
+  .sort((a, b) => {
+    return b.sumAmount - a.sumAmount
+  })
 const summaryIncomeChart = reactive({
   labels: [],
   data: [],
 })
-const summaryExpense = props.summary.filter((item) => item.categoryId < 20)
+const summaryExpense = props.summary
+  .filter((item) => item.categoryId < 20)
+  .sort((a, b) => {
+    return b.sumAmount - a.sumAmount
+  })
+if (summaryExpense.length > 5) {
+  summaryExpense.length = 5
+}
 
 const summaryExpenseChart = reactive({
   labels: [],
