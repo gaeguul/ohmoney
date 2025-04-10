@@ -1,6 +1,6 @@
 <template>
   <div class="table-wrapper p-3">
-    <table class="table table-borderless text-center align-middle p-5">
+    <table class="table text-center align-middle p-5">
       <thead>
         <tr>
           <th>분류</th>
@@ -250,10 +250,14 @@ const emptyRowCount = computed(() => {
 }
 .table-wrapper table {
   height: 60vh;
-  overflow-x: auto; /* 👉 가로 스크롤 가능하게 */
+  overflow-x: auto;
   scrollbar-width: none;
   min-width: 768px;
   width: 100%;
+  background-color: rgb(250, 250, 250);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px var(--color-gray-100);
 }
 .table-wrapper td {
   height: 50px;
@@ -262,7 +266,6 @@ const emptyRowCount = computed(() => {
 .table-wrapper td {
   padding: 0.4rem;
   vertical-align: middle;
-  background-color: var(--color-gray-100);
 }
 .delete-btn {
   border: none;
