@@ -92,17 +92,26 @@ const isEditing = ref(false)
 const isWithdrawing = ref(false)
 const isVerified = ref(false)
 
+const resetForm = () => {
+  password.value = ''
+  nickname.value = ''
+  inputUserId.value = ''
+  inputPassword.value = ''
+}
+
 const goHome = () => {
   router.push('/home') // 또는 홈 경로에 맞게 변경
 }
 
 const toggleEdit = () => {
+  resetForm()
   isEditing.value = true
   isWithdrawing.value = false
   isVerified.value = false
 }
 
 const toggleWithdraw = () => {
+  resetForm()
   isWithdrawing.value = true
   isEditing.value = false
   isVerified.value = false
@@ -446,22 +455,32 @@ const handleSave = async () => {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
+  animation: fadeIn 0.3s ease;
+  max-width: none;
+  width: auto;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   animation: fadeIn 0.4s ease-in-out;
 }
 .alert-message,
 .toast-message {
-  font-size: 18px;
+  font-size: 16px;
   color: #333;
 }
 .alert-button {
-  margin-top: 16px;
-  padding: 10px 24px;
+  padding: 10px 30px;
   background-color: #8b5cf6;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: bold;
+  font-size: 14px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
 }
 
 @keyframes fadeIn {

@@ -225,16 +225,20 @@ input {
   max-width: none;
   width: auto;
   min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .alert-message {
-  font-size: 25px;
-  color: #7c3aed;
-  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .alert-button {
-  padding: 10px 20px;
+  padding: 10px 30px;
   background-color: #8b5cf6;
   color: white;
   border: none;
@@ -243,6 +247,7 @@ input {
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: 10px;
 }
 
 .alert-button:hover {
