@@ -14,55 +14,66 @@
         </tr>
       </thead>
       <tbody>
-        <!-- 거래 내역 표시 -->
-        <tr
-          v-for="item in paginatedData"
-          :key="item.id"
-          class="detail-history-row"
-          @click="goToEditForm(item.id)"
-        >
-          <td>
-            <span
-              class="badge"
-              :style="{
-                backgroundColor: isExpense(item.categoryId)
-                  ? 'var(--color-expense)'
-                  : 'var(--color-income)',
-                color: '#fff',
-              }"
-            >
-              {{ isExpense(item.categoryId) ? '지출' : '수입' }}
-            </span>
-          </td>
-          <td>{{ formatDate(item.createdAt) }}</td>
-          <td>{{ getCategoryLabel(item.categoryId) }}</td>
-          <td>{{ item.paymentMethod }}</td>
-          <td>{{ item.vendor }}</td>
-          <td>
-            <span
-              :style="{
-                color: isExpense(item.categoryId) ? 'var(--color-expense)' : 'var(--color-income)',
-              }"
-            >
-              {{ item.amount.toLocaleString() }} 원
-            </span>
-          </td>
-          <td>{{ item.memo }}</td>
-          <td class="text-primary">
-            <button class="btn delete-btn btn-sm" @click.stop="deleteHistory(item.id)">
-              삭제하기
-            </button>
-          </td>
-        </tr>
+        <!-- 거래 내역이 있을 경우 -->
+        <template v-if="paginatedData.length">
+          <tr
+            v-for="item in paginatedData"
+            :key="item.id"
+            class="detail-history-row"
+            @click="goToEditForm(item.id)"
+          >
+            <td>
+              <span
+                class="badge"
+                :style="{
+                  backgroundColor: isExpense(item.categoryId)
+                    ? 'var(--color-expense)'
+                    : 'var(--color-income)',
+                  color: '#fff',
+                }"
+              >
+                {{ isExpense(item.categoryId) ? '지출' : '수입' }}
+              </span>
+            </td>
+            <td>{{ formatDate(item.createdAt) }}</td>
+            <td>{{ getCategoryLabel(item.categoryId) }}</td>
+            <td>{{ item.paymentMethod }}</td>
+            <td>{{ item.vendor }}</td>
+            <td>
+              <span
+                :style="{
+                  color: isExpense(item.categoryId)
+                    ? 'var(--color-expense)'
+                    : 'var(--color-income)',
+                }"
+              >
+                {{ item.amount.toLocaleString() }} 원
+              </span>
+            </td>
+            <td>{{ item.memo }}</td>
+            <td class="text-primary">
+              <button class="btn delete-btn btn-sm" @click.stop="deleteHistory(item.id)">
+                삭제하기
+              </button>
+            </td>
+          </tr>
 
-        <!-- 남은 칸을 빈 줄로 채우기 -->
-        <tr
-          v-for="n in emptyRowCount"
-          :key="'empty-' + n"
-          class="detail-history-row no-hover"
-          style="height: 50px"
-        >
-          <td colspan="8"></td>
+          <!-- 남은 칸을 빈 줄로 채우기 -->
+          <tr
+            v-for="n in emptyRowCount"
+            :key="'empty-' + n"
+            class="detail-history-row no-hover"
+            style="height: 50px"
+          >
+            <td colspan="8"></td>
+          </tr>
+        </template>
+
+        <!-- 거래 내역이 없을 경우 -->
+        <tr v-else>
+          <td colspan="8" class="text-center text-muted" style="height: 200px">
+            거래내역이 존재하지 않습니다.
+          </td>
         </tr>
       </tbody>
     </table>
@@ -241,8 +252,6 @@ const emptyRowCount = computed(() => {
   height: 60vh;
   overflow-x: auto; /* 👉 가로 스크롤 가능하게 */
   scrollbar-width: none;
-}
-.table-wrapper table {
   min-width: 768px;
   width: 100%;
 }
