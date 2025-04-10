@@ -10,6 +10,8 @@ import AccountEditPage from '@/pages/account/AccountEditPage.vue'
 import AccountListPage from '@/pages/account/AccountListPage.vue'
 import AnalysisCategory from '@/pages/analysis/AnalysisCategory.vue'
 import AnalysisDashboard from '@/pages/analysis/AnalysisDashboard.vue'
+import NewMypageView from '@/pages/user/newMypageView.vue'
+import { useUserStore } from '@/stores/userStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -86,7 +88,7 @@ const router = createRouter({
     {
       path: '/mypage',
       name: 'mypage',
-      component: newMypageView,
+      component: NewMypageView,
       meta: { requiresAuth: true },
     },
   ],
