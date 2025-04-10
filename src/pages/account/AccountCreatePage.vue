@@ -44,7 +44,18 @@
         <div class="row">
           <div class="label">금액</div>
           <div class="amount-field">
-            <input type="text" class="input-field" v-model.trim="newTransaction.amount" />
+            <input
+              type="text"
+              class="input-field"
+              :value="formattedAmount"
+              @input="handleAmountInput"
+              @keydown="blockNonNumeric"
+              @paste.prevent
+              @compositionstart.prevent
+              @compositionupdate.prevent
+              @compositionend.prevent
+              inputmode="numeric"
+            />
             <span>원</span>
           </div>
         </div>
@@ -133,6 +144,21 @@ const newTransaction = reactive({
   updatedAt: '',
   userId: userStore.id,
 })
+const handleAmountInput = (e) => {
+  // 숫자 이외 문자 제거
+  const digitsOnly = e.target.value.replace(/[^0-9]/g, '')
+  newTransaction.amount = digitsOnly ? parseInt(digitsOnly, 10) : ''
+}
+
+const blockNonNumeric = (e) => {
+  const allowed = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab']
+  const isNumberKey = /^[0-9]$/.test(e.key)
+  const isAllowed = allowed.includes(e.key)
+
+  if (!isNumberKey && !isAllowed) {
+    e.preventDefault()
+  }
+}
 
 const submitForm = async () => {
   const date = new Date(tempDate.value)

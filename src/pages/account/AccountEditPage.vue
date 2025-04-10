@@ -44,7 +44,16 @@
         <div class="row">
           <div class="label">금액</div>
           <div class="amount-field">
-            <input type="text" class="input-field" v-model.trim="newTransaction.amount" />
+            <input
+              type="text"
+              class="input-field"
+              :value="formattedAmount"
+              @input="handleAmountInput"
+              @keydown="blockNonNumeric"
+              @paste.prevent
+              inputmode="numeric"
+              autocomplete="off"
+            />
             <span>원</span>
           </div>
         </div>
@@ -136,6 +145,28 @@ const newTransaction = reactive({
   userId: '',
 })
 
+const formattedAmount = computed(() => {
+  const num = Number(newTransaction.amount)
+  return isNaN(num) ? '' : num.toLocaleString()
+})
+
+const handleAmountInput = (e) => {
+  // 한글 및 자모 범위를 포함한 필터
+  const onlyDigits = e.target.value.replace(/[^\d]/g, '') // 숫자 외 제거
+  newTransaction.amount = onlyDigits
+  e.target.value = Number(onlyDigits).toLocaleString()
+}
+
+const blockNonNumeric = (e) => {
+  const allowed = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab']
+  const isNumberKey = /^[0-9]$/.test(e.key)
+  const isAllowed = allowed.includes(e.key)
+
+  if (!isNumberKey && !isAllowed) {
+    e.preventDefault()
+  }
+}
+
 const fetchTransaction = async (categoryId) => {
   const res = await axios.get(`${BASEurlT}/${categoryId}`)
   Object.assign(originTransaction, res.data)
@@ -148,6 +179,12 @@ const fetchTransaction = async (categoryId) => {
     String(transactionDate.getMonth() + 1).padStart(2, '0') +
     '-' +
     String(transactionDate.getDate()).padStart(2, '0')
+
+  if (originTransaction.transactionType === 'expense') {
+    state.isExpense = true
+  } else {
+    state.isExpense = false
+  }
 }
 
 onMounted(() => {
@@ -350,5 +387,9 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.input-field {
+  ime-mode: disabled; /* IME 입력기 비활성화 */
 }
 </style>
