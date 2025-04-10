@@ -1,7 +1,7 @@
 <template>
   <span v-for="item in props.icons" :key="item.name">
     <label class="submit">
-      <input type="radio" name="cash" id="cash" />
+      <input type="radio" name="category" id="cash" @click="categoryId(item)" />
       <i :class="item.categoryIcon" class="custom-icon-color"></i>
       <div>{{ item.categoryName }}</div>
     </label>
@@ -12,6 +12,10 @@
 const props = defineProps({
   icons: { type: Array, required: true },
 })
+const emit = defineEmits(['categoryId'])
+const categoryId = (e) => {
+  emit('categoryId', e.categoryId)
+}
 </script>
 
 <style scoped>

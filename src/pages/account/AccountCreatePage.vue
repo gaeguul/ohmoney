@@ -3,7 +3,7 @@
     <header>
       <h3>가계부 작성</h3>
       <div class="submit-section">
-        <input type="submit" value="작성 완료" class="submit-button" />
+        <input type="submit" value="작성 완료" class="submit-button" @click="submitForm" />
       </div>
     </header>
 
@@ -11,7 +11,12 @@
       <div class="col">
         <div class="row">
           <div class="label">날짜</div>
-          <input type="text" placeholder="xxxx-xx-xx" class="input-field" />
+          <input
+            type="text"
+            placeholder="xxxx-xx-xx"
+            class="input-field"
+            v-model.trim="newTransaction.date"
+          />
         </div>
         <div class="row">
           <div class="label">분류</div>
@@ -22,12 +27,12 @@
                 name="uses"
                 id="지출"
                 checked="checked"
-                @click="changeCategoryExpense"
+                @change="changeCategoryExpense"
               />
               <span>지출</span>
             </label>
             <label class="submit">
-              <input type="radio" name="uses" id="수입" @click="changeCategoryIncome" />
+              <input type="radio" name="uses" id="수입" @change="changeCategoryIncome" />
               <span>수입</span>
             </label>
           </div>
@@ -35,7 +40,7 @@
         <div class="row">
           <div class="label">금액</div>
           <div class="amount-field">
-            <input type="text" class="input-field" />
+            <input type="text" class="input-field" v-model.trim="newTransaction.amount" />
             <span>원</span>
           </div>
         </div>
@@ -44,17 +49,29 @@
       <div class="col">
         <div class="row">
           <div class="label">사용처</div>
-          <input type="text" class="input-field" />
+          <input type="text" class="input-field" v-model.trim="newTransaction.vendor" />
         </div>
         <div class="row">
           <div class="label">결제수단</div>
           <div class="radio-group">
             <label class="submit">
-              <input type="radio" name="cash" id="카드" />
+              <input
+                type="radio"
+                name="cash"
+                id="카드"
+                value="card"
+                v-model="newTransaction.paymentMethod"
+              />
               <span>카드</span>
             </label>
             <label class="submit">
-              <input type="radio" name="cash" id="현금" />
+              <input
+                type="radio"
+                name="cash"
+                id="현금"
+                value="cash"
+                v-model="newTransaction.paymentMethod"
+              />
               <span>현금</span>
             </label>
           </div>
@@ -66,6 +83,7 @@
             id="memo"
             placeholder="메모를 입력하세요"
             class="memo-field"
+            v-model="newTransaction.memo"
           ></textarea>
         </div>
       </div>
@@ -74,19 +92,42 @@
     <div class="category-section">
       <div class="label">카테고리</div>
       <div class="icon-container">
-        <AccountIconGroup :icons="icons" />
+        <AccountIconGroup
+          :icons="icons"
+          @categoryId="categoryId"
+          v-model="newTransaction.categoryId"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, reactive } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import AccountIconGroup from './accountAssets/AccountIconGroup.vue'
 import accountFormIcon from '/db.json'
+import { useUserStore } from '@/stores/userStore'
+import db from '/db.json'
 
 const state = reactive({ isExpense: true })
-console.log(accountFormIcon.category[0].expense)
+const userStore = useUserStore()
+
+const newTransaction = reactive({
+  date: '',
+  categoryId: '',
+  memo: '',
+  paymentMethod: '',
+  amount: '',
+  vendor: '',
+  transactionType: '',
+  createdAt: '',
+  updatedAt: '',
+  userId: userStore.userId,
+})
+
+const submitForm = () => {
+  console.log(newTransaction)
+}
 
 const icons = computed(() =>
   state.isExpense ? accountFormIcon.category[0].expense : accountFormIcon.category[0].income,
@@ -94,10 +135,12 @@ const icons = computed(() =>
 
 const changeCategoryExpense = () => {
   state.isExpense = true
+  newTransaction.transactionType = 'expense'
 }
 
 const changeCategoryIncome = () => {
   state.isExpense = false
+  newTransaction.transactionType = 'income'
 }
 </script>
 
