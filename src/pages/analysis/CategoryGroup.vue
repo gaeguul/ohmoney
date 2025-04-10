@@ -1,6 +1,6 @@
 <template>
-  <div class="w-100 row">
-    <div class="col d-flex gap-5">
+  <div class="w-100 row flex-wrap chartContainer">
+    <div class="col d-flex gap-5 flex-column flex-lg-row">
       <div class="content">
         <CategoryCircleChart
           class="foo-chart"
@@ -127,5 +127,21 @@ const findCategoryName = (sum) => {
   align-content: center;
   gap: 40px;
   padding: 0 30px;
+}
+
+@media (max-width: 1200px) {
+  .chartContainer {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 1060px) {
+  .col {
+    flex-direction: column !important;
+    gap: 20px;
+  }
+  .content {
+    gap: 20px;
+  }
 }
 </style>
