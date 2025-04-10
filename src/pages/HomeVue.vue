@@ -1,20 +1,23 @@
 <template>
   <div class="container mt-4">
-    <!-- 캘린더 헤더 -->
-    <CalendarHeader v-model:year="year" v-model:month="month" />
+    <CalendarSummary :year="year" :month="month" />
+    <div>
+      <!-- 캘린더 헤더 -->
+      <CalendarHeader v-model:year="year" v-model:month="month" />
 
-    <!-- 캘린더 테이블 -->
-    <div class="calendar-layout" :class="{ 'is-mobile': isMobile }">
-      <div
-        class="calendar-table-wrapper"
-        :class="{ 'full-width': !calendarStore.isOpen && !isMobile }"
-      >
-        <CalendarTable :year="year" :month="month" />
-      </div>
+      <!-- 캘린더 테이블 -->
+      <div class="calendar-layout" :class="{ 'is-mobile': isMobile }">
+        <div
+          class="calendar-table-wrapper"
+          :class="{ 'full-width': !calendarStore.isOpen && !isMobile }"
+        >
+          <CalendarTable :year="year" :month="month" />
+        </div>
 
-      <!-- 일일 계좌 내역 -->
-      <div v-if="calendarStore.isOpen" class="daily-account-wrapper">
-        <DailyAccount />
+        <!-- 일일 계좌 내역 -->
+        <div v-if="calendarStore.isOpen" class="daily-account-wrapper">
+          <DailyAccount />
+        </div>
       </div>
     </div>
   </div>
@@ -25,6 +28,7 @@ import { ref, onMounted } from 'vue'
 import CalendarHeader from '../components/calendar/CalendarHeader.vue'
 import CalendarTable from '../components/calendar/CalendarTable.vue'
 import DailyAccount from '../components/calendar/DailyAccount.vue'
+import CalendarSummary from '@/components/calendar/CalendarSummary.vue'
 import { useCalendarStore } from '@/stores/useCalendarStore'
 
 const calendarStore = useCalendarStore()
