@@ -366,15 +366,17 @@ input {
 @media screen and (max-width: 640px) {
   .signup-container {
     padding: 24px;
+    background-image: url(/src/assets/mobile_background.png);
   }
 
   .signup-box {
     width: 100%;
-    max-width: 95vw;
+    /* max-width: 95vw; */
     padding: 24px 20px;
     box-shadow: none;
     border-radius: 8px;
     margin: 0 auto;
+    min-width: 360px;
   }
 
   .logo {
