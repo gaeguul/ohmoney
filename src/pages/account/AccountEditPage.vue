@@ -70,9 +70,9 @@
             <label class="submit">
               <input
                 type="radio"
-                name="cash"
+                name="paymentMethod"
                 id="카드"
-                value="card"
+                value="카드"
                 v-model="newTransaction.paymentMethod"
               />
               <span>카드</span>
@@ -80,9 +80,9 @@
             <label class="submit">
               <input
                 type="radio"
-                name="cash"
+                name="paymentMethod"
                 id="현금"
-                value="cash"
+                value="현금"
                 v-model="newTransaction.paymentMethod"
               />
               <span>현금</span>

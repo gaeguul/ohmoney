@@ -74,7 +74,7 @@
                 type="radio"
                 name="cash"
                 id="카드"
-                value="card"
+                value="카드"
                 v-model="newTransaction.paymentMethod"
               />
               <span>카드</span>
@@ -84,7 +84,7 @@
                 type="radio"
                 name="cash"
                 id="현금"
-                value="cash"
+                value="현금"
                 v-model="newTransaction.paymentMethod"
               />
               <span>현금</span>
