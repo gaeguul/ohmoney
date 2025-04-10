@@ -1,7 +1,6 @@
 <template>
   <div class="example">
     <div class="chart-title" v-if="title">{{ title }}</div>
-    <!-- Custom title -->
     <apexchart :width="width" :height="height" :options="options" :series="data"></apexchart>
   </div>
 </template>
@@ -67,7 +66,7 @@ export default {
           },
         },
         noData: {
-          text: this.loading ? 'Loading...' : 'No Data',
+          text: this.loading ? 'Loading...' : '가계 데이터가 존재하지 않아요!',
         },
         labels: this.labels,
         data: this.data.map((value) => `${value.toLocaleString()}원`),

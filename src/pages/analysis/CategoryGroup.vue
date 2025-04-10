@@ -11,7 +11,7 @@
           :data="summaryIncomeChart.data"
           title="카테고리 별 수입"
         />
-        <div class="list-group">
+        <div v-if="summaryIncome.length > 0" class="list-group">
           <div v-for="sum in summaryIncome" :key="sum.id" class="list-item">
             <span>{{ findCategoryName(sum) }}</span>
             <span>{{ sum.sumAmount.toLocaleString() }}원</span>
@@ -29,7 +29,7 @@
           :data="summaryExpenseChart.data"
           title="카테고리 별 지출"
         />
-        <div class="list-group">
+        <div v-if="summaryExpense.length > 0" class="list-group">
           <div v-for="sum in summaryExpense" :key="sum.id" class="list-item">
             <span>{{ findCategoryName(sum) }}</span>
             <span>{{ sum.sumAmount.toLocaleString() }}원</span>
