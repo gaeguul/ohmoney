@@ -4,14 +4,14 @@ import Home from '../pages/HomeVue.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import SignupView from '@/pages/user/SignupView.vue'
 import SigninView from '@/pages/user/SigninView.vue'
-import MypageView from '@/pages/user/MypageView.vue'
+
 import AccountListPage from '@/pages/account/AccountListPage.vue'
 import AccountEditPage from '@/pages/account/AccountEditPage.vue'
 import AccountCreatePage from '@/pages/account/AccountCreatePage.vue'
 import AnalysisDashboard from '@/pages/analysis/AnalysisDashboard.vue'
 import AnalysisCategory from '@/pages/analysis/AnalysisCategory.vue'
 import MonthlyAnalysisChart from '@/components/charts/MonthlyAnalysisChart.vue'
-import MypageView2 from '@/pages/user/MypageView2.vue'
+import newMypageView from '@/pages/user/newMypageView.vue'
 
 
 const router = createRouter({
@@ -74,12 +74,7 @@ const router = createRouter({
           name: 'category',
           component: AnalysisCategory,
         },
-        {
-          path: '/mypage',
-          name: 'mypage',
-          component: MypageView,
-          meta: { requiresAuth: true }
-        },
+
       ]
     },
     {
@@ -93,9 +88,9 @@ const router = createRouter({
       component: SigninView,
     },
     {
-      path: '/mypage2',
-      name: 'mypage2',
-      component: MypageView2,
+      path: '/mypage',
+      name: 'mypage',
+      component: newMypageView,
       meta: { requiresAuth: true }
     },
 
