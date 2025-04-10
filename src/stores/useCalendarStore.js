@@ -1,8 +1,10 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import { reactive, ref } from 'vue'
+import { useUserStore } from './userStore'
 
 export const useCalendarStore = defineStore('calendar', () => {
+  const userStore = useUserStore()
   const selectedDate = ref(null)
   const accountList = ref([])
   const transactionList = reactive([])
@@ -12,7 +14,7 @@ export const useCalendarStore = defineStore('calendar', () => {
   const fetchTransactions = async () => {
     try {
       const response = await axios.get('/api/transactions')
-      const userId = 'cd1d' // 현재 사용자 ID
+      const userId = userStore.id // 현재 사용자 ID
       if (response.status === 200) {
         const filteredTransactions = response.data
           .filter((item) => item.userId === userId)
