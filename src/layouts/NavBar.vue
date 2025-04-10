@@ -41,8 +41,8 @@
 
         <div
           class="menu-item"
-          :class="{ active: route.path === '/mypage2' }"
-          @click="goTo('/mypage2')"
+          :class="{ active: route.path === '/mypage' }"
+          @click="goTo('/mypage')"
         >
           마이 페이지
         </div>
