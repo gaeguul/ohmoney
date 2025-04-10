@@ -105,6 +105,8 @@ const handleLogin = async () => {
       showWelcomeToast(`${user.userName}님, 안녕하세요!`)
     } else {
       // 로그인 실패 시 경고창
+      id.value = ''
+      password.value = ''
       openAlert('아이디 또는 비밀번호가 일치하지 않습니다!')
     }
   } catch (error) {
@@ -283,15 +285,16 @@ input {
 @media screen and (max-width: 640px) {
   .login-container {
     padding: 16px;
+    background-image: url(/src/assets/mobile_background.png);
   }
 
   .login-box {
     width: 100%;
-    max-width: 95vw;
     padding: 24px 20px;
     box-shadow: none;
     border-radius: 8px;
     margin: 0 auto;
+    min-width: 360px;
   }
 
   .title {
