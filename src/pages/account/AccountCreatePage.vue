@@ -11,7 +11,7 @@
       <div class="col">
         <div class="row">
           <div class="label">날짜</div>
-          <input type="text" placeholder="xxxx-xx-xx" class="input-field" v-model.trim="tempDate" />
+          <input type="date" class="input-field" v-model.trim="tempDate" />
         </div>
         <div class="row">
           <div class="label">분류</div>
@@ -44,7 +44,18 @@
         <div class="row">
           <div class="label">금액</div>
           <div class="amount-field">
-            <input type="text" class="input-field" v-model.trim="newTransaction.amount" />
+            <input
+              type="text"
+              class="input-field"
+              :value="formattedAmount"
+              @input="handleAmountInput"
+              @keydown="blockNonNumeric"
+              @paste.prevent
+              @compositionstart.prevent
+              @compositionupdate.prevent
+              @compositionend.prevent
+              inputmode="numeric"
+            />
             <span>원</span>
           </div>
         </div>
@@ -63,7 +74,7 @@
                 type="radio"
                 name="cash"
                 id="카드"
-                value="card"
+                value="카드"
                 v-model="newTransaction.paymentMethod"
               />
               <span>카드</span>
@@ -73,7 +84,7 @@
                 type="radio"
                 name="cash"
                 id="현금"
-                value="cash"
+                value="현금"
                 v-model="newTransaction.paymentMethod"
               />
               <span>현금</span>
@@ -134,15 +145,58 @@ const newTransaction = reactive({
   userId: userStore.id,
 })
 
-const isValidDateFormat = (dateStr) => {
-  return /^\d{4}-\d{2}-\d{2}$/.test(dateStr)
+const handleAmountInput = (e) => {
+  const digitsOnly = e.target.value.replace(/[^0-9]/g, '')
+  newTransaction.amount = digitsOnly ? parseInt(digitsOnly, 10) : ''
+}
+
+const blockNonNumeric = (e) => {
+  const allowed = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab']
+  const isNumberKey = /^[0-9]$/.test(e.key)
+  const isAllowed = allowed.includes(e.key)
+
+  if (!isNumberKey && !isAllowed) {
+    e.preventDefault()
+  }
+}
+
+const validateForm = () => {
+  if (!tempDate.value || !/^\d{4}-\d{2}-\d{2}$/.test(tempDate.value)) {
+    alert('날짜를 정확히 입력해주세요. (예: 2025-04-01)')
+    return false
+  }
+
+  const amount = Number(newTransaction.amount)
+  if (!amount || isNaN(amount) || amount <= 0) {
+    alert('올바른 금액을 입력해주세요.')
+    return false
+  }
+
+  if (!newTransaction.vendor.trim()) {
+    alert('사용처를 입력해주세요.')
+    return false
+  }
+
+  if (!newTransaction.paymentMethod) {
+    alert('결제수단을 선택해주세요.')
+    return false
+  }
+
+  if (!newTransaction.transactionType) {
+    alert('지출/수입을 선택해주세요.')
+    return false
+  }
+
+  if (!newTransaction.categoryId) {
+    alert('카테고리를 선택해주세요.')
+    return false
+  }
+
+  return true
 }
 
 const submitForm = async () => {
-  if (!isValidDateFormat(tempDate.value)) {
-    alert('날짜 형식이 올바르지 않습니다. (예: 2025-04-01)')
-    return
-  }
+  if (!validateForm()) return
 
   const date = new Date(tempDate.value)
   newTransaction.createdAt = date
@@ -173,6 +227,8 @@ const updateSum = async (duration) => {
     sumAmount: Number(target.sumAmount) + Number(newTransaction.amount),
     updatedAt: newTransaction.updatedAt,
   })
+
+  router.push('/home')
 }
 
 const icons = computed(() =>

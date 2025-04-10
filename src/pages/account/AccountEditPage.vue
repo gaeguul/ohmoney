@@ -3,7 +3,7 @@
     <header>
       <h3>가계부 작성</h3>
       <div class="submit-section">
-        <input type="submit" value="작성 완료" class="submit-button" />
+        <input type="submit" value="작성 완료" class="submit-button" @click="submitForm" />
       </div>
     </header>
 
@@ -11,7 +11,7 @@
       <div class="col">
         <div class="row">
           <div class="label">날짜</div>
-          <input type="text" placeholder="xxxx-xx-xx" class="input-field" />
+          <input type="date" class="input-field" v-model.trim="tempDate" />
         </div>
         <div class="row">
           <div class="label">분류</div>
@@ -21,13 +21,22 @@
                 type="radio"
                 name="uses"
                 id="지출"
+                value="expense"
                 checked="checked"
-                @click="changeCategoryExpense"
+                @change="changeCategoryExpense"
+                v-model="newTransaction.transactionType"
               />
               <span>지출</span>
             </label>
             <label class="submit">
-              <input type="radio" name="uses" id="수입" @click="changeCategoryIncome" />
+              <input
+                type="radio"
+                name="uses"
+                id="수입"
+                value="income"
+                @change="changeCategoryIncome"
+                v-model="newTransaction.transactionType"
+              />
               <span>수입</span>
             </label>
           </div>
@@ -35,7 +44,16 @@
         <div class="row">
           <div class="label">금액</div>
           <div class="amount-field">
-            <input type="text" class="input-field" />
+            <input
+              type="text"
+              class="input-field"
+              :value="formattedAmount"
+              @input="handleAmountInput"
+              @keydown="blockNonNumeric"
+              @paste.prevent
+              inputmode="numeric"
+              autocomplete="off"
+            />
             <span>원</span>
           </div>
         </div>
@@ -44,17 +62,29 @@
       <div class="col">
         <div class="row">
           <div class="label">사용처</div>
-          <input type="text" class="input-field" />
+          <input type="text" class="input-field" v-model.trim="newTransaction.vendor" />
         </div>
         <div class="row">
           <div class="label">결제수단</div>
           <div class="radio-group">
             <label class="submit">
-              <input type="radio" name="cash" id="카드" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                id="카드"
+                value="카드"
+                v-model="newTransaction.paymentMethod"
+              />
               <span>카드</span>
             </label>
             <label class="submit">
-              <input type="radio" name="cash" id="현금" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                id="현금"
+                value="현금"
+                v-model="newTransaction.paymentMethod"
+              />
               <span>현금</span>
             </label>
           </div>
@@ -66,6 +96,7 @@
             id="memo"
             placeholder="메모를 입력하세요"
             class="memo-field"
+            v-model="newTransaction.memo"
           ></textarea>
         </div>
       </div>
@@ -74,19 +105,183 @@
     <div class="category-section">
       <div class="label">카테고리</div>
       <div class="icon-container">
-        <AccountIconGroup :icons="icons" />
+        <AccountIconGroup
+          :icons="icons"
+          @categoryId="categoryId"
+          v-model="newTransaction.categoryId"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, reactive } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import AccountIconGroup from './accountAssets/AccountIconGroup.vue'
 import accountFormIcon from '/db.json'
+import { useUserStore } from '@/stores/userStore'
+import db from '/db.json'
+import axios from 'axios'
+import { useRouter, useRoute } from 'vue-router'
 
 const state = reactive({ isExpense: true })
-console.log(accountFormIcon.category[0].expense)
+const userStore = useUserStore()
+const BASEurlT = 'http://localhost:3000/transactions'
+const BASEurlS = 'http://localhost:3000/summary'
+const tempDate = ref('')
+const router = useRouter()
+const route = useRoute()
+const categoryId = route.params.id
+
+const newTransaction = reactive({
+  date: '',
+  amount: '',
+  categoryId: '',
+  memo: '',
+  paymentMethod: '',
+  transactionType: '',
+  createdAt: '',
+  updatedAt: '',
+  userId: '',
+})
+
+const formattedAmount = computed(() => {
+  const num = Number(newTransaction.amount)
+  return isNaN(num) ? '' : num.toLocaleString()
+})
+
+const handleAmountInput = (e) => {
+  // 한글 및 자모 범위를 포함한 필터
+  const onlyDigits = e.target.value.replace(/[^\d]/g, '') // 숫자 외 제거
+  newTransaction.amount = onlyDigits
+  e.target.value = Number(onlyDigits).toLocaleString()
+}
+
+const blockNonNumeric = (e) => {
+  const allowed = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab']
+  const isNumberKey = /^[0-9]$/.test(e.key)
+  const isAllowed = allowed.includes(e.key)
+
+  if (!isNumberKey && !isAllowed) {
+    e.preventDefault()
+  }
+}
+const validateForm = () => {
+  // 날짜 형식 확인
+  if (!tempDate.value || !/^\d{4}-\d{2}-\d{2}$/.test(tempDate.value)) {
+    alert('날짜를 정확히 입력해주세요. (예: 2025-04-01)')
+    return false
+  }
+
+  // 금액 확인
+  const amount = Number(newTransaction.amount)
+  if (!amount || isNaN(amount) || amount <= 0) {
+    alert('올바른 금액을 입력해주세요.')
+    return false
+  }
+
+  // 필수 항목 확인
+  if (!newTransaction.vendor.trim()) {
+    alert('사용처를 입력해주세요.')
+    return false
+  }
+
+  if (!newTransaction.paymentMethod) {
+    alert('결제수단을 선택해주세요.')
+    return false
+  }
+
+  if (!newTransaction.transactionType) {
+    alert('지출/수입을 선택해주세요.')
+    return false
+  }
+
+  if (!newTransaction.categoryId) {
+    alert('카테고리를 선택해주세요.')
+    return false
+  }
+
+  return true
+}
+
+const fetchTransaction = async (categoryId) => {
+  const res = await axios.get(`${BASEurlT}/${categoryId}`)
+  Object.assign(originTransaction, res.data)
+
+  Object.assign(newTransaction, JSON.parse(JSON.stringify(originTransaction)))
+  const transactionDate = new Date(newTransaction.createdAt)
+  tempDate.value =
+    transactionDate.getFullYear() +
+    '-' +
+    String(transactionDate.getMonth() + 1).padStart(2, '0') +
+    '-' +
+    String(transactionDate.getDate()).padStart(2, '0')
+
+  if (originTransaction.transactionType === 'expense') {
+    state.isExpense = true
+  } else {
+    state.isExpense = false
+  }
+}
+
+onMounted(() => {
+  if (categoryId) {
+    fetchTransaction(categoryId)
+  }
+})
+
+const originTransaction = reactive({
+  categoryId: '',
+  memo: '',
+  paymentMethod: '',
+  amount: '',
+  vendor: '',
+  transactionType: '',
+  createdAt: '',
+  updatedAt: '',
+  userId: userStore.id,
+})
+
+const submitForm = async () => {
+  if (!validateForm()) return
+
+  const date = new Date(tempDate.value)
+  newTransaction.createdAt = date
+  newTransaction.updatedAt = new Date()
+
+  //const duration = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0')
+
+  console.log(originTransaction)
+  console.log(newTransaction)
+
+  if (originTransaction.amount !== newTransaction.amount) {
+    updateSum(date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0'))
+  }
+
+  await axios.patch(`${BASEurlT}/${categoryId}`, { ...newTransaction })
+
+  router.push('/accounts')
+}
+
+const updateSum = async (duration) => {
+  const target = db.summary.find(
+    (item) =>
+      item.duration === duration &&
+      item.userId === newTransaction.userId &&
+      item.categoryId === newTransaction.categoryId,
+  )
+
+  if (!target) {
+    console.error('해당 summary 항목을 찾을 수 없습니다.')
+    return
+  }
+
+  await axios.patch(`${BASEurlS}/${target.id}`, {
+    sumAmount:
+      Number(target.sumAmount) - Number(originTransaction.amount) + Number(newTransaction.amount),
+    updatedAt: newTransaction.updatedAt,
+  })
+}
 
 const icons = computed(() =>
   state.isExpense ? accountFormIcon.category[0].expense : accountFormIcon.category[0].income,
@@ -229,5 +424,9 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.input-field {
+  ime-mode: disabled; /* IME 입력기 비활성화 */
 }
 </style>

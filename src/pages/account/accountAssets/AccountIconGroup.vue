@@ -1,16 +1,15 @@
 <template>
-  <AccountIcon :icons="props.icons" class="icons" @categoryId="handleCategoryId" />
+  <AccountIcon :icons="props.icons" v-model="modelValue" class="icons" />
 </template>
+
 <script setup>
 import AccountIcon from './AccountIcon.vue'
 
 const props = defineProps({
   icons: { type: Array, required: true },
 })
+// v-model 지원
 const modelValue = defineModel()
-const handleCategoryId = (e) => {
-  modelValue.value = e
-}
 </script>
 
 <style scoped>
