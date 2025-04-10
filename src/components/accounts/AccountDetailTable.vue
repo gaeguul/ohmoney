@@ -90,12 +90,12 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import { useUserStore } from '@/stores/userStore'
 import { useCategoryStore } from '@/stores/categoryStore.js'
 import { useFilterStore } from '@/stores/filterStore.js'
+import { useUserStore } from '@/stores/userStore'
 import axios from 'axios'
+import { computed, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const BASEURL = 'api/transactions'
 const router = useRouter()

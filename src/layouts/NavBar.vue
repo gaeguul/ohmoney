@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 //현재 로그인 중인 사용자 이름 출력용
 import { useUserStore } from '@/stores/userStore.js'
 import { useRoute, useRouter } from 'vue-router'
