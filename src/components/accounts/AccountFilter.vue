@@ -9,8 +9,6 @@
       >
         {{ dateLabel }}
       </button>
-
-      <!-- 날짜 선택 -->
       <div
         class="dropdown-menu p-3 shadow"
         v-if="isDropdownOpen"
@@ -18,11 +16,11 @@
       >
         <div class="mb-2">
           <label class="form-label">시작일</label>
-          <input type="date" class="form-control" v-model="startDate" />
+          <input type="date" class="form-control" v-model="filterStore.startDate" />
         </div>
         <div>
           <label class="form-label">종료일</label>
-          <input type="date" class="form-control" v-model="endDate" />
+          <input type="date" class="form-control" v-model="filterStore.endDate" />
         </div>
       </div>
     </div>
@@ -52,7 +50,7 @@
       <button
         class="filter-btn btn btn-outline-secondary dropdown-toggle"
         type="button"
-        :disabled="!type"
+        :disabled="!filterStore.type"
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
@@ -63,8 +61,7 @@
           <a class="dropdown-item" href="#" @click.prevent="setCategory(ctg.value)">
             <i
               v-if="ctg.icon"
-              :class="ctg.icon"
-              class="me-2"
+              :class="['category-icon-tag', 'me-2', ctg.icon]"
               :style="{ color: 'var(--color-purple-400)' }"
             ></i>
             {{ ctg.label }}
@@ -77,85 +74,18 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import axios from 'axios'
+import { useCategoryStore } from '@/stores/categoryStore'
+import { useFilterStore } from '@/stores/filterStore'
 
-// 필터 상태
-const type = ref('') //수입,지출 분류
-const category = ref('') //카테고리
+const categoryStore = useCategoryStore()
+const filterStore = useFilterStore()
 
-// 카테고리 목록
-const categoryMap = {
-  income: [],
-  expense: [],
-}
-
-// 필터 값 세팅
-const setType = (val) => {
-  type.value = val
-  category.value = ''
-}
-//카테고리 값 세팅
-const setCategory = (val) => {
-  category.value = val
-}
-// 분류 값 계산
-const typeLabel = computed(() => {
-  return type.value === 'income' ? '수입' : type.value === 'expense' ? '지출' : '분류'
-})
-
-const historyCategories = computed(() => {
-  return categoryMap[type.value] || []
-})
-
-//카테고리명 설정
-const categoryLabel = computed(() => {
-  if (!type.value) return '카테고리'
-  const match = historyCategories.value.find((ctg) => ctg.value === category.value)
-  return match ? match.label : '카테고리'
-})
-//카테고리아이콘 설정
-const categoryIcon = computed(() => {
-  if (!type.value || !category.value) return ''
-  const match = historyCategories.value.find((ctg) => ctg.value === category.value)
-  return match ? match.icon : ''
-})
-
-// 카테고리 데이터 불러오기
-onMounted(async () => {
-  try {
-    const res = await axios.get('http://localhost:3000/category')
-    const data = res.data[0]
-
-    categoryMap.expense = data.expense.map((item) => ({
-      value: item.categoryId,
-      label: item.categoryName,
-      icon: item.categoryIcon,
-    }))
-    categoryMap.income = data.income.map((item) => ({
-      value: item.categoryId,
-      label: item.categoryName,
-      icon: item.categoryIcon,
-    }))
-  } catch (err) {
-    console.error('카테고리 불러오기 실패:', err)
-  }
-})
-
-// 기간 필터
-const isDropdownOpen = ref(false)
-const startDate = ref('')
-const endDate = ref('')
 const dropdownRef = ref(null)
+const isDropdownOpen = ref(false)
 
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value
 }
-const dateLabel = computed(() => {
-  if (startDate.value && endDate.value) {
-    return `${startDate.value} ~ ${endDate.value}`
-  }
-  return '기간'
-})
 const handleClickOutside = (e) => {
   if (dropdownRef.value && !dropdownRef.value.contains(e.target)) {
     isDropdownOpen.value = false
@@ -164,9 +94,57 @@ const handleClickOutside = (e) => {
 
 onMounted(() => {
   document.addEventListener('click', handleClickOutside)
+  categoryStore.fetchCategories()
 })
 onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside)
+})
+
+// Setters
+const setType = (val) => {
+  filterStore.type = val
+  filterStore.category = ''
+}
+const setCategory = (val) => {
+  filterStore.category = val
+}
+
+// computed values
+const typeLabel = computed(() => {
+  return filterStore.type === 'income' ? '수입' : filterStore.type === 'expense' ? '지출' : '분류'
+})
+
+const categoryLabel = computed(() => {
+  if (!filterStore.type) return '카테고리'
+  const match = historyCategories.value.find((ctg) => ctg.value === filterStore.category)
+  return match ? match.label : '카테고리'
+})
+
+const categoryMap = computed(() => ({
+  income:
+    categoryStore.categories.income?.map((item) => ({
+      value: item.categoryId,
+      label: item.categoryName,
+      icon: item.categoryIcon,
+    })) || [],
+  expense:
+    categoryStore.categories.expense?.map((item) => ({
+      value: item.categoryId,
+      label: item.categoryName,
+      icon: item.categoryIcon,
+    })) || [],
+}))
+
+const historyCategories = computed(() => {
+  return categoryMap.value[filterStore.type] || []
+})
+
+const dateLabel = computed(() => {
+  const { startDate, endDate } = filterStore
+  if (startDate && endDate) {
+    return `${startDate} ~ ${endDate}`
+  }
+  return '기간'
 })
 </script>
 
@@ -183,13 +161,19 @@ onBeforeUnmount(() => {
   max-height: 25vh;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-gray-300) transparent; /* Firefox */
+  scrollbar-color: var(--color-gray-300) transparent;
 }
 .dropdown-item:hover {
   background-color: var(--color-purple-100);
+  color: var(--color-purple-400);
+  font-weight: bold !important;
 }
 .dropdown-item:active {
-  background-color: var(—color-purple-400);
+  background-color: var(--color-purple-400);
+  color: white;
+  font-weight: bold !important;
+}
+.dropdown-item:active .category-icon-tag {
   color: white;
 }
 </style>

@@ -3143,8 +3143,8 @@
       "userId": "zlwmxkdla",
       "password": "12345678",
       "userName": "이유정",
-      "createdAt": "2025-04-09T05:37:26.866Z",
-      "updatedAt": "2025-04-09T05:37:26.866Z"
+      "createdAt": "2025-04-05T05:37:26.866Z",
+      "updatedAt": "2025-04-09T14:07:16.326Z"
     }
   ],
   "transactions": [
@@ -15802,7 +15802,8 @@
           "categoryName": "기타 수입",
           "categoryIcon": "fa-solid fa-ellipsis"
         }
-      ]
+      ],
+      "id": "794f"
     }
   ]
 }
