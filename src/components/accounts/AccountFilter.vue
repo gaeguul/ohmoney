@@ -9,6 +9,7 @@
       >
         {{ dateLabel }}
       </button>
+      <!-- 기간 드롭다운 -->
       <div
         class="dropdown-menu p-3 shadow"
         v-if="isDropdownOpen"
@@ -52,6 +53,7 @@
       >
         {{ typeLabel }}
       </button>
+      <!-- 분류 드롭다운 -->
       <ul class="dropdown-menu">
         <li>
           <a class="dropdown-item" href="#" @click.prevent="clearType">분류</a>
@@ -76,6 +78,7 @@
       >
         {{ categoryLabel }}
       </button>
+      <!-- 카테고리 드롭다운 -->
       <ul class="dropdown-menu">
         <li>
           <a class="dropdown-item" href="#" @click.prevent="clearCategory">카테고리</a>
@@ -99,7 +102,6 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useCategoryStore } from '@/stores/categoryStore'
 import { useFilterStore } from '@/stores/filterStore'
-import { star } from 'fontawesome'
 
 const categoryStore = useCategoryStore()
 const filterStore = useFilterStore()
@@ -108,7 +110,6 @@ const dropdownRef = ref(null)
 const isDropdownOpen = ref(false)
 
 //기간 필터
-
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value
 }
@@ -215,6 +216,6 @@ const clearCategory = () => {
   font-weight: bold !important;
 }
 .dropdown-item:active .category-icon-tag {
-  color: white;
+  color: var(--color-purple-100) !important;
 }
 </style>
