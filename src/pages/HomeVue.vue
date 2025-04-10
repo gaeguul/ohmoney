@@ -44,8 +44,11 @@ const checkIsMobile = () => {
 }
 
 onMounted(() => {
+  console.log('Home: ', year.value, month.value)
+
   checkIsMobile()
   window.addEventListener('resize', checkIsMobile)
+  calendarStore.resetState()
   calendarStore.fetchTransactions()
 })
 </script>

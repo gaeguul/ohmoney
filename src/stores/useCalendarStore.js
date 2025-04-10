@@ -55,6 +55,13 @@ export const useCalendarStore = defineStore('calendar', () => {
     accountList.value = transactionList.filter((item) => item.date === dateStr)
   }
 
+  // 상태 초기화 함수
+  const resetState = () => {
+    isOpen.value = false
+    selectedDate.value = null
+    accountList.value = []
+  }
+
   return {
     selectedDate,
     accountList,
@@ -62,5 +69,6 @@ export const useCalendarStore = defineStore('calendar', () => {
     toggleDate,
     fetchTransactions,
     transactionList,
+    resetState,
   }
 })
