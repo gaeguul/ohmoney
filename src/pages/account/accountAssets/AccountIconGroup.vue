@@ -8,7 +8,6 @@ import AccountIcon from './AccountIcon.vue'
 const props = defineProps({
   icons: { type: Array, required: true },
 })
-
 // v-model 지원
 const modelValue = defineModel()
 </script>

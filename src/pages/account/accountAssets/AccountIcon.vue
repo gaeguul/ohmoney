@@ -1,6 +1,7 @@
 <template>
   <span v-for="item in props.icons" :key="item.name">
     <label class="submit">
+
       <input
         type="radio"
         name="category"

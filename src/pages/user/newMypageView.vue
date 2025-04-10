@@ -261,16 +261,18 @@ const handleSave = async () => {
     align-items: center;
     text-align: center;
     padding: 40px 20px;
+    min-width: 360px;
   }
 
   .header-actions {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 0 20px;
   }
 
   .header-actions button {
-    width: 80%;
+    width: 100%;
     margin-bottom: 10px;
   }
 
@@ -533,6 +535,7 @@ const handleSave = async () => {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    min-width: 360px;
   }
 
   .header-actions {
@@ -541,6 +544,7 @@ const handleSave = async () => {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+    min-width: 360px;
   }
 
   .header-actions button {
