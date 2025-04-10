@@ -867,9 +867,9 @@
     {
       "duration": "2025-04",
       "categoryId": 1,
-      "sumAmount": 212400,
+      "sumAmount": 222400,
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2025-04-01T00:00:00Z",
+      "updatedAt": "2025-04-01T00:00:00.000Z",
       "userId": "7471",
       "id": "20d4"
     },
@@ -15675,6 +15675,30 @@
       "updatedAt": "2025-04-20T00:00:00Z",
       "userId": "db10",
       "id": "73d1"
+    },
+    {
+      "id": "85d9",
+      "categoryId": 1,
+      "memo": "ㄴ",
+      "paymentMethod": "card",
+      "amount": "10000",
+      "vendor": "ㄴ",
+      "transactionType": "",
+      "createdAt": "2025-04-01T00:00:00.000Z",
+      "updatedAt": "2025-04-01T00:00:00.000Z",
+      "userId": "7471"
+    },
+    {
+      "id": "0473",
+      "categoryId": 1,
+      "memo": "맛집인듯 ㅇㅇ",
+      "paymentMethod": "card",
+      "amount": "10000",
+      "vendor": "중국집",
+      "transactionType": "",
+      "createdAt": "2025-04-01T00:00:00.000Z",
+      "updatedAt": "2025-04-01T00:00:00.000Z",
+      "userId": "7471"
     }
   ],
   "category": [
