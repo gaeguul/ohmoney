@@ -44,6 +44,7 @@ const submitForm = async () => {
   await axios.post(`${BASEurlT}`, { ...newTransaction, amount: Number(newTransaction.amount) })
   console.log('Transaction updated:', newTransaction)
   updateSum(duration)
+  router.push('/home')
 }
 
 const updateSum = async (duration) => {

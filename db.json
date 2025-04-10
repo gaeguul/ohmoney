@@ -867,9 +867,9 @@
     {
       "duration": "2025-04",
       "categoryId": 1,
-      "sumAmount": 262400,
+      "sumAmount": 252400,
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2025-04-11T00:00:00.000Z",
+      "updatedAt": "2025-04-10T07:49:22.209Z",
       "userId": "7471",
       "id": "20d4"
     },
@@ -885,9 +885,9 @@
     {
       "duration": "2025-04",
       "categoryId": 12,
-      "sumAmount": 114500,
+      "sumAmount": 103500,
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2025-04-03T00:00:00.000Z",
+      "updatedAt": "2025-04-01T00:00:00Z",
       "userId": "7471",
       "id": "9a03"
     },
@@ -1704,9 +1704,9 @@
     {
       "duration": "2025-04",
       "categoryId": 2,
-      "sumAmount": 91600,
+      "sumAmount": 90600,
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2025-04-24T00:00:00.000Z",
+      "updatedAt": "2025-04-01T00:00:00Z",
       "userId": "7471",
       "id": "c100"
     },
@@ -3145,6 +3145,14 @@
       "userName": "이유정",
       "createdAt": "2025-04-05T05:37:26.866Z",
       "updatedAt": "2025-04-09T14:07:16.326Z"
+    },
+    {
+      "id": "1635",
+      "userId": "lym4963",
+      "password": "dbals1234",
+      "userName": "윰",
+      "createdAt": "2025-04-10T05:38:12.159Z",
+      "updatedAt": "2025-04-10T05:38:12.159Z"
     }
   ],
   "transactions": [
@@ -12252,7 +12260,7 @@
       "vendor": "회사",
       "transactionType": "expense",
       "createdAt": "2025-04-01T00:00:00.000Z",
-      "updatedAt": "2025-04-10T13:17:15.438Z",
+      "updatedAt": "2025-04-10T05:05:26.231Z",
       "userId": "7471",
       "id": "2bbc",
       "date": ""
@@ -15288,11 +15296,10 @@
       "paymentMethod": "카드",
       "vendor": "마트",
       "transactionType": "expense",
-      "createdAt": "2025-04-02T00:00:00.000Z",
-      "updatedAt": "2025-04-10T13:15:55.756Z",
+      "createdAt": "2025-04-02T00:00:00Z",
+      "updatedAt": "2025-04-02T00:00:00Z",
       "userId": "7471",
-      "id": "a7e8",
-      "date": ""
+      "id": "a7e8"
     },
     {
       "categoryId": 16,
@@ -15369,15 +15376,14 @@
     {
       "categoryId": 4,
       "amount": 81700,
-      "memo": "Dummy",
+      "memo": "Dummy expense",
       "paymentMethod": "카드",
       "vendor": "기타",
       "transactionType": "expense",
-      "createdAt": "2025-04-02T00:00:00.000Z",
-      "updatedAt": "2025-04-10T13:16:03.179Z",
+      "createdAt": "2025-04-02T00:00:00Z",
+      "updatedAt": "2025-04-02T00:00:00Z",
       "userId": "7471",
-      "id": "0713",
-      "date": ""
+      "id": "0713"
     },
     {
       "categoryId": 13,
@@ -15668,100 +15674,15 @@
       "id": "73d1"
     },
     {
-      "id": "0473",
+      "id": "85d9",
       "categoryId": 1,
-      "memo": "맛집인듯",
-      "paymentMethod": "카드",
-      "amount": 20000,
-      "vendor": "중국집",
-      "transactionType": "expense",
+      "memo": "ㄴ",
+      "paymentMethod": "card",
+      "amount": "10000",
+      "vendor": "ㄴ",
+      "transactionType": "",
       "createdAt": "2025-04-01T00:00:00.000Z",
-      "updatedAt": "2025-04-10T13:26:08.494Z",
-      "userId": "7471",
-      "date": ""
-    },
-    {
-      "id": "01a3",
-      "categoryId": 2,
-      "memo": "굿",
-      "paymentMethod": "카드",
-      "amount": "1000",
-      "vendor": "버스",
-      "transactionType": "expense",
-      "createdAt": "2025-04-24T00:00:00.000Z",
-      "updatedAt": "2025-04-24T00:00:00.000Z",
-      "userId": "7471"
-    },
-    {
-      "id": "9004",
-      "categoryId": 1,
-      "memo": "ㅇㅇ",
-      "paymentMethod": "카드",
-      "amount": "10000",
-      "vendor": "ㅇ",
-      "transactionType": "expense",
-      "createdAt": "2025-04-11T00:00:00.000Z",
-      "updatedAt": "2025-04-11T00:00:00.000Z",
-      "userId": "7471"
-    },
-    {
-      "id": "a7f6",
-      "categoryId": 12,
-      "memo": "ㅗㅗㅗㅗ",
-      "paymentMethod": "카드",
-      "amount": "10000",
-      "vendor": "ㅗ",
-      "transactionType": "expense",
-      "createdAt": "2025-10-23T00:00:00.000Z",
-      "updatedAt": "2025-10-23T00:00:00.000Z",
-      "userId": "7471"
-    },
-    {
-      "id": "d572",
-      "categoryId": 12,
-      "memo": "ㅇㅇ",
-      "paymentMethod": "카드",
-      "amount": "110000",
-      "vendor": "술잡",
-      "transactionType": "expense",
-      "createdAt": "2025-04-11T00:00:00.000Z",
-      "updatedAt": "2025-04-11T00:00:00.000Z",
-      "userId": "7471"
-    },
-    {
-      "id": "23af",
-      "categoryId": 12,
-      "memo": "ㅇㅇ",
-      "paymentMethod": "카드",
-      "amount": "10000",
-      "vendor": "ㅇ",
-      "transactionType": "expense",
-      "createdAt": "2025-04-21T00:00:00.000Z",
-      "updatedAt": "2025-04-21T00:00:00.000Z",
-      "userId": "7471"
-    },
-    {
-      "id": "3aad",
-      "categoryId": 12,
-      "memo": "ㅂㅈㄷ",
-      "paymentMethod": "카드",
-      "amount": "10000",
-      "vendor": "ㄷㅂㄷ",
-      "transactionType": "expense",
-      "createdAt": "2025-04-16T00:00:00.000Z",
-      "updatedAt": "2025-04-16T00:00:00.000Z",
-      "userId": "7471"
-    },
-    {
-      "id": "bf2f",
-      "categoryId": 12,
-      "memo": "ㅈㅂㄷ",
-      "paymentMethod": "카드",
-      "amount": 1000,
-      "vendor": "ㅉ",
-      "transactionType": "expense",
-      "createdAt": "2025-04-03T00:00:00.000Z",
-      "updatedAt": "2025-04-03T00:00:00.000Z",
+      "updatedAt": "2025-04-01T00:00:00.000Z",
       "userId": "7471"
     }
   ],
