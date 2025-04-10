@@ -91,15 +91,19 @@ const handleLogin = async () => {
     //로그인 성공한 경우
     if (data.length > 0) {
       const user = data[0] // 사용자 가져오기
+      console.log('로그인한 사용자 정보:', user)
 
       // 저장소에 사용자 정보 저장
       userStore.setUser({
         userId: user.userId,
         userName: user.userName,
         password: user.password,
+        createdAt: user.createdAt,
+        id: user.id,
+        updatedAt: user.updatedAt,
       })
       localStorage.setItem('user', JSON.stringify(user))
-      showWelcomeToast(`${user.userName} 님 안녕하세요!`)
+      showWelcomeToast(`${user.userName}님, 안녕하세요!`)
     } else {
       // 로그인 실패 시 경고창
       openAlert('아이디 또는 비밀번호가 일치하지 않습니다!')
@@ -224,8 +228,8 @@ input {
 }
 
 .alert-message {
-  font-size: 16px;
-  color: #333;
+  font-size: 25px;
+  color: #7c3aed;
   margin-bottom: 20px;
 }
 

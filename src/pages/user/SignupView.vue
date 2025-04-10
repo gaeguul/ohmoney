@@ -147,7 +147,7 @@ const checkDuplicate = async () => {
   }
 
   try {
-    const { data } = await axios.get(`/user?userId=${id.value}`)
+    const { data } = await axios.get(`/api/user?userId=${id.value}`)
     if (data.length > 0) {
       idError.value = '이미 존재하는 아이디입니다.'
       isIdAvailable.value = false
