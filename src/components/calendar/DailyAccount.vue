@@ -67,8 +67,9 @@ const calendarStore = useCalendarStore()
 const categoryStore = useCategoryStore()
 const router = useRouter()
 
-onMounted(async () => {
-  await categoryStore.fetchCategories()
+onMounted(() => {
+  categoryStore.fetchCategories()
+  categoryStore.isOpen = false
 })
 
 // 날짜 포맷팅
