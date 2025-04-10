@@ -166,6 +166,43 @@ const blockNonNumeric = (e) => {
     e.preventDefault()
   }
 }
+const validateForm = () => {
+  // 날짜 형식 확인
+  if (!tempDate.value || !/^\d{4}-\d{2}-\d{2}$/.test(tempDate.value)) {
+    alert('날짜를 정확히 입력해주세요. (예: 2025-04-01)')
+    return false
+  }
+
+  // 금액 확인
+  const amount = Number(newTransaction.amount)
+  if (!amount || isNaN(amount) || amount <= 0) {
+    alert('올바른 금액을 입력해주세요.')
+    return false
+  }
+
+  // 필수 항목 확인
+  if (!newTransaction.vendor.trim()) {
+    alert('사용처를 입력해주세요.')
+    return false
+  }
+
+  if (!newTransaction.paymentMethod) {
+    alert('결제수단을 선택해주세요.')
+    return false
+  }
+
+  if (!newTransaction.transactionType) {
+    alert('지출/수입을 선택해주세요.')
+    return false
+  }
+
+  if (!newTransaction.categoryId) {
+    alert('카테고리를 선택해주세요.')
+    return false
+  }
+
+  return true
+}
 
 const fetchTransaction = async (categoryId) => {
   const res = await axios.get(`${BASEurlT}/${categoryId}`)
@@ -206,7 +243,7 @@ const originTransaction = reactive({
 })
 
 const submitForm = async () => {
-  console.log(newTransaction)
+  if (!validateForm()) return
 
   const date = new Date(tempDate.value)
   newTransaction.createdAt = date
