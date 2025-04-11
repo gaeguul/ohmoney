@@ -869,7 +869,7 @@
       "categoryId": 1,
       "sumAmount": 252400,
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2025-04-10T05:09:37.157Z",
+      "updatedAt": "2025-04-10T07:49:22.209Z",
       "userId": "7471",
       "id": "20d4"
     },
@@ -3215,18 +3215,6 @@
       "updatedAt": "2025-05-01T13:00:00Z",
       "userId": "7471",
       "id": "0361"
-    },
-    {
-      "categoryId": 20,
-      "amount": 80000,
-      "memo": "아싸 월급",
-      "paymentMethod": "카드",
-      "vendor": "회사",
-      "transactionType": "income",
-      "createdAt": "2025-04-01T09:00:00Z",
-      "updatedAt": "2025-04-01T09:00:00Z",
-      "userId": "7471",
-      "id": "abae"
     },
     {
       "categoryId": 19,
@@ -15686,17 +15674,16 @@
       "id": "73d1"
     },
     {
-      "id": "0473",
+      "id": "85d9",
       "categoryId": 1,
-      "memo": "맛집인듯 ㅇㅇ",
+      "memo": "ㄴ",
       "paymentMethod": "card",
-      "amount": "20000",
-      "vendor": "중국집",
+      "amount": "10000",
+      "vendor": "ㄴ",
       "transactionType": "",
       "createdAt": "2025-04-01T00:00:00.000Z",
-      "updatedAt": "2025-04-10T05:09:37.157Z",
-      "userId": "7471",
-      "date": ""
+      "updatedAt": "2025-04-01T00:00:00.000Z",
+      "userId": "7471"
     }
   ],
   "category": [

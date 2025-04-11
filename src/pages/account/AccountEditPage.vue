@@ -44,7 +44,16 @@
         <div class="row">
           <div class="label">금액</div>
           <div class="amount-field">
-            <input type="text" class="input-field" v-model.trim="newTransaction.amount" />
+            <input
+              type="text"
+              class="input-field"
+              :value="formattedAmount"
+              @input="handleAmountInput"
+              @keydown="blockNonNumeric"
+              @paste.prevent
+              inputmode="numeric"
+              autocomplete="off"
+            />
             <span>원</span>
           </div>
         </div>
@@ -61,9 +70,9 @@
             <label class="submit">
               <input
                 type="radio"
-                name="cash"
+                name="paymentMethod"
                 id="카드"
-                value="card"
+                value="카드"
                 v-model="newTransaction.paymentMethod"
               />
               <span>카드</span>
@@ -71,9 +80,9 @@
             <label class="submit">
               <input
                 type="radio"
-                name="cash"
+                name="paymentMethod"
                 id="현금"
-                value="cash"
+                value="현금"
                 v-model="newTransaction.paymentMethod"
               />
               <span>현금</span>
@@ -136,6 +145,65 @@ const newTransaction = reactive({
   userId: '',
 })
 
+const formattedAmount = computed(() => {
+  const num = Number(newTransaction.amount)
+  return isNaN(num) ? '' : num.toLocaleString()
+})
+
+const handleAmountInput = (e) => {
+  // 한글 및 자모 범위를 포함한 필터
+  const onlyDigits = e.target.value.replace(/[^\d]/g, '') // 숫자 외 제거
+  newTransaction.amount = onlyDigits
+  e.target.value = Number(onlyDigits).toLocaleString()
+}
+
+const blockNonNumeric = (e) => {
+  const allowed = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab']
+  const isNumberKey = /^[0-9]$/.test(e.key)
+  const isAllowed = allowed.includes(e.key)
+
+  if (!isNumberKey && !isAllowed) {
+    e.preventDefault()
+  }
+}
+const validateForm = () => {
+  // 날짜 형식 확인
+  if (!tempDate.value || !/^\d{4}-\d{2}-\d{2}$/.test(tempDate.value)) {
+    alert('날짜를 정확히 입력해주세요. (예: 2025-04-01)')
+    return false
+  }
+
+  // 금액 확인
+  const amount = Number(newTransaction.amount)
+  if (!amount || isNaN(amount) || amount <= 0) {
+    alert('올바른 금액을 입력해주세요.')
+    return false
+  }
+
+  // 필수 항목 확인
+  if (!newTransaction.vendor.trim()) {
+    alert('사용처를 입력해주세요.')
+    return false
+  }
+
+  if (!newTransaction.paymentMethod) {
+    alert('결제수단을 선택해주세요.')
+    return false
+  }
+
+  if (!newTransaction.transactionType) {
+    alert('지출/수입을 선택해주세요.')
+    return false
+  }
+
+  if (!newTransaction.categoryId) {
+    alert('카테고리를 선택해주세요.')
+    return false
+  }
+
+  return true
+}
+
 const fetchTransaction = async (categoryId) => {
   const res = await axios.get(`${BASEurlT}/${categoryId}`)
   Object.assign(originTransaction, res.data)
@@ -148,6 +216,12 @@ const fetchTransaction = async (categoryId) => {
     String(transactionDate.getMonth() + 1).padStart(2, '0') +
     '-' +
     String(transactionDate.getDate()).padStart(2, '0')
+
+  if (originTransaction.transactionType === 'expense') {
+    state.isExpense = true
+  } else {
+    state.isExpense = false
+  }
 }
 
 onMounted(() => {
@@ -169,7 +243,7 @@ const originTransaction = reactive({
 })
 
 const submitForm = async () => {
-  console.log(newTransaction)
+  if (!validateForm()) return
 
   const date = new Date(tempDate.value)
   newTransaction.createdAt = date
@@ -350,5 +424,9 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.input-field {
+  ime-mode: disabled; /* IME 입력기 비활성화 */
 }
 </style>
