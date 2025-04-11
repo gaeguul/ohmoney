@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 weekly-analysis-chart mt-4">
-    <h4 class="fw-bold">주간별 분석</h4>
+    <h4 class="fw-bold">주간별 지출 분석</h4>
     <div id="chart">
       <VueApexCharts type="bar" :options="chartOptions" :series="series" />
     </div>
@@ -104,7 +104,7 @@ watchEffect(() => {
 }
 
 .apexcharts-yaxis-texts-g text tspan:nth-child(1) {
-  font-size: 14px;
+  font-size: 12px;
   font-family: 'Pretendard-Regular';
   font-weight: 600;
   fill: black;
