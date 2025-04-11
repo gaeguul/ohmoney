@@ -67,8 +67,9 @@ const calendarStore = useCalendarStore()
 const categoryStore = useCategoryStore()
 const router = useRouter()
 
-onMounted(async () => {
-  await categoryStore.fetchCategories()
+onMounted(() => {
+  categoryStore.fetchCategories()
+  categoryStore.isOpen = false
 })
 
 // 날짜 포맷팅
@@ -101,7 +102,7 @@ const flatCategoryMap = computed(() => {
 
 // item 클릭 시 상세 페이지로 이동
 const handleClickItem = (item) => {
-  router.push(`/accounts/${item.useId}`)
+  router.push(`/accounts/${item.id}`)
 }
 
 // 순수익 계산
