@@ -115,11 +115,10 @@
 </template>
 
 <script setup>
-import { computed, reactive } from 'vue'
+import { computed } from 'vue'
 import AccountIconGroup from './accountAssets/AccountIconGroup.vue'
 import accountFormIcon from '/db.json'
 import { useRoute } from 'vue-router'
-import { onMounted } from 'vue'
 const props = defineProps({
   submitForm: {
     type: Function,

@@ -20,15 +20,6 @@
     },
     {
       "duration": "2025-06",
-      "categoryId": 20,
-      "sumAmount": 157100,
-      "createdAt": "2025-06-01T00:00:00Z",
-      "updatedAt": "2025-06-01T00:00:00Z",
-      "userId": "7471",
-      "id": "1ef7"
-    },
-    {
-      "duration": "2025-06",
       "categoryId": 24,
       "sumAmount": 3000,
       "createdAt": "2025-06-01T00:00:00Z",
@@ -48,7 +39,7 @@
     {
       "duration": "2025-04",
       "categoryId": 20,
-      "sumAmount": 252100,
+      "sumAmount": 244000,
       "createdAt": "2025-04-01T00:00:00Z",
       "updatedAt": "2025-04-01T00:00:00Z",
       "userId": "7471",
@@ -786,7 +777,7 @@
     {
       "duration": "2025-05",
       "categoryId": 20,
-      "sumAmount": 241600,
+      "sumAmount": 165500,
       "createdAt": "2025-05-01T00:00:00Z",
       "updatedAt": "2025-05-01T00:00:00Z",
       "userId": "7471",
@@ -2118,9 +2109,9 @@
     {
       "duration": "2025-04",
       "categoryId": 10,
-      "sumAmount": 56000,
+      "sumAmount": 66000,
       "createdAt": "2025-04-01T00:00:00Z",
-      "updatedAt": "2025-04-01T00:00:00Z",
+      "updatedAt": "2025-04-22T00:00:00.000Z",
       "userId": "7471",
       "id": "f825"
     },
@@ -3179,18 +3170,6 @@
       "updatedAt": "2025-06-09T18:15:00Z",
       "userId": "7471",
       "id": "af43"
-    },
-    {
-      "categoryId": 20,
-      "amount": 120000,
-      "memo": "아싸 월급",
-      "paymentMethod": "카드",
-      "vendor": "회사",
-      "transactionType": "income",
-      "createdAt": "2025-06-01T09:00:00Z",
-      "updatedAt": "2025-06-01T09:00:00Z",
-      "userId": "7471",
-      "id": "8d16"
     },
     {
       "categoryId": 24,
@@ -4331,18 +4310,6 @@
       "updatedAt": "2025-04-27T00:00:00Z",
       "userId": "47ae",
       "id": "c058"
-    },
-    {
-      "categoryId": 20,
-      "amount": 76100,
-      "memo": "Dummy income",
-      "paymentMethod": "현금",
-      "vendor": "기타",
-      "transactionType": "income",
-      "createdAt": "2025-05-17T00:00:00Z",
-      "updatedAt": "2025-05-17T00:00:00Z",
-      "userId": "7471",
-      "id": "4155"
     },
     {
       "categoryId": 14,
@@ -7369,18 +7336,6 @@
       "id": "d503"
     },
     {
-      "categoryId": 20,
-      "amount": 27500,
-      "memo": "Dummy income",
-      "paymentMethod": "카드",
-      "vendor": "카페",
-      "transactionType": "income",
-      "createdAt": "2025-06-24T00:00:00Z",
-      "updatedAt": "2025-06-24T00:00:00Z",
-      "userId": "7471",
-      "id": "f315"
-    },
-    {
       "categoryId": 2,
       "amount": 99100,
       "memo": "Dummy expense",
@@ -10367,18 +10322,6 @@
       "updatedAt": "2025-04-17T00:00:00Z",
       "userId": "7471",
       "id": "4686"
-    },
-    {
-      "categoryId": 20,
-      "amount": 9600,
-      "memo": "Dummy income",
-      "paymentMethod": "카드",
-      "vendor": "마트",
-      "transactionType": "income",
-      "createdAt": "2025-06-17T00:00:00Z",
-      "updatedAt": "2025-06-17T00:00:00Z",
-      "userId": "7471",
-      "id": "b661"
     },
     {
       "categoryId": 22,
@@ -14618,18 +14561,6 @@
       "id": "ec27"
     },
     {
-      "categoryId": 20,
-      "amount": 8100,
-      "memo": "Dummy income",
-      "paymentMethod": "현금",
-      "vendor": "마트",
-      "transactionType": "income",
-      "createdAt": "2025-04-04T00:00:00Z",
-      "updatedAt": "2025-04-04T00:00:00Z",
-      "userId": "7471",
-      "id": "2b68"
-    },
-    {
       "categoryId": 14,
       "amount": 17000,
       "memo": "Dummy expense",
@@ -15708,6 +15639,18 @@
       "transactionType": "expense",
       "createdAt": "2025-04-18T00:00:00.000Z",
       "updatedAt": "2025-04-18T00:00:00.000Z",
+      "userId": "7471"
+    },
+    {
+      "id": "ce1e",
+      "categoryId": 10,
+      "memo": "555",
+      "paymentMethod": "카드",
+      "amount": 10000,
+      "vendor": "55",
+      "transactionType": "expense",
+      "createdAt": "2025-04-22T00:00:00.000Z",
+      "updatedAt": "2025-04-22T00:00:00.000Z",
       "userId": "7471"
     }
   ],
