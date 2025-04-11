@@ -41,14 +41,15 @@
 </template>
 <script setup>
 import CategoryCircleChart from '@/components/charts/CategoryCircleChart.vue'
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 
 const props = defineProps({
   summary: { type: Array, required: true },
-  category: { type: Array, required: true },
+  category: { type: Object, required: true },
 })
 const chartWidth = 400
 const chartHeight = 400
+const loading = ref(false)
 
 onMounted(() => {
   summaryIncomeChart.labels = summaryIncome.map((item) => findCategoryName(item))
