@@ -28,6 +28,7 @@ const router = createRouter({
       children: [
         {
           path: '',
+          name: 'home',
           redirect: '/home', // ✅ 기본 자식 라우트는 /home으로 이동
         },
         {
