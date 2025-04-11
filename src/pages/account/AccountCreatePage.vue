@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import AccountForm from './AccountForm.vue'
+import AccountForm from '@/components/accounts/AccountForm.vue'
 import { reactive, ref } from 'vue'
 import { useUserStore } from '@/stores/userStore'
 import db from '/db.json'
