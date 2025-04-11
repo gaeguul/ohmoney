@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-4">
+  <div class="container mt-4 d-flex flex-column gap-4">
     <CalendarSummary :year="year" :month="month" />
     <div>
       <!-- 캘린더 헤더 -->

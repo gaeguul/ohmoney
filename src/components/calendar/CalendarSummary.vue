@@ -1,16 +1,18 @@
 <template>
-  <div class="summary-container">
+  <div class="summary-container border">
     <div class="summary-item">
-      <span>이번 달 총 지출</span>
-      <span>{{ expenseTotal.toLocaleString() }}원</span>
+      <span class="fw-bold text-start text-secondary mx-2">이번 달 순수익</span>
+      <span class="fs-5">{{ netIncome.toLocaleString() }}원</span>
     </div>
+    <div class="divider"></div>
     <div class="summary-item">
-      <span>이번 달 총 수입</span>
-      <span>{{ incomeTotal.toLocaleString() }}원</span>
+      <span class="fw-bold text-start text-secondary mx-2">이번 달 총 지출</span>
+      <span class="fs-5">{{ expenseTotal.toLocaleString() }}원</span>
     </div>
+    <div class="divider"></div>
     <div class="summary-item">
-      <span>월 순수익</span>
-      <span>{{ netIncome.toLocaleString() }}원</span>
+      <span class="fw-bold text-start text-secondary mx-2">이번 달 총 수입</span>
+      <span class="fs-5">{{ incomeTotal.toLocaleString() }}원</span>
     </div>
   </div>
 </template>
@@ -47,25 +49,29 @@ const netIncome = computed(() => incomeTotal.value - expenseTotal.value)
 .summary-container {
   background-color: white;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
   display: flex;
-  justify-content: space-around;
-  gap: 20px;
+  justify-content: space-evenly;
+  gap: 0;
+  position: relative;
 }
 
 .summary-item {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  gap: 6px;
   font-size: 16px;
   font-weight: 500;
   color: #333;
   padding: 10px;
-  border-right: 1px solid #e0e0e0;
+  text-align: center;
 }
 
-.summary-item:last-child {
-  border-right: none;
+.divider {
+  width: 1px;
+  background-color: var(--color-gray-300);
+  align-self: stretch;
 }
 </style>
