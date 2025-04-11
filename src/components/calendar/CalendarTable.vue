@@ -15,7 +15,7 @@
           <td
             v-for="(date, dIndex) in week"
             :key="dIndex"
-            :class="[{ 'selected-date': formatDate(date) === calendarStore.selectedDate }]"
+            :class="[{ 'selected-date': isUserSelectedDate(formatDate(date)) }]"
             style="width: 14.28%"
             @click="calendarStore.toggleDate(date, { open: true })"
           >
@@ -124,6 +124,11 @@ function formatDate(date) {
   const mm = String(date.getMonth() + 1).padStart(2, '0')
   const dd = String(date.getDate()).padStart(2, '0')
   return `${yyyy}-${mm}-${dd}`
+}
+
+// 사용자 선택한 날짜에만 배경색
+function isUserSelectedDate(dateStr) {
+  return calendarStore.isOpen && calendarStore.selectedDate === dateStr
 }
 
 // 현재 달의 날짜인지 확인
