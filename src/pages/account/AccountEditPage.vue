@@ -83,8 +83,6 @@ const submitForm = async () => {
   newTransaction.createdAt = date
   newTransaction.updatedAt = new Date()
 
-  //const duration = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0')
-
   console.log(originTransaction)
   console.log(newTransaction)
 
