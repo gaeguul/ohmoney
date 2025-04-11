@@ -3,42 +3,50 @@
     <h2 class="fw-bold mb-5">카테고리 별 분석</h2>
     <div id="body">
       <div id="figure">
-        <CategoryGroup :summary="findById(id)" :category="db.category[0]" />
+        <CategoryGroup v-if="summary.length > 0" :summary="summary" :category="category" />
       </div>
     </div>
   </div>
 </template>
+
 <script setup>
+import { ref, onMounted } from 'vue'
 import { useUserStore } from '@/stores/userStore'
 import CategoryGroup from './CategoryGroup.vue'
-import db from '/db.json'
+import axios from 'axios'
 
 const userStore = useUserStore()
 const id = userStore.id
+const summary = ref([])
+const category = ref({ expense: [], income: [] })
 
-const findById = (id) => {
-  const date = new Date()
+onMounted(async () => {
+  try {
+    const now = new Date()
+    const currentYear = now.getFullYear()
+    const currentMonth = now.getMonth() + 1
 
-  return db.summary
-    .filter((category) => category.userId === id)
-    .filter((category) => {
-      const [year, month] = category.duration.split('-')
-      return (
-        parseInt(year) === date.getFullYear() && parseInt(month) === date.getMonth() + 1 // getMonth()는 0-based!
-      )
+    const { data } = await axios.get('/api/summary', {
+      params: { userId: id },
     })
-}
+
+    summary.value = data.filter((item) => {
+      const [year, month] = item.duration.split('-')
+      return parseInt(year) === currentYear && parseInt(month) === currentMonth
+    })
+
+    const categoryRes = await axios.get('/api/category')
+    category.value = categoryRes.data[0]
+  } catch (error) {
+    console.error('데이터 불러오기 실패:', error)
+  }
+})
 </script>
+
 <style scoped>
 .container {
   display: flex;
   flex-direction: column;
-}
-header h1 {
-  font-weight: bold;
-  width: 300px;
-  margin: 0;
-  padding: auto;
 }
 #body {
   width: 100%;
