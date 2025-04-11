@@ -127,7 +127,7 @@ const router = useRouter()
 const categoryStore = useCategoryStore()
 const filterStore = useFilterStore()
 const userStore = useUserStore()
-const BASEurlS = 'http://localhost:3000/summary'
+const BASEurlS = '/api/summary'
 const allHistories = ref([]) // 전체 거래 내역
 
 // 초기 데이터 로딩

@@ -22,12 +22,13 @@ const router = createRouter({
       redirect: '/signin',
     },
     {
-      path: '/main',
+      path: '/',
       name: 'defaultlayout',
       component: DefaultLayout,
       children: [
         {
           path: '',
+          name: 'home',
           redirect: '/home', // ✅ 기본 자식 라우트는 /home으로 이동
         },
         {
@@ -105,11 +106,12 @@ router.beforeEach((to, from, next) => {
       localStorage.removeItem('user')
     }
   }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 이미 로그인한 상태라면, signin 또는 signup 페이지로 못 가게 막기
   if (userStore.isLoggedIn && (to.path === '/signin' || to.path === '/signup')) {
     next('/home') // 또는 원하는 기본 페이지
-  } else if (to.meta.requiresAuth && !userStore.isLoggedIn) {//인증 필요한데 로그인 안 한 경우
+  } else if (to.meta.requiresAuth && !userStore.isLoggedIn) {
+    //인증 필요한데 로그인 안 한 경우
     next('/signin')
   } else {
     next()

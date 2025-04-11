@@ -19,8 +19,8 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
-const BASEurlT = 'http://localhost:3000/transactions'
-const BASEurlS = 'http://localhost:3000/summary'
+const BASEurlT = '/api/transactions'
+const BASEurlS = '/api/summary'
 const tempDate = ref('')
 const router = useRouter()
 const state = reactive({ isExpense: true })
