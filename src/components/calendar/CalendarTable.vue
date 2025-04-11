@@ -112,7 +112,7 @@ const dailySummaryMap = computed(() => {
     if (!summary[date]) {
       summary[date] = { income: 0, expense: 0 }
     }
-    summary[date][item.transactionType] += item.amount
+    summary[date][item.transactionType] += Number(item.amount)
   })
 
   return summary

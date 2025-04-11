@@ -118,7 +118,6 @@ import { useCategoryStore } from '@/stores/categoryStore.js'
 import { useFilterStore } from '@/stores/filterStore.js'
 import { useUserStore } from '@/stores/userStore'
 import axios from 'axios'
-import db from '/db.json'
 import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -155,21 +154,19 @@ const deleteHistory = async (id) => {
   }
 
   const duration = new Date(targetItem.data.createdAt).toISOString().slice(0, 7).replace('-', '-')
-  const target = db.summary.find(
+  const summaryData = await axios.get(`${BASEurlS}`)
+  const target = summaryData.data.find(
     (item) =>
       item.duration === duration &&
       item.userId === targetItem.data.userId &&
       item.categoryId === targetItem.data.categoryId,
   )
-  const sumId = target.id
-  console.log('target:', target)
+
   if (target) {
     target.sumAmount -= targetItem.data.amount
     if (target.sumAmount <= 0) await axios.delete(`${BASEurlS}/${target.id}`)
     else await axios.patch(`${BASEurlS}/${target.id}`, target)
   }
-
-  console.log(db.summary.find((item) => item.id === sumId))
 }
 
 // 날짜 포맷 변경 (2024-04-10 (수) 형식)

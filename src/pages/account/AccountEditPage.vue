@@ -15,7 +15,6 @@
 import AccountForm from '@/components/accounts/AccountForm.vue'
 import { onMounted, reactive, ref } from 'vue'
 import { useUserStore } from '@/stores/userStore'
-import db from '/db.json'
 import axios from 'axios'
 import { useRouter, useRoute } from 'vue-router'
 
@@ -55,8 +54,9 @@ const originTransaction = reactive({
 const fetchTransaction = async (categoryId) => {
   const res = await axios.get(`${BASEurlT}/${categoryId}`)
   Object.assign(originTransaction, res.data)
-
   Object.assign(newTransaction, JSON.parse(JSON.stringify(originTransaction)))
+  newTransaction.amount = Number(newTransaction.amount)
+
   const transactionDate = new Date(newTransaction.createdAt)
   tempDate.value =
     transactionDate.getFullYear() +
@@ -88,23 +88,27 @@ const submitForm = async () => {
   console.log(originTransaction)
   console.log(newTransaction)
 
-  if (originTransaction.amount !== newTransaction.amount) {
+  if (Number(originTransaction.amount) !== Number(newTransaction.amount)) {
     updateSum(date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0'))
   }
-
-  await axios.patch(`${BASEurlT}/${categoryId}`, { ...newTransaction })
+  await axios.patch(`${BASEurlT}/${categoryId}`, {
+    ...newTransaction,
+    amount: Number(newTransaction.amount),
+  })
 
   router.push('/accounts')
 }
 
 const updateSum = async (duration) => {
-  const target = db.summary.find(
+  const summaryData = await axios.get(`${BASEurlS}`)
+  const target = summaryData.data.find(
     (item) =>
       item.duration === duration &&
       item.userId === newTransaction.userId &&
       item.categoryId === newTransaction.categoryId,
   )
 
+  console.log('Summary created:', target)
   if (!target) {
     console.error('해당 summary 항목을 찾을 수 없습니다.')
     return
