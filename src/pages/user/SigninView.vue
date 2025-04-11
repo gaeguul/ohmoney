@@ -58,7 +58,7 @@ const showWelcomeToast = (message) => {
   showWelcome.value = true
   setTimeout(() => {
     showWelcome.value = false
-    router.push('/main')
+    router.push('/home')
   }, 3000)
 }
 
