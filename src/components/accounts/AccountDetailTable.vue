@@ -118,6 +118,7 @@ import { useCategoryStore } from '@/stores/categoryStore.js'
 import { useFilterStore } from '@/stores/filterStore.js'
 import { useUserStore } from '@/stores/userStore'
 import axios from 'axios'
+import db from '/db.json'
 import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -126,7 +127,7 @@ const router = useRouter()
 const categoryStore = useCategoryStore()
 const filterStore = useFilterStore()
 const userStore = useUserStore()
-
+const BASEurlS = 'http://localhost:3000/summary'
 const allHistories = ref([]) // 전체 거래 내역
 
 // 초기 데이터 로딩
@@ -144,12 +145,31 @@ onMounted(async () => {
 
 // 내역 삭제
 const deleteHistory = async (id) => {
+  const targetItem = await axios.get(`${BASEURL}/${id}`)
+
   try {
     await axios.delete(`${BASEURL}/${id}`)
     allHistories.value = allHistories.value.filter((item) => item.id !== id)
   } catch (err) {
     console.error('삭제 실패:', err)
   }
+
+  const duration = new Date(targetItem.data.createdAt).toISOString().slice(0, 7).replace('-', '-')
+  const target = db.summary.find(
+    (item) =>
+      item.duration === duration &&
+      item.userId === targetItem.data.userId &&
+      item.categoryId === targetItem.data.categoryId,
+  )
+  const sumId = target.id
+  console.log('target:', target)
+  if (target) {
+    target.sumAmount -= targetItem.data.amount
+    if (target.sumAmount <= 0) await axios.delete(`${BASEurlS}/${target.id}`)
+    else await axios.patch(`${BASEurlS}/${target.id}`, target)
+  }
+
+  console.log(db.summary.find((item) => item.id === sumId))
 }
 
 // 날짜 포맷 변경 (2024-04-10 (수) 형식)
@@ -188,8 +208,15 @@ const filteredHistories = computed(() => {
 
   if (!isAllEmpty) {
     result = result.filter((item) => {
-      const matchDate =
-        (!startDate || item.createdAt >= startDate) && (!endDate || item.createdAt <= endDate)
+      const itemDate = new Date(item.createdAt)
+      const start = startDate ? new Date(startDate) : null
+      const end = endDate ? new Date(endDate) : null
+
+      if (end) {
+        end.setDate(end.getDate() + 1)
+      }
+
+      const matchDate = (!start || itemDate >= start) && (!end || itemDate < end)
       const matchType = !type || isExpense(item.categoryId) === (type === 'expense')
       const matchCategory = !category || item.categoryId === category
       return matchDate && matchType && matchCategory
