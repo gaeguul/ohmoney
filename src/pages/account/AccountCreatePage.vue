@@ -14,7 +14,6 @@
 import AccountForm from '@/components/accounts/AccountForm.vue'
 import { reactive, ref } from 'vue'
 import { useUserStore } from '@/stores/userStore'
-import db from '/db.json'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 
@@ -50,12 +49,14 @@ const submitForm = async () => {
 }
 
 const updateSum = async (duration) => {
-  const target = db.summary.find(
+  const summaryData = await axios.get(`${BASEurlS}`)
+  const target = summaryData.data.find(
     (item) =>
       item.duration === duration &&
       item.userId === newTransaction.userId &&
       item.categoryId === newTransaction.categoryId,
   )
+  console.log('Summary created:', target)
 
   if (!target) {
     const tempSummary = reactive({
