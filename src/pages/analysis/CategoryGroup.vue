@@ -60,7 +60,7 @@ onMounted(() => {
 })
 
 const summaryIncome = props.summary
-  .filter((item) => item.categoryId > 20)
+  .filter((item) => item.categoryId >= 20)
   .sort((a, b) => {
     return b.sumAmount - a.sumAmount
   })
@@ -83,19 +83,17 @@ const summaryExpenseChart = reactive({
 })
 
 const findCategoryName = (sum) => {
-  let name = ''
   const categoryId = sum.categoryId
+  if (categoryId === undefined) return '알 수 없음'
 
-  if (categoryId === undefined) {
-    return
-  }
+  let name
   if (categoryId < 20) {
     name = props.category.expense.find((category) => category.categoryId === categoryId)
   } else {
     name = props.category.income.find((category) => category.categoryId === categoryId)
   }
 
-  return name.categoryName
+  return name?.categoryName ?? '알 수 없음'
 }
 </script>
 <style scoped>
