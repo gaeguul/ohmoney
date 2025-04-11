@@ -39,7 +39,7 @@ export const useCalendarStore = defineStore('calendar', () => {
   }
 
   // 날짜 클릭 시 해당 날짜의 거래 내역을 가져오고, 이미 선택된 날짜라면 선택 해제
-  function toggleDate(dateObj) {
+  function toggleDate(dateObj, { open = true }) {
     const dateStr = formatDateToYMD(dateObj)
 
     if (selectedDate.value === dateStr) {
@@ -50,7 +50,7 @@ export const useCalendarStore = defineStore('calendar', () => {
     }
 
     selectedDate.value = dateStr
-    isOpen.value = true
+    isOpen.value = open
 
     accountList.value = transactionList.filter((item) => item.date === dateStr)
   }

@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import CalendarHeader from '../components/calendar/CalendarHeader.vue'
 import CalendarTable from '../components/calendar/CalendarTable.vue'
 import DailyAccount from '../components/calendar/DailyAccount.vue'
@@ -44,12 +44,25 @@ const checkIsMobile = () => {
 }
 
 onMounted(() => {
-  console.log('Home: ', year.value, month.value)
-
   checkIsMobile()
   window.addEventListener('resize', checkIsMobile)
+
+  // 상태 초기화
   calendarStore.resetState()
+  // 가계 목록 로딩
   calendarStore.fetchTransactions()
+})
+
+// CalendarHeader의 변경에 따라 year과 month가 업데이트
+// 현재 달의 경우 오늘 날짜, 아닐 경우 1일로 설정
+watch([year, month], ([newYear, newMonth]) => {
+  const today = new Date()
+
+  const isCurrentMonth = newYear === today.getFullYear() && newMonth === today.getMonth()
+
+  const selectedDate = isCurrentMonth ? today : new Date(newYear, newMonth, 1)
+
+  calendarStore.toggleDate(selectedDate, { open: false })
 })
 </script>
 

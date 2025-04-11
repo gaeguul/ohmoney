@@ -2,7 +2,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import SigninView from '@/pages/user/SigninView.vue'
 import SignupView from '@/pages/user/SignupView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../pages/HomeVue.vue'
+import Home from '../pages/HomeCalendar.vue'
 
 import MonthlyAnalysisChart from '@/components/charts/MonthlyAnalysisChart.vue'
 import AccountCreatePage from '@/pages/account/AccountCreatePage.vue'

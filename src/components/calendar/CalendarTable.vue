@@ -17,7 +17,7 @@
             :key="dIndex"
             :class="[{ 'selected-date': formatDate(date) === calendarStore.selectedDate }]"
             style="width: 14.28%"
-            @click="calendarStore.toggleDate(date)"
+            @click="calendarStore.toggleDate(date, { open: true })"
           >
             <div class="d-flex flex-column h-100 w-100 justify-content-between">
               <p

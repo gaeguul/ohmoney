@@ -1,24 +1,24 @@
 <template>
   <div class="summary-container border">
     <div class="summary-item">
-      <span class="fw-bold text-start text-secondary mx-2">이번 달 순수익</span>
-      <span class="fs-5">{{ netIncome.toLocaleString() }}원</span>
+      <span class="fw-bold text-start text-secondary mx-2">이번 달 총합</span>
+      <span class="fs-4">{{ netIncome.toLocaleString() }}원</span>
     </div>
     <div class="divider"></div>
     <div class="summary-item">
       <span class="fw-bold text-start text-secondary mx-2">이번 달 총 지출</span>
-      <span class="fs-5">{{ expenseTotal.toLocaleString() }}원</span>
+      <span class="fs-4">{{ expenseTotal.toLocaleString() }}원</span>
     </div>
     <div class="divider"></div>
     <div class="summary-item">
       <span class="fw-bold text-start text-secondary mx-2">이번 달 총 수입</span>
-      <span class="fs-5">{{ incomeTotal.toLocaleString() }}원</span>
+      <span class="fs-4">{{ incomeTotal.toLocaleString() }}원</span>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useIncomeExpense } from '@/stores/analysisStore'
 import { useUserStore } from '@/stores/userStore'
 
@@ -37,8 +37,15 @@ const props = defineProps({
 })
 
 onMounted(() => {
-  incomeExpenseStore.fetchIncomeExpense(userStore.id, props.year, props.month)
+  incomeExpenseStore.fetchIncomeExpense(userStore.id, props.year, props.month + 1)
 })
+
+watch(
+  () => [props.year, props.month],
+  ([newYear, newMonth]) => {
+    incomeExpenseStore.fetchIncomeExpense(userStore.id, newYear, newMonth + 1)
+  },
+)
 
 const incomeTotal = computed(() => incomeExpenseStore.incomeTotal)
 const expenseTotal = computed(() => incomeExpenseStore.expenseTotal)
