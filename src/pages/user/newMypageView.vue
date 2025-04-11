@@ -62,6 +62,16 @@
       </div>
     </div>
 
+    <!-- 회원 탈퇴 확인 모달 -->
+    <div v-if="showConfirmModal" class="alert-overlay">
+      <div class="alert-box">
+        <p class="alert-message">정말 회원 탈퇴하시겠습니까?</p>
+        <div class="btn-group" style="margin-top: 20px">
+          <button class="save" @click="confirmWithdraw">확인</button>
+          <button class="cancel" @click="showConfirmModal = false">취소</button>
+        </div>
+      </div>
+    </div>
     <!-- 알림 모달 -->
     <div v-if="showAlert" class="alert-overlay">
       <div class="alert-box">
@@ -124,6 +134,7 @@ const showAlert = ref(false)
 const alertMessage = ref('')
 const showToast = ref(false)
 const toastMessage = ref('')
+const showConfirmModal = ref(false)
 
 const usageDays = computed(() => {
   const createdAt = userStore.createdAt
@@ -168,7 +179,7 @@ const verifyUser = () => {
   }
 
   if (isWithdrawing.value) {
-    handleWithdraw()
+    showConfirmModal.value = true //회원 탈퇴할 건지 확인하는 모달 띄우기
   } else {
     isVerified.value = true
   }
@@ -231,6 +242,10 @@ const handleSave = async () => {
     alertMessage.value = '수정 중 오류가 발생했습니다.'
     showAlert.value = true
   }
+}
+const confirmWithdraw = async () => {
+  showConfirmModal.value = false
+  await handleWithdraw()
 }
 </script>
 
