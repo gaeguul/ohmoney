@@ -53,16 +53,16 @@ const loading = ref(false)
 
 onMounted(() => {
   summaryIncomeChart.labels = summaryIncome.map((item) => findCategoryName(item))
-  summaryIncomeChart.data = summaryIncome.map((item) => item.sumAmount)
+  summaryIncomeChart.data = summaryIncome.map((item) => Number(item.sumAmount))
 
   summaryExpenseChart.labels = summaryExpense.map((item) => findCategoryName(item))
-  summaryExpenseChart.data = summaryExpense.map((item) => item.sumAmount)
+  summaryExpenseChart.data = summaryExpense.map((item) => Number(item.sumAmount))
 })
 
 const summaryIncome = props.summary
   .filter((item) => item.categoryId >= 20)
   .sort((a, b) => {
-    return b.sumAmount - a.sumAmount
+    return Number(b.sumAmount) - Number(a.sumAmount)
   })
 const summaryIncomeChart = reactive({
   labels: [],
@@ -71,7 +71,7 @@ const summaryIncomeChart = reactive({
 const summaryExpense = props.summary
   .filter((item) => item.categoryId < 20)
   .sort((a, b) => {
-    return b.sumAmount - a.sumAmount
+    return Number(b.sumAmount) - Number(a.sumAmount)
   })
 if (summaryExpense.length > 5) {
   summaryExpense.length = 5
@@ -86,14 +86,14 @@ const findCategoryName = (sum) => {
   const categoryId = sum.categoryId
   if (categoryId === undefined) return '알 수 없음'
 
-  let name
+  let name = ''
   if (categoryId < 20) {
     name = props.category.expense.find((category) => category.categoryId === categoryId)
   } else {
     name = props.category.income.find((category) => category.categoryId === categoryId)
   }
 
-  return name?.categoryName ?? '알 수 없음'
+  return name?.categoryName ?? '알 수 없음 '
 }
 </script>
 <style scoped>
