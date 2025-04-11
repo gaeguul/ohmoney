@@ -4,10 +4,10 @@
   >
     <!-- 월 이동 버튼 -->
     <div class="d-flex align-items-center gap-4">
-      <button class="btn btn-outline-primary" @click="prevMonth">
+      <button class="btn" @click="prevMonth">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <h3 class="mb-0">{{ month + 1 }}월</h3>
+      <h3 class="mb-0">{{ year }}년 {{ month + 1 }}월</h3>
       <button class="btn btn-outline-primary" @click="nextMonth">
         <i class="fa-solid fa-chevron-right"></i>
       </button>
@@ -64,6 +64,7 @@ button {
 
 button:hover {
   background-color: var(--color-purple-400);
+  border: 1px solid var(--color-purple-400);
   color: white;
 }
 
