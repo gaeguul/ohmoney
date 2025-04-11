@@ -93,7 +93,7 @@ const findCategoryName = (sum) => {
     name = props.category.income.find((category) => category.categoryId === categoryId)
   }
 
-  return name?.categoryName ?? '알 수 없음'
+  return name?.categoryName ?? '알 수 없음 '
 }
 </script>
 <style scoped>
