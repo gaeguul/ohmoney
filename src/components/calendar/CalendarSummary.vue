@@ -61,10 +61,13 @@ const netIncome = computed(() => incomeTotal.value - expenseTotal.value)
   justify-content: space-evenly;
   gap: 0;
   position: relative;
+  flex-wrap: wrap;
+  overflow: auto;
 }
 
 .summary-item {
-  flex: 1;
+  flex: 1 1 30%;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,5 +83,54 @@ const netIncome = computed(() => incomeTotal.value - expenseTotal.value)
   width: 1px;
   background-color: var(--color-gray-300);
   align-self: stretch;
+}
+
+/* 태블릿 이하: 두 줄 (50%) */
+@media (max-width: 992px) {
+  .summary-item {
+    flex: 1 1 45%;
+  }
+
+  /* 두 번째 divider만 가로줄로 변경 */
+  .divider:nth-of-type(2) {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-gray-300);
+    margin: 0.5rem 0;
+  }
+
+  /* 첫 번째 divider는 여전히 세로선 유지 */
+  .divider:nth-of-type(1) {
+    width: 1px;
+    height: auto;
+    background-color: var(--color-gray-300);
+    align-self: stretch;
+    margin: 0;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 761px) {
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-gray-300);
+    margin: 0.5rem 0;
+  }
+}
+
+/* 모바일 이하: 한 줄에 하나씩 */
+@media (max-width: 576px) {
+  .summary-item {
+    flex: 1 1 100%;
+    padding: 5px;
+  }
+
+  .divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-gray-300);
+    margin: 0.5rem 0;
+  }
 }
 </style>
