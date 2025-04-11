@@ -29,7 +29,7 @@
 ![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
 ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
 ---
-### :메모: Version Control & Deployment
+### Version Control & Deployment
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 ---
 ## 아키텍쳐
@@ -38,7 +38,7 @@
 
 ### 디렉토리 구조
 ```bash
-.
+
 ├── App.vue
 ├── api
 │   └── analysis.js
