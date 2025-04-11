@@ -20,7 +20,7 @@ import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
 const BASEurlT = '/api/transactions'
-const BASEurlS = '/api/localhost:3000/summary'
+const BASEurlS = '/api/summary'
 const tempDate = ref('')
 const router = useRouter()
 const state = reactive({ isExpense: true })
